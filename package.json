@@ -1,14 +1,12 @@
 {
-  "name": "react-antd-admin",
-  "version": "0.1.0",
-  "description": "React Ant.Design Admin UI",
+  "name": "ui",
+  "version": "1.0.0",
+  "description": "SMART UI",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/.setup.js tests/**/*-test.js --compilers css:mocha-compiler.js",
     "start": "node server"
   },
-  "author": "fireyy",
-  "license": "WTFPL",
   "dependencies": {
     "antd": "^1.7.3",
     "body-parser": "^1.15.0",
@@ -25,8 +23,8 @@
     "redux-thunk": "^2.1.0",
     "superagent": "^1.8.0-beta.2",
     "react-router-redux": "^4.0.5",
-    "redux-promise": "^0.5.3"
-
+    "redux-promise": "^0.5.3",
+    "js-cookie": "^2.1.2"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",

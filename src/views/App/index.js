@@ -16,12 +16,13 @@ class App extends React.Component {
         super(props);
     }
     static propTypes = {
-        user: PropTypes.object,
+        user: PropTypes.string,
         children: PropTypes.node.isRequired,
-        isAuthenticated: React.PropTypes.bool
+        isAuthenticated: React.PropTypes.bool,
+        routing: PropTypes.object
     };
     componentWillMount() {
-        const {actions, isAuthenticated} = this.props;
+        const {actions, isAuthenticated,routing,user} = this.props;
         actions.fetchProfile();
         this.renderAuthenticatedPage = this.renderAuthenticatedPage.bind(this);
     }
@@ -46,7 +47,7 @@ class App extends React.Component {
 
     render() {
         const {isAuthenticated,user }= this.props;
-        console.log(isAuthenticated)
+        console.log(user)
         return (
             <div>
                 {isAuthenticated?this.renderAuthenticatedPage(user):<Login/>}

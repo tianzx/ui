@@ -95,12 +95,8 @@ Login.propTypes = propTypes;
 Login = Form.create()(Login);
 
 function mapStateToProps(state) {
-  const {user,loggingIn,loginErrors} = state;
-  if (user) {
-      return {user: user, loggingIn: loggingIn, loginErrors: ''};
-  }
-
-  return {user: null, loggingIn: loggingIn, loginErrors: loginErrors};
+  const {users:{user,loggingIn,loginErrors}} = state;
+  return {user, loggingIn, loginErrors};
 }
 
 function mapDispatchToProps(dispatch) {

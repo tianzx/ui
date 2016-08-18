@@ -7,12 +7,14 @@ import {
     FETCH_PROFILE_SUCCESS
 } from '../actions/user';
 
+import cookie from 'js-cookie';
+
 const initialState = {
-    user: null,
+    user: "",
     loggingIn: false,
     loggingOut: false,
     loginErrors: null,
-    isAuthenticated: false
+    isAuthenticated: cookie.get('smartauto-token') ? true : false
 };
 
 export default function user(state = initialState, action = {}) {
