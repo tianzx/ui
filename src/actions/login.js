@@ -12,7 +12,7 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
 export function fetchProfile() {
-    let uid = getCookie('uid');
+    let uid = getCookie('smartauto-token');
 
     if (uid === undefined) {
         return {type: 'UID_NOT_FOUND'};

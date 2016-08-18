@@ -5,7 +5,7 @@ import {
     LOGOUT_SUCCESS,
     FETCH_PROFILE_PENDING,
     FETCH_PROFILE_SUCCESS
-} from '../actions/user';
+} from '../actions/login';
 
 import cookie from 'js-cookie';
 
@@ -17,7 +17,7 @@ const initialState = {
     isAuthenticated: cookie.get('smartauto-token') ? true : false
 };
 
-export default function user(state = initialState, action = {}) {
+export default function login(state = initialState, action = {}) {
     switch (action.type) {
         case LOGIN_PENDING:
             return Object.assign({}, initialState, {loggingIn: true});

@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Form, Input, Button, Row, Col, notification } from 'antd'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { login } from '../../actions/user'
+import { login } from '../../actions/login'
 
 const FormItem = Form.Item
 
@@ -95,7 +95,7 @@ Login.propTypes = propTypes;
 Login = Form.create()(Login);
 
 function mapStateToProps(state) {
-  const {users:{user,loggingIn,loginErrors}} = state;
+  const {login:{user,loggingIn,loginErrors}} = state;
   return {user, loggingIn, loginErrors};
 }
 

@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Affix, Row, Col} from 'antd';
+import {Row, Col} from 'antd';
 import 'antd/dist/antd.less'
 import NavPath from '../../components/NavPath'
 import Header from '../../components/Header'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
-import {fetchProfile, logout} from '../../actions/user';
+import {fetchProfile, logout} from '../../actions/login';
 import Login from '../Login/index'
 import './index.less';
 
@@ -47,7 +47,6 @@ class App extends React.Component {
 
     render() {
         const {isAuthenticated,user }= this.props;
-        console.log(user)
         return (
             <div>
                 {isAuthenticated?this.renderAuthenticatedPage(user):<Login/>}
@@ -57,7 +56,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    const {routing,users:{user,isAuthenticated}} = state;
+    const {routing,login:{user,isAuthenticated}} = state;
     return {
         user,
         isAuthenticated,
