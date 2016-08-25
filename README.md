@@ -16,7 +16,7 @@ Just clone the repo and install the necessary node modules:
 
 ```shell
 $ git clone 
-$ cd react-antd-admin
+$ cd ui
 $ npm install
 $ npm start
 ```
