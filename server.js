@@ -56,12 +56,14 @@ app.post('/api/menu', function (req, res) {
                 icon: 'user',
                 child: [
                     {
-                        name: '选项1',
-                        key: 101
+                        name: '电子围栏',
+                        key: 101,
+                        url: 'fence'
                     },
                     {
-                        name: '选项2',
-                        key: 102
+                        name: '用户',
+                        key: 102,
+                        url: 'user'
                     },
                     {
                         name: '选项3',
