@@ -3,12 +3,12 @@
  */
 import React from 'react'
 
-export default class Home extends React.Component {
+export default class User extends React.Component {
 
     render() {
         return(
             <div>
-                fence
+                user
             </div>
         )
     }
