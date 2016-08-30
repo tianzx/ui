@@ -4,13 +4,15 @@
 import {
     FETCH_FENCE_ERROR,
     FETCH_FENCE_PENDING,
-    FETCH_FENCE_SUCCESS
+    FETCH_FENCE_SUCCESS,
+    ADD_FENCE
 } from '../actions/fence';
 
 const initialState = {
     data: [],
     meta: {},
-    message:""
+    message:"",
+    status: 'list'
 };
 
 export default function fence(state = initialState, action = {}) {
@@ -29,6 +31,11 @@ export default function fence(state = initialState, action = {}) {
                 fences: null,
                 message: action.payload.message
             };
+        case ADD_FENCE:
+            console.log(action)
+            return Object.assign({}, state, {
+                status:action.payload.status
+            });
         default:
             return state;
     }

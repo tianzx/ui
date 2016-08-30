@@ -8,7 +8,7 @@ import {getCookie} from '../utils';
 export const FETCH_FENCE_PENDING = 'FETCH_FENCE_PENDING';
 export const FETCH_FENCE_SUCCESS = 'FETCH_FENCE_SUCCESS';
 export const FETCH_FENCE_ERROR = 'FETCH_FENCE_ERROR';
-
+export const ADD_FENCE = 'ADD'
 
 export function fetchFences() {
     let uid = getCookie('smartauto-token');
@@ -21,6 +21,15 @@ export function fetchFences() {
         type: 'FETCH_FENCE',
         payload: {
             promise: api.post('/fence')
+        }
+    }
+}
+
+export function addFence() {
+    return {
+        type: ADD_FENCE,
+        payload:{
+            status:"add"
         }
     }
 }

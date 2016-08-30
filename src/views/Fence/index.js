@@ -3,14 +3,19 @@
  */
 import React from 'react'
 import FenceList from './FenceList'
-import FenceSearch from './FenceSearch'
+import {connect} from 'react-redux';
+
 import Styles from './index.less'
 export default class Fence extends React.Component {
+
+    renderPages() {
+
+    }
 
     render() {
         return(
             <div>
-                <FenceSearch/>
+                {/*<FenceSearch/>*/}
                 <FenceList/>
             </div>
         )

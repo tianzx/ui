@@ -27,19 +27,18 @@ class FenceSearch extends React.Component {
            <div className="normal">
                {/*<Button type="primary" size="large" onClick={handleShowCreateModal}>新增</Button> */}
                <Button type="ghost">新增</Button>
-
            </div>
        )
     }
 }
-function mapStateToProps(state) {
-}
+// function mapStateToProps(state) {
+// }
 
-function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators({fetchFences}, dispatch)};
-
-}
+// function mapDispatchToProps(dispatch) {
+//         return {actions: bindActionCreators({fetchFences}, dispatch)};
+//
+// }
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    // mapStateToProps,
+    // mapDispatchToProps
 )(FenceSearch);

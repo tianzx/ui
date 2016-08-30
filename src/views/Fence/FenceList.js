@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Icon, Popconfirm, Modal, Pagination, message, Button, loading} from 'antd';
-import {fetchFences} from '../../actions/fence';
+import {fetchFences, addFence} from '../../actions/fence';
 
 class FenceList extends React.Component {
     constructor(props) {
@@ -22,8 +22,27 @@ class FenceList extends React.Component {
         actions.fetchFences();
     }
 
+    renderList(actions, columns, data) {
+
+        return (
+            <div>
+                <div className="normal">
+                    <Button type="ghost" onClick={actions.addFence}>新增</Button>
+                </div>
+                <Table columns={columns} dataSource={data}/>
+            </div>
+        )
+    }
+    renderAdd(){
+        return(
+            <div>
+                add fence
+            </div>
+        )
+    }
+
     render() {
-        const {fences: {data2, meta, isFetching}} = this.props;
+        const {actions, fences: {data2, meta, isFetching, status}} = this.props;
         const columns = [{
             title: '姓名',
             dataIndex: 'name',
@@ -42,14 +61,8 @@ class FenceList extends React.Component {
             key: 'operation',
             render: (text, record) => (
                 <span>
-      <a href="#">操作一{record.name}</a>
-      <span className="ant-divider"></span>
-      <a href="#">操作二</a>
-      <span className="ant-divider"></span>
-      <a href="#" className="ant-dropdown-link">
-        更多 <Icon type="down"/>
-      </a>
-    </span>
+
+                </span>
             ),
         }];
 
@@ -70,10 +83,15 @@ class FenceList extends React.Component {
             address: '西湖区湖底公园1号',
         }];
 
+        let page ;
+        // switch
+        if(status=="list"){
+            page = this.renderList(actions, columns, data)
+        }else if(status=="add"){
+            page = this.renderAdd();
+        }
         return (
-            <div>
-                <Table columns={columns} dataSource={data} />
-            </div>
+            page
         );
     }
 }
@@ -85,7 +103,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators({fetchFences}, dispatch)};
+    return {actions: bindActionCreators({fetchFences, addFence}, dispatch)};
 
 }
 export default connect(
