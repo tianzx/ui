@@ -33,3 +33,8 @@ export function addFence() {
         }
     }
 }
+
+export function submitFence(){
+    "use strict";
+
+}

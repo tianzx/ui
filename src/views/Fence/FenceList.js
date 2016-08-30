@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Icon, Popconfirm, Modal, Pagination, message, Button, loading} from 'antd';
 import {fetchFences, addFence} from '../../actions/fence';
-
+import EditFence from './EditFence'
 class FenceList extends React.Component {
     constructor(props) {
         super(props);
@@ -35,9 +35,7 @@ class FenceList extends React.Component {
     }
     renderAdd(){
         return(
-            <div>
-                add fence
-            </div>
+            <EditFence/>
         )
     }
 
