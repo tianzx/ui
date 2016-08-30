@@ -28,7 +28,7 @@ const publicPath = path.resolve(__dirname);
 app.use(bodyParser.json({type: 'application/json'}))
 app.use(express.static(publicPath));
 
-const port = isProduction ? (process.env.PORT || 80) : 8080;
+const port = isProduction ? (process.env.PORT || 80) : 7777;
 
 // this is necessary to handle URL correctly since client uses Browser History
 app.get('*', function (req, res) {
@@ -132,6 +132,64 @@ app.post('/api/my', function (req, res) {
 app.post('/api/logout', function (req, res) {
     res.clearCookie('uid');
     res.json({'user': 'admin', 'role': 'ADMIN'});
+});
+let i= 0 ;
+app.post('/api/fence', function (req, res) {
+    console.log(i++);
+    res.json({
+        fences: {
+            "meta": {
+                "total": 2,
+                "per_page": 1,
+                "page": 1
+            },
+            "data": [{
+                "id": 1,
+                "email": "tianzx@aliyun.com",
+                "name": "tianzx",
+                "roles": "管理员",
+                "created_at": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
+            },
+                {
+                    "id": 2,
+                    "email": "tianzx@aliyun.com",
+                    "name": "tianzx",
+                    "roles": "管理员",
+                    "created_at": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
+                },{
+                    "id": 3,
+                    "email": "tianzx@aliyun.com",
+                    "name": "tianzx",
+                    "roles": "管理员",
+                    "created_at": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
+                },{
+                    "id": 4,
+                    "email": "tianzx@aliyun.com",
+                    "name": "tianzx",
+                    "roles": "管理员",
+                    "created_at": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
+                },{
+                    "id": 5,
+                    "email": "tianzx@aliyun.com",
+                    "name": "tianzx",
+                    "roles": "管理员",
+                    "created_at": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
+                },{
+                    "id": 6,
+                    "email": "tianzx@aliyun.com",
+                    "name": "tianzx",
+                    "roles": "管理员",
+                    "created_at": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
+                },
+                {
+                    "id": 7,
+                    "email": "tianzx@aliyun.com",
+                    "name": "tianzx",
+                    "roles": "普通用户",
+                    "created_at": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+                }]
+        }
+    });
 });
 
 app.listen(port, function (err, result) {

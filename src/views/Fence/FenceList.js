@@ -1,12 +1,29 @@
 /**
- * Created by tianzx on 16/8/25.
+ * Created by tianzx on 16/8/26.
  */
-import React from 'react'
+import React, {Component, PropTypes} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import {Table, Icon, Popconfirm, Modal, Pagination, message, Button, loading} from 'antd';
+import {fetchFences} from '../../actions/fence';
 
-export default class User extends React.Component {
+class FenceList extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    static propTypes = {
+        fetchFences: React.PropTypes.func,
+        fences: React.PropTypes.object
+    };
+
+    componentDidMount() {
+        const {actions, routing, fences} = this.props;
+        actions.fetchFences();
+    }
 
     render() {
+        const {fences: {data2, meta, isFetching}} = this.props;
         const columns = [{
             title: '姓名',
             dataIndex: 'name',
@@ -55,8 +72,23 @@ export default class User extends React.Component {
 
         return (
             <div>
-                <Table columns={columns} dataSource={data}/>
+                <Table columns={columns} dataSource={data} />
             </div>
         );
     }
 }
+function mapStateToProps(state) {
+    const {fences} = state;
+    return {
+        fences
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {actions: bindActionCreators({fetchFences}, dispatch)};
+
+}
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(FenceList);

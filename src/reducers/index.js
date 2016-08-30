@@ -5,12 +5,14 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
 import login from './login';
-import menus from './menu'
+import menus from './menu';
+import fences from './fence';
 
 const rootReducer = combineReducers({
     routing: routerReducer,
     menus,
-    login
+    login,
+    fences
 });
 
 export default rootReducer;

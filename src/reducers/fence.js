@@ -8,7 +8,8 @@ import {
 } from '../actions/fence';
 
 const initialState = {
-    fences: "",
+    data: [],
+    meta: {},
     message:""
 };
 
@@ -18,7 +19,8 @@ export default function fence(state = initialState, action = {}) {
             return Object.assign({}, initialState,{message:"pending"});
         case FETCH_FENCE_SUCCESS:
             return Object.assign({}, state, {
-                fences: action.payload.fences,
+                data: action.payload.fences.data,
+                meta: action.payload.fences.meta,
                 message: "success"
             });
         case FETCH_FENCE_ERROR:

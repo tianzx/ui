@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Menu, Icon} from 'antd'
 import {getAllMenu, updateNavPath} from '../../actions/menu'
-import { Link, browserHistory } from 'react-router'
+import {Link, browserHistory} from 'react-router'
 
 const SubMenu = Menu.SubMenu
 
@@ -27,12 +27,14 @@ class Sidebar extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getAllMenu()
+        this.props.getAllMenu();
+        // this.menuClickHandle();
     }
 
     menuClickHandle(item) {
         this.props.updateNavPath(item.keyPath, item.key);
-        // browserHistory.push('/fence');
+        // console.log(item.keyPath,item.key)
+        // console.log(item)
     }
 
     render() {
@@ -47,7 +49,7 @@ class Sidebar extends React.Component {
                 >
                     {item.child.map((node) => {
                         return (
-                            <Menu.Item key={'menu' + node.key}><Link to={'/'+node.url}>{node.name}</Link></Menu.Item>
+                            <Menu.Item key={'menu' + node.key}><Link to={'/' + node.url}>{node.name}</Link></Menu.Item>
                         )
                     })}
                 </SubMenu>

@@ -10,7 +10,7 @@ export const FETCH_FENCE_SUCCESS = 'FETCH_FENCE_SUCCESS';
 export const FETCH_FENCE_ERROR = 'FETCH_FENCE_ERROR';
 
 
-export function fetchFence() {
+export function fetchFences() {
     let uid = getCookie('smartauto-token');
 
     if (uid === undefined) {
@@ -18,7 +18,7 @@ export function fetchFence() {
     }
 
     return {
-        type: 'FETCH_PROFILE',
+        type: 'FETCH_FENCE',
         payload: {
             promise: api.post('/fence')
         }
