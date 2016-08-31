@@ -9,6 +9,7 @@ export const FETCH_FENCE_PENDING = 'FETCH_FENCE_PENDING';
 export const FETCH_FENCE_SUCCESS = 'FETCH_FENCE_SUCCESS';
 export const FETCH_FENCE_ERROR = 'FETCH_FENCE_ERROR';
 export const ADD_FENCE = 'ADD_FENCE';
+export const EDIT_FENCE = 'EDIT_FENCE';
 export const SUBMIT_FENCE_PENDING = 'SUBMIT_FENCE_PENDING';
 export const SUBMIT_FENCE_SUCCESS = 'SUBMIT_FENCE_SUCCESS';
 export const SUBMIT_FENCE_ERROR = 'SUBMIT_FENCE_ERROR';
@@ -37,6 +38,16 @@ export function addFence() {
     }
 }
 
+export function editFence(id){
+    "use strict";
+    return {
+        type:EDIT_FENCE,
+        payload:{
+            promise:api.post('/fence/`id`',{
+            }),
+        }
+    }
+}
 export function submitFence(data){
     console.log(data);
     return {

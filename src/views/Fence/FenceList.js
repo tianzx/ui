@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {Table, Icon, Popconfirm, Modal, Pagination, message, Button, loading} from 'antd';
 import {fetchFences, addFence} from '../../actions/fence';
 import EditFence from './EditFence'
+const ButtonGroup = Button.Group;
 class FenceList extends React.Component {
     constructor(props) {
         super(props);
@@ -47,17 +48,21 @@ class FenceList extends React.Component {
             key: 'name',
         }, {
             title: '时间',
-            dataIndex: 'dateTime',
-            key: 'dateTime'
+            dataIndex: 'creatTime',
+            key: 'creatTime'
         },
             {
                 title: '操作',
                 key: 'operation',
                 render: (text, record) => (
-                    <span>
-
-                </span>
-                ),
+                    <p>
+                        <a><Icon type="edit"/></a>
+                        &nbsp;&nbsp;
+                        <Popconfirm title="确定要删除吗？" >
+                            <a><Icon type="delete" /></a>
+                        </Popconfirm>
+                    </p>
+                )
             }];
 
         let page;
