@@ -6,6 +6,9 @@ import {
     FETCH_FENCE_PENDING,
     FETCH_FENCE_SUCCESS,
     ADD_FENCE,
+    EDIT_FENCE_ERROR,
+    EDIT_FENCE_PENDING,
+    EDIT_FENCE_SUCCESS,
     SUBMIT_FENCE_ERROR,
     SUBMIT_FENCE_PENDING,
     SUBMIT_FENCE_SUCCESS
@@ -15,7 +18,8 @@ const initialState = {
     data: [],
     meta: {},
     message:"",
-    status: 'list'
+    status: 'list',
+    fence: {}
 };
 
 export default function fence(state = initialState, action = {}) {
@@ -38,6 +42,14 @@ export default function fence(state = initialState, action = {}) {
             return Object.assign({}, state, {
                 status:action.payload.status
             });
+        case EDIT_FENCE_PENDING:
+            return;
+        case EDIT_FENCE_SUCCESS:
+            return Object.assign({}, state, {
+                fence:action.payload.fence
+            });
+        case EDIT_FENCE_ERROR:
+            return;
         case SUBMIT_FENCE_SUCCESS:
             return Object.assign({}, initialState,{message:"success"})
         case SUBMIT_FENCE_PENDING:

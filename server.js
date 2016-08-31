@@ -39,34 +39,34 @@ let fenceData = {
         {
             "id": 1,
             "name": "fence1",
-            "created_at": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
+            "creatTime": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
         },
         {
             "id": 2,
             "name": "fence2",
-            "created_at": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
+            "creatTime": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
         }, {
             "id": 3,
             "name": "fence3",
-            "created_at": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
+            "creatTime": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
         }, {
             "id": 4,
             "name": "fence4",
-            "created_at": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
+            "creatTime": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
         }, {
             "id": 5,
             "name": "fence5",
-            "created_at": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
+            "creatTime": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
         }, {
             "id": 6,
             "name": "fence6",
             "roles": "管理员",
-            "created_at": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
+            "creatTime": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
         },
         {
             "id": 7,
             "name": "fence7",
-            "created_at": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+            "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
         }]
 }
 app.get('/api/fence', function (req, res) {
@@ -74,6 +74,9 @@ app.get('/api/fence', function (req, res) {
         fences: fenceData
     });
 });
+app.get('/api/fence/:id',function (req,res) {
+    console.log(req.params.id);
+})
 // this is necessary to handle URL correctly since client uses Browser History
 app.get('*', function (req, res) {
     res.sendFile(path.resolve(__dirname, '', 'index.html'))
