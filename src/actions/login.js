@@ -43,6 +43,6 @@ export function login(user, password) {
 export function logout() {
 
     return {
-        type: 'LOGOUT'
+        type: 'LOGOUT_SUCCESS'
     }
 }

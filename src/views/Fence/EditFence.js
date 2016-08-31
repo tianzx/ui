@@ -4,25 +4,33 @@
 import React, {Component, PropTypes} from 'react';
 import {Form, Input, Button, Checkbox, Radio, Tooltip, Icon} from 'antd';
 import {connect} from 'react-redux';
-const createForm = Form.create;
+import {bindActionCreators} from 'redux';
+import {submitFence,fetchFences} from '../../actions/fence'
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
-function noop() {
-    return false;
-}
 class EditFence extends React.Component {
+
+    static propTypes = {
+        submitFence: React.PropTypes.func,
+        fetchFences: React.PropTypes.func
+    };
+
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {
+        const {actions}  = this.props;
         e.preventDefault();
-        console.log('收到表单值：', this.props.form.getFieldsValue());
+        actions.submitFence(this.props.form.getFieldsValue());
+        actions.fetchFences();
     }
 
     render() {
         const {getFieldProps} = this.props.form;
+        // console.log(actions);
+
         const formItemLayout = {
             labelCol: {span: 6},
             wrapperCol: {span: 14},
@@ -59,10 +67,13 @@ EditFence.propTypes = {
 };
 
 function mapStateToProps(state) {
-    const {fence} = state;
+    const {fences} = state;
     return {
-        fence
+        fences
     };
 }
+function mapDispatchToProps(dispatch) {
+    return {actions: bindActionCreators({submitFence,fetchFences}, dispatch)};
 
-export default connect(mapStateToProps)(createForm()(EditFence));
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(EditFence));

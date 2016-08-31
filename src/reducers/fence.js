@@ -5,7 +5,10 @@ import {
     FETCH_FENCE_ERROR,
     FETCH_FENCE_PENDING,
     FETCH_FENCE_SUCCESS,
-    ADD_FENCE
+    ADD_FENCE,
+    SUBMIT_FENCE_ERROR,
+    SUBMIT_FENCE_PENDING,
+    SUBMIT_FENCE_SUCCESS
 } from '../actions/fence';
 
 const initialState = {
@@ -32,10 +35,15 @@ export default function fence(state = initialState, action = {}) {
                 message: action.payload.message
             };
         case ADD_FENCE:
-            console.log(action)
             return Object.assign({}, state, {
                 status:action.payload.status
             });
+        case SUBMIT_FENCE_SUCCESS:
+            return Object.assign({}, initialState,{message:"success"})
+        case SUBMIT_FENCE_PENDING:
+            return Object.assign({}, initialState,{message:"pending"})
+        case SUBMIT_FENCE_ERROR:
+            return Object.assign({}, initialState,{message:"error"})
         default:
             return state;
     }
