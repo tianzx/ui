@@ -75,7 +75,10 @@ app.get('/api/fence', function (req, res) {
     });
 });
 app.get('/api/fence/:id',function (req,res) {
-    console.log(req.params.id);
+    // console.log(req.params.id);
+    res.json({
+        fence:fenceData.data[req.params.id-1]
+    })
 })
 // this is necessary to handle URL correctly since client uses Browser History
 app.get('*', function (req, res) {

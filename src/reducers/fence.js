@@ -43,13 +43,14 @@ export default function fence(state = initialState, action = {}) {
                 status:action.payload.status
             });
         case EDIT_FENCE_PENDING:
-            return;
+            return Object.assign({}, state,{message:"pending"});
         case EDIT_FENCE_SUCCESS:
             return Object.assign({}, state, {
-                fence:action.payload.fence
+                fence:action.payload.fence,
+                message: "success"
             });
         case EDIT_FENCE_ERROR:
-            return;
+            return Object.assign({}, state,{message:"error"});
         case SUBMIT_FENCE_SUCCESS:
             return Object.assign({}, initialState,{message:"success"})
         case SUBMIT_FENCE_PENDING:

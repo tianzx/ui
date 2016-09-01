@@ -50,7 +50,6 @@ export function editFence(id){
     }
 }
 export function submitFence(data){
-    console.log(data);
     return {
         type: 'SUBMIT_FENCE',
         payload:{
