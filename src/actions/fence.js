@@ -8,10 +8,10 @@ import {getCookie} from '../utils';
 export const FETCH_FENCE_PENDING = 'FETCH_FENCE_PENDING';
 export const FETCH_FENCE_SUCCESS = 'FETCH_FENCE_SUCCESS';
 export const FETCH_FENCE_ERROR = 'FETCH_FENCE_ERROR';
-export const ADD_FENCE = 'ADD_FENCE';
-export const LIST = "LIST";
-export const ADD = "ADD";
-export const EDIT = "EDIT";
+export const EDIT_FENCE = 'EDIT_FENCE';
+export const LIST = "LIST_PAGE";
+export const ADD = "ADD_PAGE";
+export const EDIT = "EDIT_PAGE";
 export const CREATE_FENCE_PENDING = 'CREATE_FENCE_PENDING';
 export const CREATE_FENCE_SUCCESS = 'CREATE_FENCE_SUCCESS';
 export const CREATE_FENCE_ERROR = 'CREATE_FENCE_ERROR';
@@ -40,9 +40,9 @@ export function fetchFences() {
     }
 }
 
-export function addFence() {
+export function editFence(status) {
     return {
-        type: ADD_FENCE,
+        type: EDIT_FENCE,
         payload: {
             status: ADD
         }

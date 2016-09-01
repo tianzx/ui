@@ -5,15 +5,10 @@ import React, {Component, PropTypes} from 'react';
 import {Form, Input, Button, Checkbox, Radio, Tooltip, Icon} from 'antd';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {submitFence,fetchFences} from '../../actions/fence'
+import {createFence,fetchFences,updateFence} from '../../actions/fence'
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 class EditFence extends React.Component {
-
-    static propTypes = {
-        submitFence: React.PropTypes.func,
-        fetchFences: React.PropTypes.func
-    };
 
     constructor(props) {
         super(props);
@@ -23,7 +18,7 @@ class EditFence extends React.Component {
     handleSubmit(e) {
         const {actions}  = this.props;
         e.preventDefault();
-        actions.submitFence(this.props.form.getFieldsValue());
+        actions.createFence(this.props.form.getFieldsValue());
         actions.fetchFences();
     }
 
@@ -73,7 +68,7 @@ function mapStateToProps(state) {
     };
 }
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators({submitFence,fetchFences}, dispatch)};
+    return {actions: bindActionCreators({createFence,fetchFences,updateFence}, dispatch)};
 
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(EditFence));

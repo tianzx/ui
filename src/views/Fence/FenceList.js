@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Icon, Popconfirm, Modal, Pagination, message, Button, loading} from 'antd';
-import {fetchFences, addFence,editFence,LIST,ADD,EDIT} from '../../actions/fence';
+import {fetchFences, editFence,retrieveFence,LIST,ADD,EDIT} from '../../actions/fence';
 import EditFence from './EditFence'
 const ButtonGroup = Button.Group;
 class FenceList extends React.Component {
@@ -27,7 +27,7 @@ class FenceList extends React.Component {
         return (
             <div>
                 <div className="normal">
-                    <Button type="ghost" onClick={actions.addFence}>新增</Button>
+                    <Button type="ghost" onClick={actions.editFence}>新增</Button>
                 </div>
                 <Table columns={columns} dataSource={data}/>
             </div>
@@ -44,8 +44,8 @@ class FenceList extends React.Component {
     render() {
         const {actions, fences: {data, meta, isFetching, status}} = this.props;
 
-        function editFence(id){
-            actions.editFence(id);
+        function retrieveFence(id){
+            actions.retrieveFence(id);
             // actions.addFence();
         }
         const columns = [{
@@ -62,7 +62,7 @@ class FenceList extends React.Component {
                 key: 'operation',
                 render: (text, record) => (
                     <p>
-                        <a onClick={editFence.bind(this,record.id)}><Icon type="edit" /></a>
+                        <a onClick={retrieveFence.bind(this,record.id)}><Icon type="edit" /></a>
                         &nbsp;&nbsp;
                         <Popconfirm title="确定要删除吗？">
                             <a><Icon type="delete"/></a>
@@ -91,7 +91,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators({fetchFences, addFence,editFence}, dispatch)};
+    return {actions: bindActionCreators({fetchFences, editFence,retrieveFence}, dispatch)};
 
 }
 export default connect(
