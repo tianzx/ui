@@ -79,6 +79,7 @@ export function updateFence(data) {
         payload: {
             promise: api.put('/fence', {
                 data: {
+                    id:data.id,
                     fenceName: data.fenceName,
                     agreement: data.agreement
                 }

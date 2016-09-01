@@ -112,6 +112,10 @@ app.get('/api/fence/:id',function (req,res) {
  */
 app.put('/api/fence',function (req,res) {
     const fence = req.body;
+    fenceData.data[fence.id] =
+    res.json({
+        success:"success"
+    })
 })
 /**
  * 删除fence

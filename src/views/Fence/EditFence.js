@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react';
 import {Form, Input, Button, Checkbox, Radio, Tooltip, Icon} from 'antd';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {createFence,fetchFences,updateFence} from '../../actions/fence'
+import {createFence,fetchFences,updateFence,ADD,EDIT} from '../../actions/fence'
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 class EditFence extends React.Component {
@@ -16,9 +16,13 @@ class EditFence extends React.Component {
     }
 
     handleSubmit(e) {
-        const {actions}  = this.props;
+        const {actions,fences}  = this.props;
         e.preventDefault();
-        actions.createFence(this.props.form.getFieldsValue());
+        if(fences.status == ADD) {
+            actions.createFence(this.props.form.getFieldsValue());
+        }else if(fences.status == EDIT) {
+            actions.updateFence(this.props.form.getFieldsValue());
+        }
         actions.fetchFences();
     }
 
@@ -32,6 +36,7 @@ class EditFence extends React.Component {
         };
         return (
             <Form horizontal onSubmit={this.handleSubmit}>
+                <Input id="id" name="id" {...getFieldProps('id',{initialValue:fence.id})} type="hidden"/>
                 <FormItem
                     {...formItemLayout}
                     label="围栏名称"
