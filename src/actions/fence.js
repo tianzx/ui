@@ -9,15 +9,21 @@ export const FETCH_FENCE_PENDING = 'FETCH_FENCE_PENDING';
 export const FETCH_FENCE_SUCCESS = 'FETCH_FENCE_SUCCESS';
 export const FETCH_FENCE_ERROR = 'FETCH_FENCE_ERROR';
 export const ADD_FENCE = 'ADD_FENCE';
-export const EDIT_FENCE_PENDING = 'EDIT_FENCE_PENDING';
-export const EDIT_FENCE_SUCCESS = 'EDIT_FENCE_SUCCESS';
-export const EDIT_FENCE_ERROR = 'EDIT_FENCE_ERROR';
-export const SUBMIT_FENCE_PENDING = 'SUBMIT_FENCE_PENDING';
-export const SUBMIT_FENCE_SUCCESS = 'SUBMIT_FENCE_SUCCESS';
-export const SUBMIT_FENCE_ERROR = 'SUBMIT_FENCE_ERROR';
 export const LIST = "LIST";
 export const ADD = "ADD";
 export const EDIT = "EDIT";
+export const CREATE_FENCE_PENDING = 'CREATE_FENCE_PENDING';
+export const CREATE_FENCE_SUCCESS = 'CREATE_FENCE_SUCCESS';
+export const CREATE_FENCE_ERROR = 'CREATE_FENCE_ERROR';
+export const RETRIEVE_FENCE_PENDING = 'RETRIEVE_FENCE_PENDING';
+export const RETRIEVE_FENCE_SUCCESS = 'RETRIEVE_FENCE_SUCCESS';
+export const RETRIEVE_FENCE_ERROR = 'RETRIEVE_FENCE_ERROR';
+export const UPDATE_FENCE_PENDING = 'UPDATE_FENCE_PENDING';
+export const UPDATE_FENCE_SUCCESS = 'UPDATE_FENCE_SUCCESS';
+export const UPDATE_FENCE_ERROR = 'UPDATE_FENCE_ERROR';
+export const DELETE_FENCE_PENDING = 'DELETE_FENCE_PENDING';
+export const DELETE_FENCE_SUCCESS = 'DELETE_FENCE_SUCCESS';
+export const DELETE_FENCE_ERROR = 'DELETE_FENCE_ERROR';
 
 export function fetchFences() {
     let uid = getCookie('smartauto-token');
@@ -37,31 +43,57 @@ export function fetchFences() {
 export function addFence() {
     return {
         type: ADD_FENCE,
-        payload:{
-            status:ADD
+        payload: {
+            status: ADD
         }
     }
 }
 
-export function editFence(id){
-    "use strict";
+export function createFence(data) {
     return {
-        type:'EDIT_FENCE',
-        payload:{
-            promise:api.get("/fence/"+id),
-        }
-    }
-}
-export function submitFence(data){
-    return {
-        type: 'SUBMIT_FENCE',
-        payload:{
-            promise: api.post('/fence',{
-                data:{
-                    fenceName:data.fenceName,
-                    agreement:data.agreement
+        type: 'CREATE_FENCE',
+        payload: {
+            promise: api.post('/fence', {
+                data: {
+                    fenceName: data.fenceName,
+                    agreement: data.agreement
                 }
             }),
         }
     }
 }
+export function retrieveFence(id) {
+    "use strict";
+    return {
+        type: 'RETRIEVE_FENCE',
+        payload: {
+            promise: api.get("/fence/" + id),
+        }
+    }
+}
+
+export function updateFence(data) {
+    "use strict";
+    return {
+        type: 'UPDATE_FENCE',
+        payload: {
+            promise: api.put('/fence', {
+                data: {
+                    fenceName: data.fenceName,
+                    agreement: data.agreement
+                }
+            })
+        }
+    }
+}
+
+export function deleteFence(id) {
+    "use strict";
+    return {
+        type: 'DELETE_FENCE',
+        payload: {
+            promise: api.delete('/fence/'+id)
+        }
+    }
+}
+
