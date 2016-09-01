@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Icon, Popconfirm, Modal, Pagination, message, Button, loading} from 'antd';
-import {fetchFences, addFence,editFence} from '../../actions/fence';
+import {fetchFences, addFence,editFence,LIST,ADD,EDIT} from '../../actions/fence';
 import EditFence from './EditFence'
 const ButtonGroup = Button.Group;
 class FenceList extends React.Component {
@@ -44,6 +44,10 @@ class FenceList extends React.Component {
     render() {
         const {actions, fences: {data, meta, isFetching, status}} = this.props;
 
+        function editFence(id){
+            actions.editFence(id);
+            // actions.addFence();
+        }
         const columns = [{
             title: '姓名',
             dataIndex: 'name',
@@ -58,7 +62,7 @@ class FenceList extends React.Component {
                 key: 'operation',
                 render: (text, record) => (
                     <p>
-                        <a onClick={actions.editFence.bind(this, record.id)}><Icon type="edit" /></a>
+                        <a onClick={editFence.bind(this,record.id)}><Icon type="edit" /></a>
                         &nbsp;&nbsp;
                         <Popconfirm title="确定要删除吗？">
                             <a><Icon type="delete"/></a>
@@ -69,9 +73,9 @@ class FenceList extends React.Component {
 
         let page;
         // switch
-        if (status == "list") {
+        if (status == LIST) {
             page = this.renderList(actions, columns, data)
-        } else if (status == "add") {
+        } else if (status == ADD || status == EDIT) {
             page = this.renderAdd();
         }
         return (

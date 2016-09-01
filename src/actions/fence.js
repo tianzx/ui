@@ -15,6 +15,9 @@ export const EDIT_FENCE_ERROR = 'EDIT_FENCE_ERROR';
 export const SUBMIT_FENCE_PENDING = 'SUBMIT_FENCE_PENDING';
 export const SUBMIT_FENCE_SUCCESS = 'SUBMIT_FENCE_SUCCESS';
 export const SUBMIT_FENCE_ERROR = 'SUBMIT_FENCE_ERROR';
+export const LIST = "LIST";
+export const ADD = "ADD";
+export const EDIT = "EDIT";
 
 export function fetchFences() {
     let uid = getCookie('smartauto-token');
@@ -35,7 +38,7 @@ export function addFence() {
     return {
         type: ADD_FENCE,
         payload:{
-            status:"add"
+            status:ADD
         }
     }
 }

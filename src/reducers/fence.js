@@ -11,14 +11,33 @@ import {
     EDIT_FENCE_SUCCESS,
     SUBMIT_FENCE_ERROR,
     SUBMIT_FENCE_PENDING,
-    SUBMIT_FENCE_SUCCESS
+    SUBMIT_FENCE_SUCCESS,
+    LIST,
+    EDIT,
+    ADD,
 } from '../actions/fence';
 
 const initialState = {
+    /**
+     * list 的数据
+     */
     data: [],
+    /**
+     * 存放分页数据
+     */
     meta: {},
+    /**
+     * 区分不同的状态
+     */
     message:"",
-    status: 'list',
+    /**
+     * 区分不同的页面
+     * list、edit
+     */
+    status: LIST,
+    /**
+     * 单条fence数据
+     */
     fence: {}
 };
 
@@ -47,6 +66,7 @@ export default function fence(state = initialState, action = {}) {
         case EDIT_FENCE_SUCCESS:
             return Object.assign({}, state, {
                 fence:action.payload.fence,
+                status:EDIT,
                 message: "success"
             });
         case EDIT_FENCE_ERROR:
