@@ -30,7 +30,7 @@ class EditFence extends React.Component {
     render() {
         const {getFieldProps} = this.props.form;
         // console.log(actions);
-
+        const {fences:{fence}} = this.props;
         const formItemLayout = {
             labelCol: {span: 6},
             wrapperCol: {span: 14},
@@ -41,14 +41,14 @@ class EditFence extends React.Component {
                     {...formItemLayout}
                     label="围栏名称"
                 >
-                    <Input id="fenceName" name="fenceName" {...getFieldProps('fenceName')}/>
+                    <Input id="fenceName" name="fenceName" {...getFieldProps('fenceName',{initialValue:fence.name})}/>
                 </FormItem>
                 <FormItem
                     {...formItemLayout}
                     label={<span>是否开启</span>}
                 >
                     <Checkbox {...getFieldProps('agreement', {
-                        initialValue: false,
+                        initialValue: fence.agreement,
                         valuePropName: 'checked'
                     })}>是</Checkbox>
                 </FormItem>

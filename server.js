@@ -29,6 +29,8 @@ app.use(bodyParser.json({type: 'application/json'}))
 app.use(express.static(publicPath));
 
 const port = isProduction ? (process.env.PORT || 80) : 7777;
+
+let i = 0;
 let fenceData = {
     "meta": {
         "total": 2,
@@ -39,6 +41,7 @@ let fenceData = {
         {
             "id": 1,
             "name": "fence1",
+            "agreement": "true",
             "creatTime": "Mon Jul 25 2016 16:31:45 GMT+0800 (CST)"
         },
         {
@@ -69,22 +72,54 @@ let fenceData = {
             "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
         }]
 }
+/**
+ * 获取fence列表
+ */
 app.get('/api/fence', function (req, res) {
     res.json({
         fences: fenceData
     });
 });
+/**
+ * 新增fence
+ * create
+ */
+app.post('/api/fence', function (req, res) {
+    let i = 10;
+    const fence = req.body;
+    const name = fence.fenceName;
+    let data = {
+        "id": i++,
+        "name": name,
+
+    }
+    fenceData.data.push(data);
+    res.json({'message': 'success'});
+})
+/**
+ * 获取指定fence数据
+ * retrieve
+ */
 app.get('/api/fence/:id',function (req,res) {
     // console.log(req.params.id);
     res.json({
         fence:fenceData.data[req.params.id-1]
     })
 })
-// this is necessary to handle URL correctly since client uses Browser History
-app.get('*', function (req, res) {
-    res.sendFile(path.resolve(__dirname, '', 'index.html'))
+/**
+ * 更新fence
+ * update
+ */
+app.put('/api/fence',function (req,res) {
+    const fence = req.body;
 })
+/**
+ * 删除fence
+ * delete
+ */
+app.delete('/api/fence',function (req,res) {
 
+})
 app.put('/api/login', function (req, res) {
     const credentials = req.body;
     if (credentials.user === 'admin' && credentials.password === '123456') {
@@ -148,29 +183,6 @@ app.post('/api/menu', function (req, res) {
                     }
                 ]
             },
-            {
-                key: 3,
-                name: '导航三',
-                icon: 'notification',
-                child: [
-                    {
-                        name: '选项1',
-                        key: 301
-                    },
-                    {
-                        name: '选项2',
-                        key: 302
-                    },
-                    {
-                        name: '选项3',
-                        key: 303
-                    },
-                    {
-                        name: '选项4',
-                        key: 304
-                    }
-                ]
-            }
         ]
     });
 });
@@ -183,20 +195,12 @@ app.post('/api/logout', function (req, res) {
     res.clearCookie('uid');
     res.json({'user': 'admin', 'role': 'ADMIN'});
 });
-let i = 0;
 
-app.post('/api/fence', function (req, res) {
-    let i = 10;
-    const fence = req.body;
-    const name = fence.fenceName;
-    let data = {
-        "id": i++,
-        "name": name,
-
-    }
-    fenceData.data.push(data);
-    res.json({'message': 'success'});
+// this is necessary to handle URL correctly since client uses Browser History
+app.get('*', function (req, res) {
+    res.sendFile(path.resolve(__dirname, '', 'index.html'))
 })
+
 app.listen(port, function (err, result) {
     if (err) {
         console.log(err);
