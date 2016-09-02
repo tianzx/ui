@@ -31,14 +31,13 @@ module.exports = {
         include: __dirname
       },
       {
-        test: /(\.css|\.less)$/,
+        test: /\.less?$/,
         loaders : [
           'style-loader',
           'css-loader',
-          'less-loader?{"sourceMap":true}',
+          'less-loader?{"sourceMap":true}'
         ],
-        include: __dirname,
-        exclude: /node_modules/
+        include: __dirname
       },
       { test: /\.(jpe?g|png|gif|svg)$/,
         loader: 'url',

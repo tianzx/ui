@@ -8,7 +8,7 @@
     "start": "node server"
   },
   "dependencies": {
-    "antd": "1.7.0",
+    "antd": "^1.10.0",
     "body-parser": "^1.15.0",
     "chart.js": "^1.0.2",
     "express": "^4.13.4",

@@ -1,5 +1,5 @@
+## React Ant.Design Admin UI
 
-Thanks to https://github.com/fireyy/react-antd-admin
 ## Features
 
 - [React](https://facebook.github.io/react/)
@@ -15,12 +15,14 @@ Thanks to https://github.com/fireyy/react-antd-admin
 Just clone the repo and install the necessary node modules:
 
 ```shell
-$ git clone 
-$ cd ui
+$ git clone https://github.com/fireyy/react-antd-admin
+$ cd react-antd-admin
 $ npm install
 $ npm start
 ```
 
 ## Run test spec
 
-
+```shell
+$ npm run test
+```
