@@ -26,12 +26,12 @@ class App extends React.Component {
         this.renderAuthenticatedPage = this.renderAuthenticatedPage.bind(this);
     }
 
-    renderAuthenticatedPage(user) {
+    renderAuthenticatedPage(user,actions) {
         return (
             <div className="ant-layout-aside">
                 <Sidebar />
                 <div className="ant-layout-main">
-                    <Header user={user}/>
+                    <Header user={user} />
                     <NavPath />
                     <div className="ant-layout-container">
                         <div className="ant-layout-content">
@@ -45,10 +45,10 @@ class App extends React.Component {
     }
 
     render() {
-        const {isAuthenticated,user }= this.props;
+        const {isAuthenticated,user,actions }= this.props;
         return (
             <div>
-                {isAuthenticated?this.renderAuthenticatedPage(user):<Login/>}
+                {isAuthenticated?this.renderAuthenticatedPage(user,actions):<Login/>}
             </div>
         )
     }

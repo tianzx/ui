@@ -41,7 +41,7 @@ export default function login(state = initialState, action = {}) {
                 loggingOut: false,
                 user: null,
                 loginErrors: null,
-                isAuthenticated:true
+                isAuthenticated:false
             };
         case FETCH_PROFILE_SUCCESS:
             return Object.assign({}, state, {user: action.payload.user, loggingIn: false, loginErrors: null});
