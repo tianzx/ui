@@ -18,7 +18,6 @@ const propTypes = {
     items: PropTypes.array,
     currentIndex: PropTypes.number
 }
-
 class Sidebar extends React.Component {
     constructor(props) {
         super(props)
@@ -32,6 +31,7 @@ class Sidebar extends React.Component {
     }
 
     menuClickHandle(item) {
+
         this.props.updateNavPath(item.keyPath, item.key);
         // console.log(item.keyPath,item.key)
         // console.log(item)

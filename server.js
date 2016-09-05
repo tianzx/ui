@@ -146,12 +146,12 @@ app.post('/api/menu', function (req, res) {
         child: [
           {
             name: '电子围栏',
-            key: 101,
+            key: 'fence',
             url: 'fence'
           },
           {
             name: '用户',
-            key: 102,
+            key: 'user',
             url: 'user'
           },
           {

@@ -9,7 +9,7 @@ import Footer from '../../components/Footer'
 import {fetchProfile, logout} from '../../actions/login';
 import Login from '../Login/index'
 import './index.less';
-
+import {updateNavPath} from '../../actions/menu'
 class App extends React.Component {
     constructor(props) {
         super(props);

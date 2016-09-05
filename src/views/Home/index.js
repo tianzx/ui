@@ -1,5 +1,4 @@
 import React from 'react'
-import PanelBox from '../../components/PanelBox';
 
 import './index.less'
 

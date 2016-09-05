@@ -8,6 +8,7 @@ import Home from './views/Home';
 import Login from './views/Login';
 import Fence from './views/Fence';
 import User from './views/User';
+import NotFound from './views/NotFound'
 
 export default (
     <Route path="/" component={App}>
@@ -16,5 +17,6 @@ export default (
         <Route path="login" component={Login}/>
         <Route path="fence" component={Fence}/>
         <Route path="user" component={User}/>
+        <Route path="*" component={NotFound}/>
     </Route>
 );
