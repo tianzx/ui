@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Icon, Popconfirm, Modal, Pagination, message, Button, loading} from 'antd';
-import {fetchFences, editFence,retrieveFence,LIST,ADD,EDIT} from '../../actions/fence';
+import {fetchFences, editFence, retrieveFence, LIST, ADD, EDIT} from '../../actions/fence';
 import EditFence from './EditFence'
 const ButtonGroup = Button.Group;
 class FenceList extends React.Component {
@@ -19,18 +19,33 @@ class FenceList extends React.Component {
     };
 
     componentDidMount() {
-        const {actions, routing, fences} = this.props;
+        const {actions, routing} = this.props;
         actions.fetchFences();
     }
 
+    handleChange(page) {
+        console.log(page);
+    }
+
     renderList(actions, columns, data) {
+        const {fences} = this.props;
+
         return (
             <div>
                 <div className="normal">
                     <Button type="ghost" onClick={actions.editFence}>新增</Button>
                 </div>
-                <Table columns={columns} dataSource={data}/>
+                <Table columns={columns} dataSource={data} pagination={false}
+                />
+                <Pagination
+                    className="ant-table-pagination"
+                    total={fences.meta.total}
+                    current={fences.meta.current}
+                    pageSize={fences.meta.pageSize}
+                    onChange={this.handleChange}
+                />
             </div>
+
         )
     }
 
@@ -44,10 +59,11 @@ class FenceList extends React.Component {
     render() {
         const {actions, fences: {data, meta, isFetching, status}} = this.props;
 
-        function retrieveFence(id){
+        function retrieveFence(id) {
             actions.retrieveFence(id);
             // actions.addFence();
         }
+
         const columns = [{
             title: '姓名',
             dataIndex: 'name',
@@ -62,7 +78,7 @@ class FenceList extends React.Component {
                 key: 'operation',
                 render: (text, record) => (
                     <p>
-                        <a onClick={retrieveFence.bind(this,record.id)}><Icon type="edit" /></a>
+                        <a onClick={retrieveFence.bind(this, record.id)}><Icon type="edit"/></a>
                         &nbsp;&nbsp;
                         <Popconfirm title="确定要删除吗？">
                             <a><Icon type="delete"/></a>
@@ -91,7 +107,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators({fetchFences, editFence,retrieveFence}, dispatch)};
+    return {actions: bindActionCreators({fetchFences, editFence, retrieveFence}, dispatch)};
 
 }
 export default connect(

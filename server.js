@@ -33,9 +33,9 @@ const port = isProduction ? (process.env.PORT || 80) : 7777;
 let i = 0;
 let fenceData = {
   "meta": {
-    "total": 2,
-    "per_page": 1,
-    "page": 1
+    "total": 15,
+    "pageSize": 10,
+    "current": 1
   },
   "data": [
     {
@@ -70,7 +70,40 @@ let fenceData = {
       "id": 7,
       "name": "fence7",
       "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
-    }]
+    },{
+      "id": 8,
+      "name": "fence7",
+      "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+    },{
+      "id": 9,
+      "name": "fence7",
+      "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+    },{
+      "id": 10,
+      "name": "fence7",
+      "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+    },{
+      "id": 11,
+      "name": "fence7",
+      "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+    },{
+      "id": 12,
+      "name": "fence7",
+      "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+    },{
+      "id": 13,
+      "name": "fence7",
+      "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+    },{
+      "id": 14,
+      "name": "fence7",
+      "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+    },{
+      "id": 15,
+      "name": "fence7",
+      "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+    },
+    ]
 }
 /**
  * 获取fence列表
