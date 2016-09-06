@@ -37,27 +37,26 @@ class FenceList extends React.Component {
                 <Table columns={columns} dataSource={data} pagination={false}
                 />
                 {/*<Pagination*/}
-                    {/*className="ant-table-pagination"*/}
-                    {/*total={fences.meta.total}*/}
-                    {/*current={fences.meta.current}*/}
-                    {/*pageSize={fences.meta.pageSize}*/}
-                    {/*onChange={this.handleChange}*/}
+                {/*className="ant-table-pagination"*/}
+                {/*total={fences.meta.total}*/}
+                {/*current={fences.meta.current}*/}
+                {/*pageSize={fences.meta.pageSize}*/}
+                {/*onChange={this.handleChange}*/}
                 {/*/>*/}
             </div>
 
         )
     }
 
-    renderAdd(dispatch) {
+    renderAdd() {
         return (
-            <EditFence dispatch={dispatch}/>
+            <EditFence />
         )
     }
 
 
     render() {
-        const {actions, fences: {data, meta, isFetching, status}} = this.props;
-
+        const {actions, fences: {data, meta, isFetching, status},dispatch} = this.props;
         function retrieveFence(id) {
             actions.retrieveFence(id);
             // actions.addFence();
@@ -96,7 +95,7 @@ class FenceList extends React.Component {
         if (status == LIST) {
             page = this.renderList(actions, columns, data)
         } else if (status == ADD || status == EDIT) {
-            page = this.renderAdd();
+            page = this.renderAdd(dispatch);
         }
         return (
             page
@@ -111,7 +110,8 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators({fetchFences, editFence, retrieveFence,deleteFence}, dispatch)};
+    console.log(dispatch)
+    return {actions: bindActionCreators({fetchFences, editFence, retrieveFence, deleteFence}, dispatch)};
 
 }
 export default connect(

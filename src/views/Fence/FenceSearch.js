@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Button, Form, Select, Input,Row, Col} from 'antd';
 import './index.less';
+import {editFence}from '../../actions/fence'
 const FormItem = Form.Item;
 class FenceSearch extends React.Component {
     constructor(props) {
@@ -67,7 +68,7 @@ class FenceSearch extends React.Component {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators({}, dispatch)};
+    return {actions: bindActionCreators({editFence}, dispatch)};
 
 }
 export default connect(
