@@ -6,17 +6,18 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Icon, Popconfirm, Modal, Pagination, message, Button, loading} from 'antd';
 import {fetchFences, editFence, retrieveFence, deleteFence, LIST, ADD, EDIT} from '../../actions/fence';
-import EditFence from './EditFence'
+import EditFence from './EditFence';
+import FenceSearch from './FenceSearch';
 const ButtonGroup = Button.Group;
 class FenceList extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    static propTypes = {
-        fetchFences: React.PropTypes.func,
-        fences: React.PropTypes.object
-    };
+    // static propTypes = {
+    //     fetchFences: React.PropTypes.func,
+    //     fences: React.PropTypes.object
+    // };
 
     componentDidMount() {
         const {actions, routing} = this.props;
@@ -32,6 +33,7 @@ class FenceList extends React.Component {
 
         return (
             <div>
+                <FenceSearch/>
                 <div className="normal">
                     <Button type="ghost" onClick={actions.editFence}>新增</Button>
                 </div>
