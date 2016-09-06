@@ -26,7 +26,7 @@ class FenceSearch extends React.Component {
        return (
            <div className="normal">
                {/*<Button type="primary" size="large" onClick={handleShowCreateModal}>新增</Button> */}
-               <Button type="ghost">新增</Button>
+               <Button type="ghost" >新增</Button>
            </div>
        )
     }

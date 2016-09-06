@@ -49,9 +49,9 @@ class FenceList extends React.Component {
         )
     }
 
-    renderAdd() {
+    renderAdd(dispatch) {
         return (
-            <EditFence/>
+            <EditFence dispatch={dispatch}/>
         )
     }
 
