@@ -34,9 +34,6 @@ class FenceList extends React.Component {
         return (
             <div>
                 <FenceSearch/>
-                <div className="normal">
-                    <Button type="ghost" onClick={actions.editFence}>新增</Button>
-                </div>
                 <Table columns={columns} dataSource={data} pagination={false}
                 />
                 {/*<Pagination*/}

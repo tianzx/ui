@@ -3,9 +3,6 @@
  */
 import React from 'react'
 import FenceList from './FenceList'
-import {connect} from 'react-redux';
-
-import Styles from './index.less'
 
 export default class Fence extends React.Component {
 

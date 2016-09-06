@@ -4,23 +4,25 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Table,Button,Form,Select,Input} from 'antd';
-import styles from './index.less'
+import {Table, Button, Form, Select, Input,Row, Col} from 'antd';
+import './index.less';
 const FormItem = Form.Item;
 class FenceSearch extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    static propTypes = {
-    };
+    static propTypes = {};
 
     componentDidMount() {
-        const {actions, routing, fences} = this.props;
-        actions.fetchFences();
+        // const {actions, routing, fences} = this.props;
+        // actions.fetchFences();
     }
 
     render() {
+        const {getFieldProps} = this.props.form;
+        const {actions} = this.props;
+
         function handleSubmit(e) {
             e.preventDefault();
 
@@ -32,12 +34,11 @@ class FenceSearch extends React.Component {
                 message: '不能为空',
             },
         ];
-        const {getFieldProps} = this.props.form;
         return (
-            <div className={styles.normal}>
-                <div className={styles.search}>
-                    <Form inline onSubmit={handleSubmit} >
-                        <Form.Item>
+            <Row >
+                <Col  span={20} className={'col'}>
+                    <Form inline onSubmit={handleSubmit}  >
+                        <Form.Item className={'normal'}>
                             <Select { ...getFieldProps('field', {initialValue: 'name'}) }>
                                 <Select.Option value="name">名字</Select.Option>
                                 <Select.Option value="age">年龄</Select.Option>
@@ -49,27 +50,27 @@ class FenceSearch extends React.Component {
                         >
                             <Input
                                 { ...getFieldProps('keyword', {
-                                    initialValue:'',
+                                    initialValue: '',
                                     rules: keywordRules,
                                 }) }
                             />
                         </Form.Item>
                         <Button style={{marginRight: '10px'}} type="primary" htmlType="submit">搜索</Button>
                     </Form>
-                </div>
-            </div>
+                </Col>
+                <Col >
+                    <Button type="ghost" onClick={actions.editFence}>新增</Button>
+                </Col>
+            </Row>
         )
     }
 }
-function mapStateToProps(state) {
-    return null
-}
 
 function mapDispatchToProps(dispatch) {
-        return {actions: bindActionCreators({}, dispatch)};
+    return {actions: bindActionCreators({}, dispatch)};
 
 }
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(Form.create()(FenceSearch));
