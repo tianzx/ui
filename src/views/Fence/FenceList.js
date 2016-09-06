@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Icon, Popconfirm, Modal, Pagination, message, Button, loading} from 'antd';
-import {fetchFences, editFence, retrieveFence, LIST, ADD, EDIT} from '../../actions/fence';
+import {fetchFences, editFence, retrieveFence, deleteFence, LIST, ADD, EDIT} from '../../actions/fence';
 import EditFence from './EditFence'
 const ButtonGroup = Button.Group;
 class FenceList extends React.Component {
@@ -37,13 +37,13 @@ class FenceList extends React.Component {
                 </div>
                 <Table columns={columns} dataSource={data} pagination={false}
                 />
-                <Pagination
-                    className="ant-table-pagination"
-                    total={fences.meta.total}
-                    current={fences.meta.current}
-                    pageSize={fences.meta.pageSize}
-                    onChange={this.handleChange}
-                />
+                {/*<Pagination*/}
+                    {/*className="ant-table-pagination"*/}
+                    {/*total={fences.meta.total}*/}
+                    {/*current={fences.meta.current}*/}
+                    {/*pageSize={fences.meta.pageSize}*/}
+                    {/*onChange={this.handleChange}*/}
+                {/*/>*/}
             </div>
 
         )
@@ -64,6 +64,11 @@ class FenceList extends React.Component {
             // actions.addFence();
         }
 
+        function confirm(id) {
+            actions.deleteFence(id);
+            actions.fetchFences();
+        }
+
         const columns = [{
             title: '姓名',
             dataIndex: 'name',
@@ -80,7 +85,7 @@ class FenceList extends React.Component {
                     <p>
                         <a onClick={retrieveFence.bind(this, record.id)}><Icon type="edit"/></a>
                         &nbsp;&nbsp;
-                        <Popconfirm title="确定要删除吗？">
+                        <Popconfirm title="确定要删除吗？" onConfirm={confirm.bind(this, record.id)}>
                             <a><Icon type="delete"/></a>
                         </Popconfirm>
                     </p>
@@ -107,7 +112,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators({fetchFences, editFence, retrieveFence}, dispatch)};
+    return {actions: bindActionCreators({fetchFences, editFence, retrieveFence,deleteFence}, dispatch)};
 
 }
 export default connect(

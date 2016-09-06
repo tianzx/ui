@@ -93,7 +93,7 @@ export function deleteFence(id) {
     return {
         type: 'DELETE_FENCE',
         payload: {
-            promise: api.delete('/fence/'+id)
+            promise: api.del('/fence/'+id)
         }
     }
 }

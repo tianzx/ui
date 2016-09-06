@@ -82,7 +82,14 @@ export default function fence(state = initialState, action = {}) {
             return Object.assign({}, state, {message: "pending"});
         case RETRIEVE_FENCE_ERROR:
             return Object.assign({}, state, {message: "error"});
-
+        case DELETE_FENCE_SUCCESS:
+            return Object.assign({}, state, {
+                message: action.payload.success
+            });
+        case DELETE_FENCE_PENDING:
+            return Object.assign({}, initialState, {message: "pending"})
+        case DELETE_FENCE_ERROR:
+            return Object.assign({}, state, {message: "error"});
         default:
             return state;
     }
