@@ -14,35 +14,31 @@ class FenceList extends React.Component {
         super(props);
     }
 
-    // static propTypes = {
-    //     fetchFences: React.PropTypes.func,
-    //     fences: React.PropTypes.object
-    // };
 
     componentDidMount() {
-        const {actions, routing} = this.props;
+        const {actions} = this.props;
         actions.fetchFences();
+
     }
 
     handleChange(page) {
         console.log(page);
     }
 
-    renderList(actions, columns, data) {
-        const {fences} = this.props;
+    renderList(actions, columns, data, meta) {
 
         return (
             <div>
                 <FenceSearch/>
                 <Table columns={columns} dataSource={data} pagination={false}
                 />
-                {/*<Pagination*/}
-                {/*className="ant-table-pagination"*/}
-                {/*total={fences.meta.total}*/}
-                {/*current={fences.meta.current}*/}
-                {/*pageSize={fences.meta.pageSize}*/}
-                {/*onChange={this.handleChange}*/}
-                {/*/>*/}
+                <Pagination
+                    className="ant-table-pagination"
+                    total={meta.total}
+                    current={meta.current}
+                    pageSize={meta.pageSize}
+                    onChange={this.handleChange}
+                />
             </div>
 
         )
@@ -56,10 +52,10 @@ class FenceList extends React.Component {
 
 
     render() {
-        const {actions, fences: {data, meta, isFetching, status},dispatch} = this.props;
+        const {actions, fences:{data, meta, isFetching, status}, dispatch} = this.props;
+
         function retrieveFence(id) {
             actions.retrieveFence(id);
-            // actions.addFence();
         }
 
         function confirm(id) {
@@ -68,7 +64,7 @@ class FenceList extends React.Component {
         }
 
         const columns = [{
-            title: '姓名',
+            title: '名字',
             dataIndex: 'name',
             key: 'name',
         }, {
@@ -93,9 +89,9 @@ class FenceList extends React.Component {
         let page;
         // switch
         if (status == LIST) {
-            page = this.renderList(actions, columns, data)
+            page = this.renderList(actions, columns, data, meta)
         } else if (status == ADD || status == EDIT) {
-            page = this.renderAdd(dispatch);
+            page = this.renderAdd();
         }
         return (
             page
@@ -110,7 +106,6 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    console.log(dispatch)
     return {actions: bindActionCreators({fetchFences, editFence, retrieveFence, deleteFence}, dispatch)};
 
 }

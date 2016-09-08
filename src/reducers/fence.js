@@ -30,7 +30,11 @@ const initialState = {
     /**
      * 存放分页数据
      */
-    meta: {},
+    meta: {
+        total: 0,
+        current: 1,
+        pageSize: 10
+    },
     /**
      * 区分不同的状态
      */
