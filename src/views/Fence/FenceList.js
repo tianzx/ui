@@ -18,7 +18,7 @@ class FenceList extends React.Component {
     componentDidMount() {
         const {actions} = this.props;
         actions.fetchFences();
-
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(page) {
@@ -29,7 +29,7 @@ class FenceList extends React.Component {
 
         return (
             <div>
-                <FenceSearch/>
+                <FenceSearch />
                 <Table columns={columns} dataSource={data} pagination={false}
                 />
                 <Pagination

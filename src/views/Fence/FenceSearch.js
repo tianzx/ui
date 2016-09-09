@@ -4,7 +4,7 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Table, Button, Form, Select, Input,Row, Col} from 'antd';
+import {Table, Button, Form, Select, Input, Row, Col} from 'antd';
 import './index.less';
 import {editFence}from '../../actions/fence'
 const FormItem = Form.Item;
@@ -20,14 +20,13 @@ class FenceSearch extends React.Component {
         // actions.fetchFences();
     }
 
+    handleSubmit(e) {
+
+    }
+
     render() {
         const {getFieldProps} = this.props.form;
         const {actions} = this.props;
-
-        function handleSubmit(e) {
-            e.preventDefault();
-
-        }
 
         const keywordRules = [
             {
@@ -37,13 +36,11 @@ class FenceSearch extends React.Component {
         ];
         return (
             <Row >
-                <Col  span={20} className={'col'}>
-                    <Form inline onSubmit={handleSubmit}  >
+                <Col span={20} className={'col'}>
+                    <Form inline onSubmit={this.props.onSubmit}>
                         <Form.Item className={'normal'}>
                             <Select { ...getFieldProps('field', {initialValue: 'name'}) }>
                                 <Select.Option value="name">名字</Select.Option>
-                                <Select.Option value="age">年龄</Select.Option>
-                                <Select.Option value="address">地址</Select.Option>
                             </Select>
                         </Form.Item>
                         <Form.Item

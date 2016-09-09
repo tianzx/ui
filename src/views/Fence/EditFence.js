@@ -13,6 +13,12 @@ class EditFence extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
+    }
+
+    handleCancel() {
+        const {actions}  = this.props;
+        actions.fetchFences();
     }
 
     handleSubmit(e) {
@@ -53,6 +59,7 @@ class EditFence extends React.Component {
                     })}>是</Checkbox>
                 </FormItem>
                 <FormItem wrapperCol={{span: 16, offset: 6}} style={{marginTop: 24}}>
+                    <Button type="ghost" style={{ marginRight: '10px' }} onClick={this.handleCancel}>取消</Button>
                     <Button type="primary" htmlType="submit">确定</Button>
                 </FormItem>
             </Form>

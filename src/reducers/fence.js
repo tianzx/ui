@@ -47,7 +47,13 @@ const initialState = {
     /**
      * 单条fence数据
      */
-    fence: {}
+    fence: {},
+    /**
+     * search 传入数据
+     */
+    searchData: {
+
+    }
 };
 
 export default function fence(state = initialState, action = {}) {
