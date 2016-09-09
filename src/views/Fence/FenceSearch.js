@@ -21,7 +21,9 @@ class FenceSearch extends React.Component {
     }
 
     handleSubmit(e) {
-
+        e.preventDefault();
+        const value = this.props.form.getFieldsValue();
+        console.log(value)
     }
 
     render() {
