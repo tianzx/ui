@@ -24,6 +24,7 @@ class Sidebar extends React.Component {
     constructor(props) {
         super(props)
         this.menuClickHandle = this.menuClickHandle.bind(this);
+        this.getOpenKeys = this.getOpenKeys.bind(this);
     }
 
     componentDidMount() {
@@ -36,11 +37,20 @@ class Sidebar extends React.Component {
         this.props.updateNavPath(item.keyPath, item.key);
     }
 
-    render() {
+    getOpenKeys() {
         const {items} = this.props
         let openKey = []
         const menu = items.map((item) => {
             openKey.push('sub' + item.key)
+        })
+        return openKey
+    }
+
+    render() {
+        const {items} = this.props
+
+        const menu = items.map((item) => {
+
             return (
                 <SubMenu
                     key={'sub' + item.key}
@@ -62,6 +72,7 @@ class Sidebar extends React.Component {
                 <Menu
                     mode="inline"
                     onClick={this.menuClickHandle}
+                    defaultOpenKeys={['sub1','sub2']}
                 >
                     {menu}
                 </Menu>
