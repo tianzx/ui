@@ -6,6 +6,7 @@ import {getAllMenu, updateNavPath} from '../../actions/menu'
 import {Link, browserHistory} from 'react-router'
 
 const SubMenu = Menu.SubMenu
+const MenuItemGroup = Menu.MenuItemGroup
 
 import './index.less'
 
@@ -18,10 +19,10 @@ const propTypes = {
     items: PropTypes.array,
     currentIndex: PropTypes.number
 }
+
 class Sidebar extends React.Component {
     constructor(props) {
         super(props)
-
         this.menuClickHandle = this.menuClickHandle.bind(this);
     }
 
@@ -33,8 +34,6 @@ class Sidebar extends React.Component {
     menuClickHandle(item) {
 
         this.props.updateNavPath(item.keyPath, item.key);
-        // console.log(item.keyPath,item.key)
-        // console.log(item)
     }
 
     render() {
@@ -57,10 +56,11 @@ class Sidebar extends React.Component {
         });
         return (
             <aside className="ant-layout-sider">
-                <div className="ant-layout-logo"><img className="alignCenter" width={91.45} height={48} src="../../../logo.png"/>
+                <div className="ant-layout-logo"><img className="alignCenter" width={91.45} height={48}
+                                                      src="../../../logo.png"/>
                 </div>
                 <Menu
-                    mode="inline" theme="" openKeys={openKey}
+                    mode="inline"
                     onClick={this.menuClickHandle}
                 >
                     {menu}
