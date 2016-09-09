@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Button, Form, Select, Input, Row, Col} from 'antd';
 import './index.less';
-import {editFence}from '../../actions/fence'
+import {editFence,fetchFences}from '../../actions/fence'
 const FormItem = Form.Item;
 class FenceSearch extends React.Component {
     constructor(props) {
@@ -18,12 +18,16 @@ class FenceSearch extends React.Component {
     componentDidMount() {
         // const {actions, routing, fences} = this.props;
         // actions.fetchFences();
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        const value = this.props.form.getFieldsValue();
-        console.log(value)
+        const {actions} = this.props;
+        let val = this.props.form.getFieldsValue();
+        console.log(val.field+''+val.keyword);
+        actions.fetchFences(val)
+        console.log(val)
     }
 
     render() {
@@ -39,7 +43,7 @@ class FenceSearch extends React.Component {
         return (
             <Row >
                 <Col span={20} className={'col'}>
-                    <Form inline onSubmit={this.props.onSubmit}>
+                    <Form inline onSubmit={this.handleSubmit}>
                         <Form.Item className={'normal'}>
                             <Select { ...getFieldProps('field', {initialValue: 'name'}) }>
                                 <Select.Option value="name">名字</Select.Option>
@@ -66,8 +70,15 @@ class FenceSearch extends React.Component {
     }
 }
 
+function mapStateToProps(state) {
+    const {fences} = state;
+    return {
+        fences
+    };
+}
+
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators({editFence}, dispatch)};
+    return {actions: bindActionCreators({editFence,fetchFences}, dispatch)};
 
 }
 export default connect(

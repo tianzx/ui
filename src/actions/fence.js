@@ -25,17 +25,15 @@ export const DELETE_FENCE_PENDING = 'DELETE_FENCE_PENDING';
 export const DELETE_FENCE_SUCCESS = 'DELETE_FENCE_SUCCESS';
 export const DELETE_FENCE_ERROR = 'DELETE_FENCE_ERROR';
 
-export function fetchFences() {
-    let uid = getCookie('smartauto-token');
+export function fetchFences(data={field:"",keyword:""}) {
 
-    if (uid === undefined) {
-        return {type: 'UID_NOT_FOUND'};
-    }
+    const {field, keyword} = data;
 
+    console.log(data.field + '' + data.keyword);
     return {
         type: 'FETCH_FENCE',
         payload: {
-            promise: api.get('/fence')
+            promise: api.get('/fence' + '?' + 'field=' + field + '&' + 'keyword=' + keyword)
         }
     }
 }
@@ -79,7 +77,7 @@ export function updateFence(data) {
         payload: {
             promise: api.put('/fence', {
                 data: {
-                    id:data.id,
+                    id: data.id,
                     fenceName: data.fenceName,
                     agreement: data.agreement
                 }
@@ -93,7 +91,7 @@ export function deleteFence(id) {
     return {
         type: 'DELETE_FENCE',
         payload: {
-            promise: api.del('/fence/'+id)
+            promise: api.del('/fence/' + id)
         }
     }
 }

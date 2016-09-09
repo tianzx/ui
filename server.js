@@ -111,6 +111,8 @@ let fenceData = {
  * 获取fence列表
  */
 app.get('/api/fence', function (req, res) {
+
+    console.log(req.query);
     res.json({
         fences: fenceData
     });
