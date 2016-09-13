@@ -29,7 +29,7 @@ const publicPath = path.resolve(__dirname);
 app.use(bodyParser.json({type: 'application/json'}))
 app.use(express.static(publicPath));
 
-const port = isProduction ? (process.env.PORT || 80) : 7777;
+const port = isProduction ? (process.env.PORT || 8080) : 7777;
 
 let i = 0;
 let fenceData = {

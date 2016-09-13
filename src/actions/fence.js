@@ -25,11 +25,12 @@ export const DELETE_FENCE_PENDING = 'DELETE_FENCE_PENDING';
 export const DELETE_FENCE_SUCCESS = 'DELETE_FENCE_SUCCESS';
 export const DELETE_FENCE_ERROR = 'DELETE_FENCE_ERROR';
 
-export function fetchFences(data={field:"",keyword:""}) {
+export function fetchFences(data={field:"",keyword:"",current:1}) {
 
     const {field, keyword} = data;
 
-    console.log(data.field + '' + data.keyword);
+    // console.log(data.field + '' + data.keyword + data.current);
+
     return {
         type: 'FETCH_FENCE',
         payload: {

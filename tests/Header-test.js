@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount, render } from 'enzyme';
-import Header from '../src/components/Header/Header';
+import Header from '../src/components/Header/index';
 
 describe("<Header />", function() {
   it("shallow", function() {
