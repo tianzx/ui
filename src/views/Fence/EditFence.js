@@ -70,7 +70,6 @@ class EditFence extends React.Component {
 
 EditFence.propTypes = {
     form: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {

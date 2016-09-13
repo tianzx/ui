@@ -1,18 +1,14 @@
 require('babel-register')
 
 const webpack = require('webpack');
-
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const config = require('./webpack.config');
 const _ = require('lodash');
-
 const isProduction = process.env.NODE_ENV === 'production';
 const isDeveloping = !isProduction;
-
 const app = express();
-
 // Webpack developer
 if (isDeveloping) {
     const compiler = webpack(config);
@@ -30,7 +26,6 @@ app.use(bodyParser.json({type: 'application/json'}))
 app.use(express.static(publicPath));
 
 const port = isProduction ? (process.env.PORT || 8080) : 7777;
-
 let i = 0;
 let fenceData = {
     "meta": {
@@ -84,6 +79,27 @@ let fenceData = {
             "name": "fence10",
             "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
         }
+        // }, {
+        //     "id": 11,
+        //     "name": "fence11",
+        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+        // }, {
+        //     "id": 12,
+        //     "name": "fence12",
+        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+        // }, {
+        //     "id": 13,
+        //     "name": "fence13",
+        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+        // }, {
+        //     "id": 14,
+        //     "name": "fence14",
+        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+        // }, {
+        //     "id": 15,
+        //     "name": "fence15",
+        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
+        // },
     ]
 }
 /**
@@ -156,7 +172,6 @@ app.put('/api/login', function (req, res) {
         res.status('500').send({'message': 'Invalid user/password'});
     }
 });
-
 app.post('/api/menu', function (req, res) {
     res.json({
         menus: [
@@ -211,21 +226,17 @@ app.post('/api/menu', function (req, res) {
         ]
     });
 });
-
 app.post('/api/my', function (req, res) {
     res.json({'user': 'admin', 'role': 'ADMIN', 'uid': 1});
 });
-
 app.post('/api/logout', function (req, res) {
     res.clearCookie('uid');
     res.json({'user': 'admin', 'role': 'ADMIN'});
 });
-
 // this is necessary to handle URL correctly since client uses Browser History
 app.get('*', function (req, res) {
     res.sendFile(path.resolve(__dirname, '', 'index.html'))
 })
-
 app.listen(port, function (err, result) {
     if (err) {
         console.log(err);

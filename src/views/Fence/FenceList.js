@@ -45,8 +45,10 @@ class FenceList extends React.Component {
     }
 
     renderAdd() {
+        const {dispatch} = this.props;
+        console.log(dispatch)
         return (
-            <EditFence />
+            <EditFence dispatch={dispatch}/>
         )
     }
 
