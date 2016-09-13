@@ -2,6 +2,7 @@
   "name": "ui",
   "version": "1.0.0",
   "description": "SMART UI",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/.setup.js tests/**/*-test.js --compilers css:mocha-compiler.js",
@@ -15,17 +16,15 @@
     "history": "^2.0.0",
     "lodash": "^4.6.1",
     "react": "^15.3.0",
-    "react-chartjs": "^0.7.3",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.0",
     "react-router": "^2.5.2",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
-    "superagent": "^1.8.0-beta.2",
+    "superagent": "^1.8.1",
     "react-router-redux": "^4.0.5",
     "redux-promise": "^0.5.3",
-    "js-cookie": "^2.1.2",
-    "google-map-react":"^0.18.2"
+    "js-cookie": "^2.1.2"
   },
   "devDependencies": {
     "babel-plugin-antd": "^0.5.1",
@@ -48,13 +47,12 @@
     "less": "^2.6.0",
     "less-loader": "^2.2.2",
     "mocha": "^2.4.5",
-    "react-addons-test-utils": "^0.14.7",
+    "react-addons-test-utils": "^15.0",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.7.1",
     "redux-logger": "^2.6.1"
-
   }
 }
