@@ -40,15 +40,12 @@ class FenceList extends React.Component {
                     onChange={this.handleChange}
                 />
             </div>
-
         )
     }
 
     renderAdd() {
-        const {dispatch} = this.props;
-        console.log(dispatch)
         return (
-            <EditFence dispatch={dispatch}/>
+            <EditFence />
         )
     }
 
