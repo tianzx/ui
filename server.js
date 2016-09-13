@@ -84,27 +84,6 @@ let fenceData = {
             "name": "fence10",
             "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
         }
-        // }, {
-        //     "id": 11,
-        //     "name": "fence11",
-        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
-        // }, {
-        //     "id": 12,
-        //     "name": "fence12",
-        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
-        // }, {
-        //     "id": 13,
-        //     "name": "fence13",
-        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
-        // }, {
-        //     "id": 14,
-        //     "name": "fence14",
-        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
-        // }, {
-        //     "id": 15,
-        //     "name": "fence15",
-        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
-        // },
     ]
 }
 /**

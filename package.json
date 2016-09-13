@@ -4,7 +4,12 @@
   "description": "SMART UI",
   "license": "MIT",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tianzx/ui.git"
+  },
   "scripts": {
+    "build":"webpack",
     "test": "mocha tests/.setup.js tests/**/*-test.js --compilers css:mocha-compiler.js",
     "start": "node server"
   },
