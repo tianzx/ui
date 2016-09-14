@@ -4,20 +4,24 @@ const webpack = require('webpack');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const config = require('./webpack.config');
 const _ = require('lodash');
 const isProduction = process.env.NODE_ENV === 'production';
-const isDeveloping = !isProduction;
+const isDeveloping =  !isProduction;
 const app = express();
 // Webpack developer
 if (isDeveloping) {
+    console.log('enter develop');
+    const config = require('./webpack.config');
     const compiler = webpack(config);
     app.use(require('webpack-dev-middleware')(compiler, {
         publicPath: config.output.publicPath,
-        noInfo: true
+        noInfo: false
     }));
-
     app.use(require('webpack-hot-middleware')(compiler));
+}else{
+    console.log('enter production');
+    const config = require('./webpack.production.config.js');
+    const compiler = webpack(config);
 }
 
 /**
