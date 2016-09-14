@@ -7,16 +7,22 @@ const bodyParser = require('body-parser');
 const isProduction = process.env.NODE_ENV === 'production';
 const isDeveloping =  !isProduction;
 const app = express();
-// Webpack developer
+var DashboardPlugin = require('webpack-dashboard/plugin');
+var Dashboard = require('webpack-dashboard');
+
 if (isDeveloping) {
     console.log('enter develop');
     const config = require('./webpack.config');
     const compiler = webpack(config);
+    var dashboard = new Dashboard();
+    compiler.apply(new DashboardPlugin(dashboard.setData));
     app.use(require('webpack-dev-middleware')(compiler, {
         publicPath: config.output.publicPath,
-        noInfo: false
+        quiet: true,
     }));
-    app.use(require('webpack-hot-middleware')(compiler));
+    app.use(require('webpack-hot-middleware')(compiler, {
+        log: () => {}
+    }));
 }else{
     console.log('enter production');
     // const config = require('./webpack.production.config.js');

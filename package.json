@@ -57,6 +57,7 @@
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.7.1",
-    "redux-logger": "^2.6.1"
+    "redux-logger": "^2.6.1",
+    "webpack-dashboard": "^0.1.8"
   }
 }
