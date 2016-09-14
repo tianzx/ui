@@ -15,8 +15,8 @@
 Just clone the repo and install the necessary node modules:
 
 ```shell
-$ git clone https://github.com/fireyy/react-antd-admin
-$ cd react-antd-admin
+$ git clone https://github.com/tianzx/ui.git
+$ cd ui
 $ npm install
 $ npm start
 ```
@@ -29,10 +29,10 @@ $ npm run test
 
 ## Run production build
 
-、、、shell
-$ npm run build
-、、、
+```shell
+    $ npm run build
+```
 notation: before execute the command ,you must ensure you have executed the command
-、、、
-npm install rimraf -g
-、、、
+```shell
+    npm install rimraf -g
+```
