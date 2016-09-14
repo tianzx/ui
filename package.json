@@ -9,17 +9,15 @@
     "url": "https://github.com/tianzx/ui.git"
   },
   "scripts": {
-    "build": "rimraf dist && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "build": " NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
     "test": "mocha tests/.setup.js tests/**/*-test.js --compilers css:mocha-compiler.js",
     "start": "node server"
   },
   "dependencies": {
     "antd": "^1.10.0",
     "body-parser": "^1.15.0",
-    "chart.js": "^1.0.2",
     "express": "^4.13.4",
     "history": "^2.0.0",
-    "lodash": "^4.6.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.0",

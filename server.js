@@ -4,7 +4,6 @@ const webpack = require('webpack');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const _ = require('lodash');
 const isProduction = process.env.NODE_ENV === 'production';
 const isDeveloping =  !isProduction;
 const app = express();
@@ -20,8 +19,8 @@ if (isDeveloping) {
     app.use(require('webpack-hot-middleware')(compiler));
 }else{
     console.log('enter production');
-    const config = require('./webpack.production.config.js');
-    const compiler = webpack(config);
+    // const config = require('./webpack.production.config.js');
+    // const compiler = webpack(config);
 }
 
 /**
