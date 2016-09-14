@@ -20,7 +20,9 @@ if (isDeveloping) {
     app.use(require('webpack-hot-middleware')(compiler));
 }
 
-//  RESTful API
+/**
+ * RESTful API
+ */
 const publicPath = path.resolve(__dirname);
 app.use(bodyParser.json({type: 'application/json'}))
 app.use(express.static(publicPath));
@@ -161,6 +163,9 @@ app.delete('/api/fence/:id', function (req, res) {
         success: "success"
     })
 })
+/**
+ * 登陆验证
+ */
 app.put('/api/login', function (req, res) {
     const credentials = req.body;
     if (credentials.user === 'admin' && credentials.password === '123456') {
@@ -172,6 +177,9 @@ app.put('/api/login', function (req, res) {
         res.status('500').send({'message': 'Invalid user/password'});
     }
 });
+/**
+ * 获取菜单
+ */
 app.post('/api/menu', function (req, res) {
     res.json({
         menus: [
@@ -226,14 +234,22 @@ app.post('/api/menu', function (req, res) {
         ]
     });
 });
+/**
+ * 获取我的信息
+ */
 app.post('/api/my', function (req, res) {
     res.json({'user': 'admin', 'role': 'ADMIN', 'uid': 1});
 });
+/**
+ * 退出当前账户
+ */
 app.post('/api/logout', function (req, res) {
     res.clearCookie('uid');
     res.json({'user': 'admin', 'role': 'ADMIN'});
 });
-// this is necessary to handle URL correctly since client uses Browser History
+/**
+ *this is necessary to handle URL correctly since client uses Browser History
+ */
 app.get('*', function (req, res) {
     res.sendFile(path.resolve(__dirname, '', 'index.html'))
 })
