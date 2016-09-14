@@ -26,3 +26,13 @@ $ npm start
 ```shell
 $ npm run test
 ```
+
+## Run production build
+
+、、、shell
+$ npm run build
+、、、
+notation: before execute the command ,you must ensure you have executed the command
+、、、
+npm install rimraf -g
+、、、

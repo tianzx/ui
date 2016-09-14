@@ -9,6 +9,7 @@
     "url": "https://github.com/tianzx/ui.git"
   },
   "scripts": {
+    "clean": "rimraf dist",
     "build": " NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
     "test": "mocha tests/.setup.js tests/**/*-test.js --compilers css:mocha-compiler.js",
     "start": "node server"
