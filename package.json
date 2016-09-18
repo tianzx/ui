@@ -30,7 +30,8 @@
     "superagent": "^1.8.1",
     "react-router-redux": "^4.0.5",
     "redux-promise": "^0.5.3",
-    "js-cookie": "^2.1.2"
+    "js-cookie": "^2.1.2",
+    "lodash":"*"
   },
   "devDependencies": {
     "babel-plugin-antd": "^0.5.1",

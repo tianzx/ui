@@ -6,6 +6,8 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Icon, Popconfirm, Modal, Pagination, message, Button, loading} from 'antd';
 import {fetchFences, editFence, retrieveFence, deleteFence, LIST, ADD, EDIT} from '../../actions/fence';
+import {updateNavPath} from '../../actions/menu'
+
 import EditFence from './EditFence';
 import FenceSearch from './FenceSearch';
 const ButtonGroup = Button.Group;
@@ -16,8 +18,9 @@ class FenceList extends React.Component {
 
 
     componentDidMount() {
-        const {actions} = this.props;
+        const {actions,fences:{nav}} = this.props;
         actions.fetchFences();
+        // console.log(nav);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -51,7 +54,7 @@ class FenceList extends React.Component {
 
 
     render() {
-        const {actions, fences:{data, meta, isFetching, status}, dispatch} = this.props;
+        const {actions, fences:{data, meta, isFetching, status,nav}, dispatch} = this.props;
 
         function retrieveFence(id) {
             actions.retrieveFence(id);
@@ -105,7 +108,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators({fetchFences, editFence, retrieveFence, deleteFence}, dispatch)};
+    return {actions: bindActionCreators({fetchFences, editFence, retrieveFence, deleteFence,updateNavPath}, dispatch)};
 
 }
 export default connect(

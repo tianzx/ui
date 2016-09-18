@@ -5,7 +5,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const isProduction = process.env.NODE_ENV === 'production';
-const isDeveloping =  !isProduction;
+const isDeveloping = !isProduction;
 const app = express();
 var DashboardPlugin = require('webpack-dashboard/plugin');
 var Dashboard = require('webpack-dashboard');
@@ -14,14 +14,14 @@ if (isDeveloping) {
     console.log('enter develop');
     const config = require('./webpack.devleop.config.js');
     const compiler = webpack(config);
-    var dashboard = new Dashboard();
-    compiler.apply(new DashboardPlugin(dashboard.setData));
+    // var dashboard = new Dashboard();
+    // compiler.apply(new DashboardPlugin(dashboard.setData));
     app.use(require('webpack-hot-middleware')(compiler));
     app.use(require('webpack-dev-middleware')(compiler, {
         publicPath: config.output.publicPath,
         quiet: true,
     }));
-}else{
+} else {
     console.log('enter production');
 }
 
@@ -39,6 +39,10 @@ let fenceData = {
         "total": 15,
         "pageSize": 10,
         "current": 1
+    },
+    "nav": {
+        "keyPath": ["sub1", "menu101"],
+        "key": "menu101"
     },
     "data": [
         {
@@ -86,27 +90,6 @@ let fenceData = {
             "name": "fence10",
             "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
         }
-        // }, {
-        //     "id": 11,
-        //     "name": "fence11",
-        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
-        // }, {
-        //     "id": 12,
-        //     "name": "fence12",
-        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
-        // }, {
-        //     "id": 13,
-        //     "name": "fence13",
-        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
-        // }, {
-        //     "id": 14,
-        //     "name": "fence14",
-        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
-        // }, {
-        //     "id": 15,
-        //     "name": "fence15",
-        //     "creatTime": "Mon Oct 10 2016 08:00:00 GMT+0800 (CST)"
-        // },
     ]
 }
 /**
@@ -195,12 +178,12 @@ app.post('/api/menu', function (req, res) {
                 child: [
                     {
                         name: '电子围栏',
-                        key: 'fence',
+                        key: 101,
                         url: 'fence'
                     },
                     {
                         name: '用户',
-                        key: 'user',
+                        key: 102,
                         url: 'user'
                     },
                     {

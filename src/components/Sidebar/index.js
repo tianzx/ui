@@ -33,7 +33,11 @@ class Sidebar extends React.Component {
     }
 
     menuClickHandle(item) {
-
+        /**
+         * keyPath ['sub1','menu102']
+         * key 'menu102'
+         */
+        console.log(item)
         this.props.updateNavPath(item.keyPath, item.key);
     }
 

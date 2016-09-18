@@ -29,7 +29,7 @@ class App extends React.Component {
     renderAuthenticatedPage(user,actions) {
         return (
             <div className="ant-layout-aside">
-                <Sidebar />
+                <Sidebar/>
                 <div className="ant-layout-main">
                     <Header user={user} />
                     <NavPath />
