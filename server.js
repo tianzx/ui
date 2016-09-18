@@ -20,10 +20,10 @@ if (isDeveloping) {
         quiet: true,
     }));
 }else{
-    // const config = require('./webpack.production.config.js');
-    // const compiler = webpack(config);
-    // var dashboard = new Dashboard();
-    // compiler.apply(new DashboardPlugin(dashboard.setData));
+    const config = require('./webpack.production.config.js');
+    const compiler = webpack(config);
+    var dashboard = new Dashboard();
+    compiler.apply(new DashboardPlugin(dashboard.setData));
     console.log('enter production');
     // const config = require('./webpack.production.config.js');
     // const compiler = webpack(config);
