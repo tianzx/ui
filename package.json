@@ -14,7 +14,7 @@
     "build": "npm run clean && webpack --config ./webpack.production.config.js --progress --profile --colors",
     "start": "node server",
     "develop":"npm run start",
-    "production":"npm run build && 'npm  start"
+    "production":"npm run build && npm  start"
   },
   "dependencies": {
     "antd": "^1.10.0",

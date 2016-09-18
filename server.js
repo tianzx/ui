@@ -14,19 +14,15 @@ if (isDeveloping) {
     console.log('enter develop');
     const config = require('./webpack.devleop.config.js');
     const compiler = webpack(config);
+    var dashboard = new Dashboard();
+    compiler.apply(new DashboardPlugin(dashboard.setData));
     app.use(require('webpack-hot-middleware')(compiler));
     app.use(require('webpack-dev-middleware')(compiler, {
         publicPath: config.output.publicPath,
         quiet: true,
     }));
 }else{
-    const config = require('./webpack.production.config.js');
-    const compiler = webpack(config);
-    var dashboard = new Dashboard();
-    compiler.apply(new DashboardPlugin(dashboard.setData));
     console.log('enter production');
-    // const config = require('./webpack.production.config.js');
-    // const compiler = webpack(config);
 }
 
 /**
