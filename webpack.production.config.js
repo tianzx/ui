@@ -2,9 +2,10 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: [
-        './src/index'
-    ],
+    entry: {
+        bundle: './src/index',
+        vendor: ['react']
+    },
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -12,7 +13,8 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.NoErrorsPlugin(),
+        // new webpack.NoErrorsPlugin(),
+        new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js',Infinity),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         })
