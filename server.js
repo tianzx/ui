@@ -9,7 +9,9 @@ const isDeveloping = !isProduction;
 const app = express();
 var DashboardPlugin = require('webpack-dashboard/plugin');
 var Dashboard = require('webpack-dashboard');
-
+/**
+ * diff environment
+ */
 if (isDeveloping) {
     console.log('enter develop');
     const config = require('./webpack.devleop.config.js');
@@ -92,6 +94,16 @@ let fenceData = {
         }
     ]
 }
+/**
+ * 获取不同的nav
+ */
+app.get('/api/nav/:url', function (req, res) {
+    console.log(req.params.url)
+    // if(req.params.url=='fence'){
+    res.json({
+        data: [ "menu101","sub1"]
+    })
+})
 /**
  * 获取fence列表
  */

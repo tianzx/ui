@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Icon, Popconfirm, Modal, Pagination, message, Button, loading} from 'antd';
 import {fetchFences, editFence, retrieveFence, deleteFence, LIST, ADD, EDIT} from '../../actions/fence';
-import {updateNavPath} from '../../actions/menu'
+import {fetchNavPath} from '../../actions/menu'
 
 import EditFence from './EditFence';
 import FenceSearch from './FenceSearch';
@@ -20,6 +20,8 @@ class FenceList extends React.Component {
     componentDidMount() {
         const {actions,fences:{nav}} = this.props;
         actions.fetchFences();
+        actions.fetchNavPath('fence');
+        // actions.updateNavPath(nav.keyPath,nav.key);
         // console.log(nav);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -108,7 +110,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators({fetchFences, editFence, retrieveFence, deleteFence,updateNavPath}, dispatch)};
+    return {actions: bindActionCreators({fetchFences, editFence, retrieveFence, deleteFence,fetchNavPath}, dispatch)};
 
 }
 export default connect(

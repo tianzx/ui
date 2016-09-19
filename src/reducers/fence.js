@@ -54,10 +54,6 @@ const initialState = {
     searchData: {
 
     },
-    nav:{
-        keyPath: Array,
-        key:String
-    }
 };
 
 export default function fence(state = initialState, action = {}) {
@@ -68,7 +64,6 @@ export default function fence(state = initialState, action = {}) {
             return Object.assign({}, state, {
                 data: action.payload.fences.data,
                 meta: action.payload.fences.meta,
-                nav:action.payload.fences.nav,
                 message: "success"
             });
         case FETCH_FENCE_ERROR:
