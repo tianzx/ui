@@ -98,7 +98,6 @@ let fenceData = {
  * 获取不同的nav
  */
 app.get('/api/nav/:url', function (req, res) {
-    console.log(req.params.url)
     // if(req.params.url=='fence'){
     res.json({
         data: [ "menu101","sub1"]
@@ -109,7 +108,6 @@ app.get('/api/nav/:url', function (req, res) {
  */
 app.get('/api/fence', function (req, res) {
 
-    console.log(req.query);
     res.json({
         fences: fenceData
     });
@@ -135,8 +133,8 @@ app.post('/api/fence', function (req, res) {
  * retrieve
  */
 app.get('/api/fence/:id', function (req, res) {
-    // console.log(req.params.id);
     res.json({
+
         fence: fenceData.data[req.params.id - 1]
     })
 })
@@ -158,7 +156,6 @@ app.put('/api/fence', function (req, res) {
 app.delete('/api/fence/:id', function (req, res) {
     fenceData.data.splice(req.params.id, 1);
     // console.log(req.params.id);
-    console.log(fenceData.data.length);
     res.json({
         success: "success"
     })
