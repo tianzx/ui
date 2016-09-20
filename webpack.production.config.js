@@ -1,17 +1,22 @@
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
         bundle: './src/index',
-        vendor: ['react']
+        vendor: ['react','lodash']
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'bundle-[chunkhash:6].js',
         publicPath: '/dist'
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: './index.html',
+        }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
@@ -19,7 +24,7 @@ module.exports = {
             }
         }),
         // new webpack.NoErrorsPlugin(),
-        new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js',Infinity),
+        new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js'),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         })

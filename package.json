@@ -11,7 +11,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "test": "mocha tests/.setup.js tests/**/*-test.js --compilers css:mocha-compiler.js",
-    "build": "npm run clean && webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "build": "npm run clean && webpack --config ./webpack.production.config.js --progress --profile --colors --display-modules --sort-modules-by size",
     "start": "node server",
     "develop":"npm run start",
     "production":"npm run build && npm  start"
@@ -31,7 +31,7 @@
     "react-router-redux": "^4.0.5",
     "redux-promise": "^0.5.3",
     "js-cookie": "^2.1.2",
-    "lodash":"*"
+    "lodash":"^4.15.0"
   },
   "devDependencies": {
     "babel-plugin-antd": "^0.5.1",
@@ -53,6 +53,9 @@
     "file-loader": "^0.8.5",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.16.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "enzyme": "^2.0.0",
     "jsdom": "^8.0.4",
     "mocha": "^2.4.5",
