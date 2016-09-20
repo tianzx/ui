@@ -7,13 +7,13 @@ const bodyParser = require('body-parser');
 const isProduction = process.env.NODE_ENV === 'production';
 const isDeveloping = !isProduction;
 const app = express();
-var DashboardPlugin = require('webpack-dashboard/plugin');
-var Dashboard = require('webpack-dashboard');
 /**
  * diff environment
  */
 if (isDeveloping) {
     console.log('enter develop');
+    var DashboardPlugin = require('webpack-dashboard/plugin');
+    var Dashboard = require('webpack-dashboard');
     const config = require('./webpack.devleop.config.js');
     const compiler = webpack(config);
     // var dashboard = new Dashboard();
