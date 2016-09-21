@@ -30,9 +30,9 @@ $ npm run test
 ## Run production build
 
 ```shell
-    $ npm run build
+$ npm run build
 ```
 notation: before execute the command ,you must ensure you have executed the command
 ```shell
-    npm install rimraf -g
+$ npm install rimraf -g
 ```
