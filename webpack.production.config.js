@@ -1,11 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
+var HappyPack = require('happypack');
 module.exports = {
     entry: {
         bundle: './src/index',
-        vendor: ['react','lodash']
+        vendor: ['react', 'lodash', 'antd']
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -21,12 +21,17 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
-            }
+            }, output: {
+                comments: false,  // remove all comments
+            },
         }),
         // new webpack.NoErrorsPlugin(),
-        new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor-[chunkhash:6].js'),
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-[chunkhash:6].js'),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
+        }),
+        new HappyPack({
+            loaders: ['babel?presets[]=es2015'],
         })
     ],
     resolve: {
@@ -36,7 +41,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                loaders: ['babel'],
+                loaders: ['happypack/loader'],
                 exclude: /node_modules/,
                 include: __dirname
             },

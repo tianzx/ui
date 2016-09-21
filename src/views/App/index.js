@@ -14,12 +14,12 @@ class App extends React.Component {
     constructor(props) {
         super(props);
     }
-    static propTypes = {
-        user: PropTypes.string,
-        children: PropTypes.node.isRequired,
-        isAuthenticated: React.PropTypes.bool,
-        routing: PropTypes.object
-    };
+    //  propTypes = {
+    //     user: PropTypes.string,
+    //     children: PropTypes.node.isRequired,
+    //     isAuthenticated: React.PropTypes.bool,
+    //     routing: PropTypes.object
+    // };
     componentWillMount() {
         const {actions, isAuthenticated,routing,user} = this.props;
         actions.fetchProfile();

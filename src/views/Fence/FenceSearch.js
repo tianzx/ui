@@ -13,7 +13,6 @@ class FenceSearch extends React.Component {
         super(props);
     }
 
-    static propTypes = {};
 
     componentDidMount() {
         // const {actions, routing, fences} = this.props;
