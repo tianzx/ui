@@ -100,7 +100,7 @@ let fenceData = {
 app.get('/api/nav/:url', function (req, res) {
     // if(req.params.url=='fence'){
     res.json({
-        data: [ "menu101","sub1"]
+        data: ["menu101", "sub1"]
     })
 })
 /**
@@ -248,7 +248,13 @@ app.post('/api/logout', function (req, res) {
  *this is necessary to handle URL correctly since client uses Browser History
  */
 app.get('*', function (req, res) {
-    res.sendFile(path.resolve(__dirname, '', 'index.html'))
+    if (isDeveloping) {
+        console.log("dev")
+        res.sendFile(path.resolve(__dirname, '', 'index.html'))
+    }else {
+        console.log("prod")
+        res.sendFile(path.resolve(__dirname, '', './dist/index.html'))
+    }
 })
 app.listen(port, function (err, result) {
     if (err) {

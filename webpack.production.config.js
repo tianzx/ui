@@ -15,7 +15,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: './index.html',
+            template: './src/index.html',
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({
@@ -24,6 +24,7 @@ module.exports = {
             }, output: {
                 comments: false,  // remove all comments
             },
+            drop_console: true
         }),
         // new webpack.NoErrorsPlugin(),
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-[chunkhash:6].js'),
