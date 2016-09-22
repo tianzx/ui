@@ -247,14 +247,16 @@ app.post('/api/logout', function (req, res) {
 /**
  *this is necessary to handle URL correctly since client uses Browser History
  */
+// app.get('*', function (req, res) {
+//     res.sendFile(path.resolve(__dirname, '', 'index'))
+//     // if (isDeveloping) {
+//     //     console.log("dev")
+//     // }else {
+//     //     console.log("prod")
+//     //     res.sendFile(path.resolve(__dirname, '', './dist/index.html'))
+//     // }
 app.get('*', function (req, res) {
-    if (isDeveloping) {
-        console.log("dev")
-        res.sendFile(path.resolve(__dirname, '', 'index.html'))
-    }else {
-        console.log("prod")
-        res.sendFile(path.resolve(__dirname, '', './dist/index.html'))
-    }
+    res.sendFile(path.resolve(__dirname, '', 'index.html'))
 })
 app.listen(port, function (err, result) {
     if (err) {
