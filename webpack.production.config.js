@@ -25,6 +25,7 @@ module.exports = {
                 // https://github.com/kangax/html-minifier#options-quick-reference
             }
         }),
+        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
@@ -34,7 +35,7 @@ module.exports = {
                 comments: false,  // remove all comments
             },
         }),
-        // new webpack.NoErrorsPlugin(),
+        new webpack.NoErrorsPlugin(),
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-[chunkhash:6].js'),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
@@ -55,7 +56,7 @@ module.exports = {
                 include: __dirname
             },
             {
-                test: /\.less?$/,
+                test: /\.less$/,
                 loaders: [
                     'style-loader',
                     'css-loader',

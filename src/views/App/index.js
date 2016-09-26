@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import 'antd/dist/antd.less'
 import NavPath from '../../components/NavPath'
 import Header from '../../components/Header'
 import Sidebar from '../../components/Sidebar'

@@ -13,7 +13,7 @@ module.exports = {
         publicPath: '/dist'
     },
     plugins: [
-        new webpack.NoErrorsPlugin(),
+        // new webpack.NoErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
@@ -31,7 +31,8 @@ module.exports = {
                 include: __dirname
             },
             {
-                test: /\.less?$/,
+                //    /(\.css|\.scss)$/
+                test: /(\.css|\.less)$/,
                 loaders: [
                     'style-loader',
                     'css-loader',

@@ -19,7 +19,7 @@
     "publish-win":  "set NODE_ENV=prod&&webpack -p --progress --colors"
   },
   "dependencies": {
-    "antd": "^1.10.0",
+    "antd": "^2.0.0-beta.12",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "history": "^2.0.0",

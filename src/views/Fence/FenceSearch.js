@@ -5,7 +5,9 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Button, Form, Select, Input, Row, Col} from 'antd';
-import './index.less';
+// import './index.less';
+import './index.css';
+
 import {editFence,fetchFences}from '../../actions/fence'
 const FormItem = Form.Item;
 class FenceSearch extends React.Component {
