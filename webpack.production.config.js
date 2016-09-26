@@ -16,15 +16,23 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './src/index.html',
+            inject: true,
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true
+                // more options:
+                // https://github.com/kangax/html-minifier#options-quick-reference
+            }
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-                warnings: false
+                warnings: false,
+                drop_console: true
             }, output: {
                 comments: false,  // remove all comments
             },
-            drop_console: true
         }),
         // new webpack.NoErrorsPlugin(),
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-[chunkhash:6].js'),
@@ -54,11 +62,16 @@ module.exports = {
                     'less-loader?{"sourceMap":false}'
                 ],
             },
-            {
-                test: /\.(jpe?g|png|gif|svg)$/,
-                loader: 'url',
-                query: {limit: 10240}
-            }
+            // {
+            //     test: /\.(jpe?g|png|gif|svg)$/,
+            //     loader: 'file',
+            // },
+            // {
+            //     test: /\.ico$/,
+            //     loader: 'file-loader?name=[name].[ext]'
+            // }
+            {test: /\.(jpe?g|png|gif)$/i, loaders: ['file']},
+            {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'}
         ]
     }
 };
