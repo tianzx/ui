@@ -8,7 +8,7 @@
     "transform-runtime",
     "transform-decorators-legacy",
     "add-module-exports",
-    ["import",{"libraryName": "antd","style": true}]
+    ["import",{"libraryName": "antd","style": true, "libraryDirectory": "lib"}]
   ],
   "env": {
     "development": {

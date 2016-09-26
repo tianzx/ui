@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var HappyPack = require('happypack');
+// var HappyPack = require('happypack');
 module.exports = {
     entry: {
         bundle: './src/index',
@@ -21,8 +21,6 @@ module.exports = {
                 removeComments: true,
                 collapseWhitespace: true,
                 removeAttributeQuotes: true
-                // more options:
-                // https://github.com/kangax/html-minifier#options-quick-reference
             }
         }),
         new webpack.optimize.DedupePlugin(),
@@ -40,9 +38,9 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        new HappyPack({
-            loaders: ['babel?presets[]=es2015'],
-        })
+        // new HappyPack({
+        //     loaders: ['babel?presets[]=es2015'],
+        // })
     ],
     resolve: {
         extensions: ['', '.js', '.jsx']
@@ -51,26 +49,19 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                loaders: ['happypack/loader'],
+                // loaders: ['happypack/loader'],
+                loaders: ['babel'],
                 exclude: /node_modules/,
                 include: __dirname
             },
             {
-                test: /\.less$/,
+                test: /(\.css|\.less)$/,
                 loaders: [
                     'style-loader',
                     'css-loader',
                     'less-loader?{"sourceMap":false}'
                 ],
             },
-            // {
-            //     test: /\.(jpe?g|png|gif|svg)$/,
-            //     loader: 'file',
-            // },
-            // {
-            //     test: /\.ico$/,
-            //     loader: 'file-loader?name=[name].[ext]'
-            // }
             {test: /\.(jpe?g|png|gif)$/i, loaders: ['file']},
             {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'}
         ]
