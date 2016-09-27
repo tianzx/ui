@@ -1,7 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-// var HappyPack = require('happypack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var HappyPack = require('happypack');
 module.exports = {
     entry: {
         bundle: './src/index',
@@ -38,9 +39,12 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        // new HappyPack({
-        //     loaders: ['babel?presets[]=es2015'],
-        // })
+        new HappyPack({
+            loaders: ['babel?presets[]=es2015'],
+        }),
+        new CopyWebpackPlugin([
+            { from: path.join(__dirname, 'asserts')+'/**/*', to: path.join(__dirname,'dist')+'/'},
+        ])
     ],
     resolve: {
         extensions: ['', '.js', '.jsx']

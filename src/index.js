@@ -11,9 +11,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
     <Provider store={store}>
-
         <Router history={history} routes={routes}/>
-
     </Provider>,
     document.getElementById('root')
 );
