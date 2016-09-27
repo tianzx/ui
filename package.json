@@ -11,7 +11,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "test": "mocha tests/.setup.js tests/**/*-test.js --compilers css:mocha-compiler.js",
-    "build": "npm run clean && webpack --config ./webpack.production.config.js --progress --profile --colors ",
+    "build": "npm run clean && export NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors ",
     "start": "node server",
     "develop":"npm run start",
     "production":"npm run build && npm  start",

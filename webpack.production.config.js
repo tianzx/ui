@@ -11,7 +11,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle-[chunkhash:6].js',
-        publicPath: '/dist'
+        publicPath: '/'
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -44,6 +44,8 @@ module.exports = {
         }),
         new CopyWebpackPlugin([
             { from: path.join(__dirname, 'asserts')+'/**/*', to: path.join(__dirname,'dist')+'/'},
+            { from: path.join(__dirname, 'server.js'), to: path.join(__dirname,'dist')+'/'},
+            { from: path.join(__dirname, 'package.json'), to: path.join(__dirname,'dist')+'/'},
         ])
     ],
     resolve: {
