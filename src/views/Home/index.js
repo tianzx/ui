@@ -2,7 +2,6 @@ import React from 'react'
 
 import './index.less'
 
-import GoogleMapReact from 'google-map-react';
 
 
 export default class Home extends React.Component {
