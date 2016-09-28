@@ -16,6 +16,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            favicon:'./asserts/favicon.ico',
             filename: 'index.html',
             template: './src/index.html',
             inject: true,
@@ -71,9 +72,13 @@ module.exports = {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract('',  "css-loader")
             },
+            // {
+            //     test: /\.(png|jpe?g|eot|svg|ttf|woff2?)$/,
+            //     loader: "file?name=images/[name]-[hash:6].[ext]"
+            // },
             {
                 test: /\.(png|jpe?g|eot|svg|ttf|woff2?)$/,
-                loader: "file?name=images/[name]-[hash:6].[ext]"
+                loader: "url-loader?limit=8192&name=images/[name]-[hash:6].[ext]"
             },
         ]
     }
