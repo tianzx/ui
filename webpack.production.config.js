@@ -7,7 +7,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     entry: {
         bundle: './src/index',
-        vendor: ['react', 'lodash', 'antd']
+        vendor: ['react', 'lodash']
     },
     output: {
         path: path.join(__dirname, 'dist'),
