@@ -71,7 +71,7 @@ class Sidebar extends React.Component {
         return (
             <aside className="ant-layout-sider">
                 <div className="ant-layout-logo"><img className="alignCenter" width={91.45} height={48}
-                                                      src="/asserts/logo.png"/>
+                                                      src={require("../../../asserts/logo.png")}/>
                 </div>
                 <Menu
                     mode="inline"

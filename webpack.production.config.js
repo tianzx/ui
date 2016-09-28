@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HappyPack = require('happypack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     entry: {
         bundle: './src/index',
@@ -43,10 +44,11 @@ module.exports = {
             loaders: ['babel?presets[]=es2015'],
         }),
         new CopyWebpackPlugin([
-            { from: path.join(__dirname, 'asserts')+'/**/*', to: path.join(__dirname,'dist')+'/'},
-            { from: path.join(__dirname, 'server.js'), to: path.join(__dirname,'dist')+'/'},
-            { from: path.join(__dirname, 'package.json'), to: path.join(__dirname,'dist')+'/'},
-        ])
+            {from: path.join(__dirname, 'asserts') + '/**/*', to: path.join(__dirname, 'dist') + '/'},
+            {from: path.join(__dirname, 'server.js'), to: path.join(__dirname, 'dist') + '/'},
+            {from: path.join(__dirname, 'package.json'), to: path.join(__dirname, 'dist') + '/'},
+        ]),
+        new ExtractTextPlugin("styles-[chunkhash:6].css"),
     ],
     resolve: {
         extensions: ['', '.js', '.jsx']
@@ -61,15 +63,18 @@ module.exports = {
                 include: __dirname
             },
             {
-                test: /(\.css|\.less)$/,
-                loaders: [
-                    'style-loader',
-                    'css-loader',
-                    'less-loader?{"sourceMap":false}'
-                ],
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract('style-loader',  "css-loader!less-loader")
+                //loader: ( "style-loader!css-loader!less-loader")
             },
-            {test: /\.(jpe?g|png|gif)$/i, loaders: ['file']},
-            {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'}
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('',  "css-loader")
+            },
+            {
+                test: /\.(png|jpe?g|eot|svg|ttf|woff2?)$/,
+                loader: "file?name=images/[name]-[hash:6].[ext]"
+            },
         ]
     }
 };
