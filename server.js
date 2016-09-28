@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const isProduction = process.env.NODE_ENV === 'production';
 const isDeveloping = !isProduction;
+const express = require('express');
 const app = express();
 /**
  * diff environment
@@ -10,7 +11,6 @@ const app = express();
 if (isDeveloping) {
     require('babel-register')
     const webpack = require('webpack');
-    const express = require('express');
     console.log('enter develop');
     var DashboardPlugin = require('webpack-dashboard/plugin');
     var Dashboard = require('webpack-dashboard');

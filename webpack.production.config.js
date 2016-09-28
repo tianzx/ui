@@ -11,7 +11,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle-[chunkhash:6].js',
-        publicPath: '/'
+        publicPath: './'
     },
     plugins: [
         new HtmlWebpackPlugin({
