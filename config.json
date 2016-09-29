@@ -1,14 +1,16 @@
 {
-  "base": "src",  // 项目代码目录
-  "build": "dist", // 代码打包目录
-  "asserts": { // 静态资源根路径
+  "base": "src",
+  "build": "dist",
+  "asserts": {
     "local": "/",
     "test": "/",
-    "release": "http://images.smartaututotech.com/"
+    "production-cn": "http://images.smartaututotech.com/",
+    "production-ge": "http://gimages.smartaututotech.com/"
   },
-  "api": { // API 接口根路径
-    "local": "http://localhost:6789",
+  "api": {
+    "local": "http://localhost:8001",
     "test": "http://test.smartaututotech.com",
-    "release": "http://cloud.smartaututotech.com"
+    "production-cn": "http://cloud.smartaututotech.com",
+    "production-ge": "http://gcloud.smartaututotech.com/"
   }
 }

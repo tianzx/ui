@@ -5,6 +5,10 @@ const isProduction = process.env.NODE_ENV === 'production';
 const isDeveloping = !isProduction;
 const express = require('express');
 const app = express();
+const config = require('./config.json');
+const env = process.argv[2];
+const apiUrlPrefix = config.api[env];
+
 /**
  * diff environment
  */
