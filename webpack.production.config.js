@@ -5,9 +5,34 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HappyPack = require('happypack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
+    /**
+     * ['react', 'lodash']
+     * vender 90kB(no antd)
+     * bundle 540kB
+     * total 630kB
+     *
+     * ['react', 'lodash','antd']
+     * vender 1.23MB
+     * bundle 412kB
+     * total 1.6MB
+     *
+     *['react']
+     * vender 21kB
+     * bundle 610kB
+     * total 630kB
+     *
+     * ['react','antd']
+     * vender 1.16MB
+     * bundle 482kB
+     * total 1.6MB
+     *
+     * ['react']only import part of lodash
+     * vender 21kB
+     * bundle 570kB
+     */
     entry: {
         bundle: './src/index',
-        vendor: ['react', 'lodash']
+        vendor: ['react']
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -15,6 +40,7 @@ module.exports = {
         publicPath: './'
     },
     plugins: [
+
         new HtmlWebpackPlugin({
             favicon:'./asserts/favicon.ico',
             filename: 'index.html',

@@ -5,9 +5,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 const isDeveloping = !isProduction;
 const express = require('express');
 const app = express();
-const config = require('./config.json');
+const projectConfig = require('./config.json');
 const env = process.argv[2];
-const apiUrlPrefix = config.api[env];
+const apiUrlPrefix = projectConfig.api[env];
 
 /**
  * diff environment
@@ -20,8 +20,8 @@ if (isDeveloping) {
     var Dashboard = require('webpack-dashboard');
     const config = require('./webpack.devleop.config.js');
     const compiler = webpack(config);
-    // var dashboard = new Dashboard();
-    // compiler.apply(new DashboardPlugin(dashboard.setData));
+    var dashboard = new Dashboard();
+    compiler.apply(new DashboardPlugin(dashboard.setData));
     app.use(require('webpack-hot-middleware')(compiler));
     app.use(require('webpack-dev-middleware')(compiler, {
         publicPath: config.output.publicPath,
