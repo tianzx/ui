@@ -12,9 +12,9 @@ import {
     RETRIEVE_FENCE_ERROR,
     RETRIEVE_FENCE_PENDING,
     RETRIEVE_FENCE_SUCCESS,
-    UPDATE_FENCE_ERROR,
-    UPDATE_FENCE_PENDING,
-    UPDATE_FENCE_SUCCESS,
+    // UPDATE_FENCE_ERROR,
+    // UPDATE_FENCE_PENDING,
+    // UPDATE_FENCE_SUCCESS,
     DELETE_FENCE_ERROR,
     DELETE_FENCE_PENDING,
     DELETE_FENCE_SUCCESS,
@@ -77,11 +77,11 @@ export default function fence(state = initialState, action = {}) {
                 status: action.payload.status
             });
         case CREATE_FENCE_SUCCESS:
-            return Object.assign({}, initialState, {message: "success"})
+            return Object.assign({}, initialState, {message: "success"});
         case CREATE_FENCE_PENDING:
-            return Object.assign({}, initialState, {message: "pending"})
+            return Object.assign({}, initialState, {message: "pending"});
         case CREATE_FENCE_ERROR:
-            return Object.assign({}, initialState, {message: "error"})
+            return Object.assign({}, initialState, {message: "error"});
         case RETRIEVE_FENCE_SUCCESS:
             return Object.assign({}, state, {
                 fence: action.payload.fence,
@@ -97,7 +97,7 @@ export default function fence(state = initialState, action = {}) {
                 message: action.payload.success
             });
         case DELETE_FENCE_PENDING:
-            return Object.assign({}, initialState, {message: "pending"})
+            return Object.assign({}, initialState, {message: "pending"});
         case DELETE_FENCE_ERROR:
             return Object.assign({}, state, {message: "error"});
         default:

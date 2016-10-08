@@ -1,6 +1,6 @@
-var path = require('path');
-var webpack = require('webpack');
-var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
     devtool: 'eval-source-map',

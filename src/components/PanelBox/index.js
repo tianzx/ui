@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import './index.less'
+import './index.less';
 
-export default class PanelBox extends React.Component {
+export class PanelBox extends React.Component {
   constructor () {
-    super()
+    super();
   }
 
   render () {
@@ -22,6 +22,10 @@ export default class PanelBox extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
+PanelBox.propTypes = {
+    title: React.PropTypes.string,
+    children: React.PropTypes.node.isRequired,
+};

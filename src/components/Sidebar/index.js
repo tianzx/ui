@@ -1,28 +1,27 @@
-import React, {PropTypes} from 'react'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-import {Menu, Icon} from 'antd'
-import {getAllMenu, updateNavPath} from '../../actions/menu'
-import {Link, browserHistory} from 'react-router'
-
-const SubMenu = Menu.SubMenu
-const MenuItemGroup = Menu.MenuItemGroup
-
-import './index.less'
+import React, {PropTypes} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {Menu, Icon} from 'antd';
+import {getAllMenu, updateNavPath} from '../../actions/menu';
+import {Link} from 'react-router';
+const SubMenu = Menu.SubMenu;
+import './index.less';
 
 const defaultProps = {
     items: [],
     currentIndex: 0
-}
+};
 
 const propTypes = {
     items: PropTypes.array,
-    currentIndex: PropTypes.number
-}
+    currentIndex: PropTypes.number,
+    getAllMenu: PropTypes.func,
+    updateNavPath: PropTypes.func
+};
 
 class Sidebar extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.menuClickHandle = this.menuClickHandle.bind(this);
         this.getOpenKeys = this.getOpenKeys.bind(this);
     }
@@ -37,21 +36,20 @@ class Sidebar extends React.Component {
          * keyPath ['sub1','menu102']
          * key 'menu102'
          */
-        console.log(item)
         this.props.updateNavPath(item.keyPath, item.key);
     }
 
     getOpenKeys() {
-        const {items} = this.props
-        let openKey = []
-        const menu = items.map((item) => {
-            openKey.push('sub' + item.key)
-        })
-        return openKey
+        const {items} = this.props;
+        let openKey = [];
+        items.map((item) => {
+            openKey.push('sub' + item.key);
+        });
+        return openKey;
     }
 
     render() {
-        const {items} = this.props
+        const {items} = this.props;
 
         const menu = items.map((item) => {
 
@@ -63,10 +61,10 @@ class Sidebar extends React.Component {
                     {item.child.map((node) => {
                         return (
                             <Menu.Item key={'menu' + node.key}><Link to={'/' + node.url}>{node.name}</Link></Menu.Item>
-                        )
+                        );
                     })}
                 </SubMenu>
-            )
+            );
         });
         return (
             <aside className="ant-layout-sider">
@@ -81,7 +79,7 @@ class Sidebar extends React.Component {
                     {menu}
                 </Menu>
             </aside>
-        )
+        );
     }
 }
 
@@ -93,14 +91,14 @@ function mapStateToProps(state) {
     return {
         items: items,
         currentIndex: currentIndex
-    }
+    };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         getAllMenu: bindActionCreators(getAllMenu, dispatch),
         updateNavPath: bindActionCreators(updateNavPath, dispatch)
-    }
+    };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

@@ -3,7 +3,7 @@ import {
     LOGIN_SUCCESS,
     LOGIN_ERROR,
     LOGOUT_SUCCESS,
-    FETCH_PROFILE_PENDING,
+    // FETCH_PROFILE_PENDING,
     FETCH_PROFILE_SUCCESS
 } from '../actions/login';
 

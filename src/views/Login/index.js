@@ -60,20 +60,20 @@ class Login extends React.Component {
         return (
             <Row className="login-row" type="flex" justify="space-around" align="middle">
                 <Col span="8">
-                    <Form horizontal onSubmit={this.handleSubmit.bind(this) } className="login-form">
+                    <Form horizontal onSubmit={this.handleSubmit.bind(this)} className="login-form">
                         <FormItem
                             label="用户名："
                             labelCol={{ span: 6 }}
                             wrapperCol={{ span: 14 }}
                             >
-                            <Input placeholder="admin" {...getFieldProps('user') } />
+                            <Input placeholder="admin" {...getFieldProps('user')} />
                         </FormItem>
                         <FormItem
                             label="密码："
                             labelCol={{ span: 6 }}
                             wrapperCol={{ span: 14 }}
                             >
-                            <Input type="password" placeholder="123456" {...getFieldProps('password') } />
+                            <Input type="password" placeholder="123456" {...getFieldProps('password')} />
                         </FormItem>
                         <Row>
                             <Col span="16" offset="6">

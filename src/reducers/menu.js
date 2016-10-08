@@ -1,7 +1,7 @@
 import _ from 'lodash/collection';
 
 import {
-    GET_ALL_MENU,
+    // GET_ALL_MENU,
     GET_ALL_MENU_SUCCESS,
     UPDATE_NAVPATH,
     FETCH_NAVPATH_SUCCESS
@@ -27,7 +27,7 @@ function getNavPath(state,action) {
                 navpath.push({
                     key: tmpOb.key,
                     name: tmpOb.name
-                })
+                });
             }
             if (item.indexOf('menu') != -1) {
                 tmpKey = item.replace('menu', '');
@@ -39,11 +39,11 @@ function getNavPath(state,action) {
                 navpath.push({
                     key: tmpOb.key,
                     name: tmpOb.name
-                })
+                });
             }
-        })
+        });
     }
-    return navpath
+    return navpath;
 }
 export default function menu(state = initialState, action = {}) {
     switch (action.type) {

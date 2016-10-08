@@ -1,9 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var HappyPack = require('happypack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HappyPack = require('happypack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     /**
      * ['react', 'lodash']
