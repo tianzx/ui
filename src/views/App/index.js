@@ -1,31 +1,26 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import NavPath from '../../components/NavPath'
-import Header from '../../components/Header'
-import Sidebar from '../../components/Sidebar'
-import Footer from '../../components/Footer'
+import NavPath from '../../components/NavPath';
+import Header from '../../components/Header';
+import Sidebar from '../../components/Sidebar';
+import Footer from '../../components/Footer';
 import {fetchProfile, logout} from '../../actions/login';
-import Login from '../Login/index'
+import Login from '../Login/index';
 import './index.less';
-import {updateNavPath} from '../../actions/menu'
+
 class App extends React.Component {
     constructor(props) {
         super(props);
     }
-    //  propTypes = {
-    //     user: PropTypes.string,
-    //     children: PropTypes.node.isRequired,
-    //     isAuthenticated: React.PropTypes.bool,
-    //     routing: PropTypes.object
-    // };
+
     componentWillMount() {
-        const {actions, isAuthenticated,routing,user} = this.props;
+        const {actions} = this.props;
         actions.fetchProfile();
         this.renderAuthenticatedPage = this.renderAuthenticatedPage.bind(this);
     }
 
-    renderAuthenticatedPage(user,actions) {
+    renderAuthenticatedPage(user) {
         return (
             <div className="ant-layout-aside">
                 <Sidebar/>
@@ -40,21 +35,21 @@ class App extends React.Component {
                     <Footer />
                 </div>
             </div>
-        )
+        );
     }
 
     render() {
-        const {isAuthenticated,user,actions }= this.props;
+        const {isAuthenticated, user, actions } = this.props;
         return (
             <div>
-                {isAuthenticated?this.renderAuthenticatedPage(user,actions):<Login/>}
+                {isAuthenticated ? this.renderAuthenticatedPage(user, actions) : <Login/>}
             </div>
-        )
+        );
     }
 }
 
 const mapStateToProps = (state) => {
-    const {routing,login:{user,isAuthenticated}} = state;
+    const {routing, login: {user, isAuthenticated}} = state;
     return {
         user,
         isAuthenticated,
@@ -63,7 +58,12 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators({fetchProfile, logout}, dispatch)};
+    return { actions: bindActionCreators({ fetchProfile, logout }, dispatch) };
 }
-
+App.propTypes = {
+    actions: React.PropTypes.object,
+    user: React.PropTypes.string,
+    children: React.PropTypes.node.isRequired,
+    isAuthenticated: React.PropTypes.bool
+};
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -6,6 +6,6 @@ const api = new Api({
     'Accept': 'application/json',
     'Content-Type': 'application/json'
   }
-})
+});
 
-export default api
+export default api;

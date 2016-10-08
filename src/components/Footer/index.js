@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import './index.less'
+import './index.less';
 
 export default class Footer extends React.Component {
   constructor () {
-    super()
+    super();
   }
 
   render () {
@@ -13,6 +13,6 @@ export default class Footer extends React.Component {
       <div className="ant-layout-footer">
       和骊安 版权所有 © 2016 cloud.smartautotech.com
       </div>
-    )
+    );
   }
 }

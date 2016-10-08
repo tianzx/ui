@@ -2,36 +2,36 @@ import React, {PropTypes} from 'react';
 import {Breadcrumb} from 'antd';
 import {connect} from 'react-redux';
 
-import './index.less'
+import './index.less';
 
 const defaultProps = {
     navpath: []
-}
+};
 
 const propTypes = {
     navpath: PropTypes.array
-}
+};
 
 class NavPath extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     render() {
-        const {navpath} = this.props
+        const {navpath} = this.props;
         const bread = navpath.map((item)=> {
             return (
                 <Breadcrumb.Item key={'bc-' + item.key}>{item.name}</Breadcrumb.Item>
-            )
-        })
+            );
+        });
         return (
             <div className="ant-layout-breadcrumb">
                 <Breadcrumb>
-                    <Breadcrumb.Item key='bc-0'>首页</Breadcrumb.Item>
+                    <Breadcrumb.Item key="bc-0">首页</Breadcrumb.Item>
                     {bread}
                 </Breadcrumb>
             </div>
-        )
+        );
     }
 }
 
@@ -43,7 +43,7 @@ function mapStateToProps(state) {
 
     return {
         navpath: navpath
-    }
+    };
 }
 
-export default connect(mapStateToProps)(NavPath)
+export default connect(mapStateToProps)(NavPath);

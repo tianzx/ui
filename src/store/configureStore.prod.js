@@ -4,12 +4,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 
 import rootReducer from '../reducers';
-import createLogger from 'redux-logger';
+// import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
-import promiseMiddleware from '../middlewares/promiseMiddleware'
-const logger = createLogger();
+import promiseMiddleware from '../middlewares/promiseMiddleware';
+// const logger = createLogger();
 const router = routerMiddleware(browserHistory);
 
 const enhancer = compose(

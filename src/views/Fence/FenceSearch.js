@@ -4,11 +4,11 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Table, Button, Form, Select, Input, Row, Col} from 'antd';
+import {Button, Form, Select, Input, Row, Col} from 'antd';
 import './index.less';
 
-import {editFence,fetchFences}from '../../actions/fence'
-const FormItem = Form.Item;
+import {editFence,fetchFences}from '../../actions/fence';
+
 class FenceSearch extends React.Component {
     constructor(props) {
         super(props);
@@ -18,16 +18,16 @@ class FenceSearch extends React.Component {
     componentDidMount() {
         // const {actions, routing, fences} = this.props;
         // actions.fetchFences();
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
         const {actions} = this.props;
         let val = this.props.form.getFieldsValue();
-        console.log(val.field+''+val.keyword);
-        actions.fetchFences(val)
-        console.log(val)
+        // console.log(val.field+''+val.keyword);
+        actions.fetchFences(val);
+        // console.log(val)
     }
 
     render() {
@@ -45,7 +45,7 @@ class FenceSearch extends React.Component {
                 <Col span={20} className={'col'}>
                     <Form inline onSubmit={this.handleSubmit}>
                         <Form.Item className={'normal'}>
-                            <Select { ...getFieldProps('field', {initialValue: 'name'}) }>
+                            <Select {...getFieldProps('field', {initialValue: 'name'})}>
                                 <Select.Option value="name">名字</Select.Option>
                             </Select>
                         </Form.Item>
@@ -53,10 +53,10 @@ class FenceSearch extends React.Component {
                             hasFeedback
                         >
                             <Input
-                                { ...getFieldProps('keyword', {
+                                {...getFieldProps('keyword', {
                                     initialValue: '',
                                     rules: keywordRules,
-                                }) }
+                                })}
                             />
                         </Form.Item>
                         <Button style={{marginRight: '10px'}} type="primary" htmlType="submit">搜索</Button>
@@ -66,21 +66,25 @@ class FenceSearch extends React.Component {
                     <Button type="ghost" onClick={actions.editFence}>新增</Button>
                 </Col>
             </Row>
-        )
+        );
     }
 }
 
-function mapStateToProps(state) {
-    const {fences} = state;
-    return {
-        fences
-    };
-}
+// function mapStateToProps(state) {
+//     const {fences} = state;
+//     return {
+//         fences
+//     };
+// }
 
 function mapDispatchToProps(dispatch) {
     return {actions: bindActionCreators({editFence,fetchFences}, dispatch)};
-
 }
+
+FenceSearch.propTypes = {
+    actions: React.PropTypes.object,
+    form: React.PropTypes.object
+};
 export default connect(
     null,
     mapDispatchToProps

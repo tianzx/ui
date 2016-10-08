@@ -1,22 +1,20 @@
-import React from 'react'
-import {Row, Col, Icon, Menu, Dropdown} from 'antd'
-import './index.less'
+import React from 'react';
+import {Icon, Menu} from 'antd';
+import './index.less';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {logout} from '../../actions/login';
-import {LOGOUT} from '../../utils/common'
+import {LOGOUT} from '../../utils/common';
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 
 class Header extends React.Component {
     constructor() {
-        super()
+        super();
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {
         const {actions} = this.props;
-        console.log(e.key)
         if(e.key == LOGOUT ){
             actions.logout();
         }
@@ -25,7 +23,7 @@ class Header extends React.Component {
     render() {
         const {user} = this.props;
         return (
-            <div className='ant-layout-header'>
+            <div className="ant-layout-header">
                 <Menu className="header-menu" onClick={this.handleSubmit}
                       mode="horizontal">
                     <SubMenu title={<span><Icon type="user"/>{user}</span>}>
@@ -39,12 +37,15 @@ class Header extends React.Component {
                     </Menu.Item>
                 </Menu>
             </div>
-        )
+        );
     }
 }
 function mapDispatchToProps(dispatch) {
     return {actions: bindActionCreators({logout}, dispatch)};
 }
-
-export default connect(null, mapDispatchToProps)(Header)
+Header.propTypes ={
+    actions:React.PropTypes.object,
+    user:React.PropTypes.string
+};
+export default connect(null, mapDispatchToProps)(Header);
 

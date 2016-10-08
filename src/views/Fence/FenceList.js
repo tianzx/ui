@@ -1,16 +1,16 @@
 /**
  * Created by tianzx on 16/8/26.
  */
-import React, {Component, PropTypes} from 'react';
+import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Table, Icon, Popconfirm, Modal, Pagination, message, Button, loading} from 'antd';
+import {Table, Icon, Popconfirm, Pagination} from 'antd';
 import {fetchFences, editFence, retrieveFence, deleteFence, LIST, ADD, EDIT} from '../../actions/fence';
-import {fetchNavPath} from '../../actions/menu'
+import {fetchNavPath} from '../../actions/menu';
 
 import EditFence from './EditFence';
 import FenceSearch from './FenceSearch';
-const ButtonGroup = Button.Group;
+
 class FenceList extends React.Component {
     constructor(props) {
         super(props);
@@ -18,7 +18,7 @@ class FenceList extends React.Component {
 
 
     componentDidMount() {
-        const {actions,fences:{nav}} = this.props;
+        const {actions} = this.props;
         actions.fetchFences();
         actions.fetchNavPath('fence');
         // actions.updateNavPath(nav.keyPath,nav.key);
@@ -26,8 +26,8 @@ class FenceList extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(page) {
-        console.log(page);
+    handleChange() {
+        // console.log(page);
     }
 
     renderList(actions, columns, data, meta) {
@@ -45,18 +45,18 @@ class FenceList extends React.Component {
                     onChange={this.handleChange}
                 />
             </div>
-        )
+        );
     }
 
     renderAdd() {
         return (
             <EditFence />
-        )
+        );
     }
 
 
     render() {
-        const {actions, fences:{data, meta, isFetching, status,nav}, dispatch} = this.props;
+        const {actions, fences:{data, meta, status}} = this.props;
 
         function retrieveFence(id) {
             actions.retrieveFence(id);
@@ -93,7 +93,7 @@ class FenceList extends React.Component {
         let page;
         // switch
         if (status == LIST) {
-            page = this.renderList(actions, columns, data, meta)
+            page = this.renderList(actions, columns, data, meta);
         } else if (status == ADD || status == EDIT) {
             page = this.renderAdd();
         }
@@ -113,6 +113,12 @@ function mapDispatchToProps(dispatch) {
     return {actions: bindActionCreators({fetchFences, editFence, retrieveFence, deleteFence,fetchNavPath}, dispatch)};
 
 }
+
+FenceList.propTypes = {
+    actions: React.PropTypes.object,
+    fences: React.PropTypes.object
+};
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps

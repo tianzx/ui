@@ -1,13 +1,12 @@
 /**
  * Created by tianzx on 16/8/30.
  */
-import React, {Component, PropTypes} from 'react';
-import {Form, Input, Button, Checkbox, Radio, Tooltip, Icon} from 'antd';
+import React, {PropTypes} from 'react';
+import {Form, Input, Button, Checkbox} from 'antd';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {createFence,fetchFences,updateFence,ADD,EDIT} from '../../actions/fence'
+import {createFence,fetchFences,updateFence,ADD,EDIT} from '../../actions/fence';
 const FormItem = Form.Item;
-const RadioGroup = Radio.Group;
 class EditFence extends React.Component {
 
     constructor(props) {
@@ -70,6 +69,8 @@ class EditFence extends React.Component {
 
 EditFence.propTypes = {
     form: PropTypes.object.isRequired,
+    actions: PropTypes.object,
+    fences: PropTypes.object
 };
 
 function mapStateToProps(state) {

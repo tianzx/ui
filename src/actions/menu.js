@@ -1,4 +1,4 @@
-import api from '../api'
+import api from '../api';
 
 export const GET_ALL_MENU = 'GET_ALL_MENU';
 export const GET_ALL_MENU_SUCCESS = 'GET_ALL_MENU_SUCCESS';
@@ -13,7 +13,7 @@ export function updateNavPath(path, key) {
             data: path,
             key: key
         }
-    }
+    };
 }
 
 export function getAllMenu() {
@@ -22,7 +22,7 @@ export function getAllMenu() {
         payload: {
             promise: api.post('/menu')
         }
-    }
+    };
 }
 
 export function fetchNavPath(url) {
@@ -31,6 +31,6 @@ export function fetchNavPath(url) {
         payload: {
             promise: api.get('/nav/' + url)
         }
-    }
+    };
 
 }

@@ -1,4 +1,4 @@
-import api from '../api'
+import api from '../api';
 
 import {getCookie} from '../utils';
 
@@ -23,7 +23,7 @@ export function fetchProfile() {
         payload: {
           promise: api.post('/my')
         }
-    }
+    };
 }
 
 export function login(user, password) {
@@ -37,12 +37,12 @@ export function login(user, password) {
           }
         })
       }
-  }
+  };
 }
 
 export function logout() {
 
     return {
         type: 'LOGOUT_SUCCESS'
-    }
+    };
 }

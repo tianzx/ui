@@ -1,9 +1,9 @@
 /**
  * Created by tianzx on 16/9/5.
  */
-import React from 'react'
+import React from 'react';
 import { Button} from 'antd';
-import   './index.less'
+import   './index.less';
 export default class NotFound extends React.Component {
 
     render() {
@@ -15,6 +15,6 @@ export default class NotFound extends React.Component {
                     <a href="/"><Button type="primary" style={{ marginTop: 5 }}>Back to home</Button></a>
                 </div>
             </div>
-        )
+        );
     }
 }

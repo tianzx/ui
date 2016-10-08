@@ -8,7 +8,7 @@ import Home from './views/Home';
 import Login from './views/Login';
 import Fence from './views/Fence';
 import User from './views/User';
-import NotFound from './views/NotFound'
+import NotFound from './views/NotFound';
 
 export default (
     <Route path="/" component={App}>

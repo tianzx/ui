@@ -1,9 +1,7 @@
 /**
  * Created by tianzx on 16/8/26.
  */
-import api from '../api'
-
-import {getCookie} from '../utils';
+import api from '../api';
 
 export const FETCH_FENCE_PENDING = 'FETCH_FENCE_PENDING';
 export const FETCH_FENCE_SUCCESS = 'FETCH_FENCE_SUCCESS';
@@ -36,16 +34,16 @@ export function fetchFences(data={field:"",keyword:"",current:1}) {
         payload: {
             promise: api.get('/fence' + '?' + 'field=' + field + '&' + 'keyword=' + keyword)
         }
-    }
+    };
 }
 
-export function editFence(status) {
+export function editFence() {
     return {
         type: EDIT_FENCE,
         payload: {
             status: ADD
         }
-    }
+    };
 }
 
 export function createFence(data) {
@@ -59,7 +57,7 @@ export function createFence(data) {
                 }
             }),
         }
-    }
+    };
 }
 export function retrieveFence(id) {
     "use strict";
@@ -68,7 +66,7 @@ export function retrieveFence(id) {
         payload: {
             promise: api.get("/fence/" + id),
         }
-    }
+    };
 }
 
 export function updateFence(data) {
@@ -84,7 +82,7 @@ export function updateFence(data) {
                 }
             })
         }
-    }
+    };
 }
 
 export function deleteFence(id) {
@@ -94,6 +92,6 @@ export function deleteFence(id) {
         payload: {
             promise: api.del('/fence/' + id)
         }
-    }
+    };
 }
 
