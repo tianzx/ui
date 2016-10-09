@@ -1,0 +1,16 @@
+{
+  "base": "src",
+  "build": "dist",
+  "asserts": {
+    "local": "/",
+    "test": "/",
+    "production-cn": "http://images.smartaututotech.com/",
+    "production-ge": "http://gimages.smartaututotech.com/"
+  },
+  "api": {
+    "local": "http://localhost:8001",
+    "test": "http://test.smartaututotech.com",
+    "production-cn": "http://cloud.smartaututotech.com",
+    "production-ge": "http://gcloud.smartaututotech.com/"
+  }
+}
