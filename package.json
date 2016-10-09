@@ -37,8 +37,7 @@
     "react-router-redux": "^4.0.5",
     "redux-promise": "^0.5.3",
     "js-cookie": "^2.1.2",
-    "lodash": "*",
-    "pm2": "^2.0.15"
+    "lodash": "*"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",
