@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+// const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
     devtool: 'eval-source-map',
@@ -19,7 +19,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
         }),
-        new OpenBrowserPlugin({ url: 'http://localhost:7777' })
+        // new OpenBrowserPlugin({ url: 'http://localhost:7777' })
     ],
     resolve: {
         extensions: ['', '.js', '.jsx']
