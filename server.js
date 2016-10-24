@@ -200,8 +200,9 @@ app.post('/api/menu', function (req, res) {
                         url: 'user'
                     },
                     {
-                        name: '选项3',
-                        key: 103
+                        name: '谷歌地图',
+                        key: 103,
+                        url:'map'
                     },
                     {
                         name: '选项4',
