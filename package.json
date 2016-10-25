@@ -1,9 +1,11 @@
 {
   "name": "ui",
   "version": "1.0.0",
-  "description": "SMART UI npm4.0 ",
+  "description": "frontend template to separate with backend",
   "license": "MIT",
   "main": "index.js",
+  "engines": {"node": "6.9.1","npm":"4.0"},
+  "keywords": ["react","redux","router","antdesign","webpack","eslint","babel","es6","hot-updte","webpack-optimize"],
   "repository": {
     "type": "git",
     "url": "https://github.com/tianzx/ui.git"

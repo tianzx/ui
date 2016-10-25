@@ -36,3 +36,10 @@ notation: before execute the command ,you must ensure you have executed the comm
 ```shell
 $ npm install rimraf -g
 ```
+
+## NOTICE
+
+### replace npm with cnpm
+&emsp;&emsp;&emsp;&emsp;https://npm.taobao.org/
+### add n to admin nodejs version
+&emsp;&emsp;&emsp;&emsp;https://github.com/tj/n
