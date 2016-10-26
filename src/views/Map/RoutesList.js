@@ -17,7 +17,6 @@ class RoutesList extends React.Component {
 
   componentDidMount() {
     const {actions} = this.props;
-    actions.fetchNavPath('map');
   }
 
 
@@ -32,6 +31,7 @@ class RoutesList extends React.Component {
   renderDetail() {
     return (
       <div>
+        <RoutesSearch />
         <RoutesDetail/>
       </div>
     );
@@ -41,6 +41,7 @@ class RoutesList extends React.Component {
   render() {
     const {actions,maps:{status}} = this.props;
     let page;
+    console.log(status);
     // switch
     if (status == LIST) {
       page = this.renderList();

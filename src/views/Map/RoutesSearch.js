@@ -16,21 +16,28 @@ class RoutesSearch extends React.Component {
 
   componentDidMount() {
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
+    // this.onChange = this.onChange.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const {actions} = this.props;
-    const data = this.props.form.getFieldsValue();
-    console.log(data);
-    // console.log(data.field + ' ' + data.keyword);
-    actions.retrieveMap(data);
+    console.log(this.props);
+    this.props.form.validateFields((errors, values) => {
+      if (errors) {
+        console.log('Errors in form!!!');
+        return;
+      }else {
+        const data = this.props.form.getFieldsValue();
+        actions.retrieveMap(data);
+      }
+    });
+
   }
 
-  onChange(dates, dateStrings) {
-    console.log('From: ', dateStrings[0], ', to: ', dateStrings[1]);
-  }
+  // onChange(dates, dateStrings) {
+  //   console.log('From: ', dateStrings[0], ', to: ', dateStrings[1]);
+  // }
 
   render() {
     const {actions} = this.props;
@@ -51,15 +58,15 @@ class RoutesSearch extends React.Component {
             >
               {getFieldDecorator('sn', {
                 initialValue: '',
-                rules: [{required: true}],
+                rules: keywordRules,
               })(
                 <Input />
               )}
             </Form.Item>
-            <Form.Item hasFeedback>
+            <Form.Item >
               {getFieldDecorator('time', {
                 initialValue: '',
-                rules: [{required: true}],
+                rules: keywordRules,
               })(
                 <RangePicker showTime format="YYYY/MM/DD HH:mm:ss" />
               )}
