@@ -25,7 +25,7 @@
     "production-ge": "node server production-ge"
   },
   "dependencies": {
-    "antd": "^2.0.0",
+    "antd": "^2.1.0",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "history": "^2.0.0",

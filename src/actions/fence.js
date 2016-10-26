@@ -10,6 +10,7 @@ export const EDIT_FENCE = 'EDIT_FENCE';
 export const LIST = "LIST_PAGE";
 export const ADD = "ADD_PAGE";
 export const EDIT = "EDIT_PAGE";
+export const DETAIL = "DETAIL_PAGE";
 export const CREATE_FENCE_PENDING = 'CREATE_FENCE_PENDING';
 export const CREATE_FENCE_SUCCESS = 'CREATE_FENCE_SUCCESS';
 export const CREATE_FENCE_ERROR = 'CREATE_FENCE_ERROR';
