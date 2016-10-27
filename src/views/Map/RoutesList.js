@@ -14,12 +14,6 @@ class RoutesList extends React.Component {
     super(props);
   }
 
-
-  componentDidMount() {
-    const {actions} = this.props;
-  }
-
-
   renderList() {
     return (
       <div>

@@ -55,19 +55,18 @@ export default function map(state = initialState, action = {}) {
       return Object.assign({}, initialState, {message: "pending"});
     case FETCH_MAP_SUCCESS:
       return Object.assign({}, state, {
-        data: action.payload.fences.data,
-        meta: action.payload.fences.meta,
+        map: action.payload.maps.data,
         message: "success"
       });
     case FETCH_MAP_ERROR:
       return {
         ...state,
-        fences: null,
+        maps: null,
         message: action.payload.message
       };
     case RETRIEVE_MAP_SUCCESS:
       return Object.assign({}, state, {
-        map: action.payload.data,
+        map: action.payload.maps.data,
         status: DETAIL,
         message: "success"
       });

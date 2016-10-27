@@ -50,12 +50,6 @@ class RoutesSearch extends React.Component {
         message: 'SN不能为空',
       },
     ];
-    // const timeRules = [
-    //   {
-    //     required:true,
-    //     message:'时间不能为空'
-    //   }
-    // ];
     return (
       <Row >
         <Col span={20} className={'col'}>
@@ -72,7 +66,6 @@ class RoutesSearch extends React.Component {
             </Form.Item>
             <Form.Item >
               {getFieldDecorator('time', {
-
               })(
                 <RangePicker  format="YYYY/MM/DD HH:mm:ss" />
               )}
@@ -101,6 +94,6 @@ RoutesSearch.propTypes = {
   form: React.PropTypes.object
 };
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Form.create()(RoutesSearch));

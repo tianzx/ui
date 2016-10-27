@@ -1,4 +1,4 @@
-
+const map = require('./controller/map');
 const path = require('path');
 const bodyParser = require('body-parser');
 const isProduction = process.env.NODE_ENV === 'production';
@@ -20,8 +20,8 @@ if (isDeveloping) {
     var Dashboard = require('webpack-dashboard');
     const config = require('./webpack.devleop.config.js');
     const compiler = webpack(config);
-    var dashboard = new Dashboard();
-    compiler.apply(new DashboardPlugin(dashboard.setData));
+    // var dashboard = new Dashboard();
+    // compiler.apply(new DashboardPlugin(dashboard.setData));
     app.use(require('webpack-hot-middleware')(compiler));
     app.use(require('webpack-dev-middleware')(compiler, {
         publicPath: config.output.publicPath,
@@ -249,6 +249,7 @@ app.post('/api/logout', function (req, res) {
     res.clearCookie('uid');
     res.json({'user': 'admin', 'role': 'ADMIN'});
 });
+map(app);
 /**
  *this is necessary to handle URL correctly since client uses Browser History
  */
@@ -262,7 +263,7 @@ app.post('/api/logout', function (req, res) {
 //     // }
 app.get('*', function (req, res) {
     res.sendFile(path.resolve(__dirname, '', 'index.html'))
-})
+});
 app.listen(port, function (err, result) {
     if (err) {
         console.log(err);
