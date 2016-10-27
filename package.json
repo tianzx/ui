@@ -4,7 +4,7 @@
   "description": "frontend template to separate with backend",
   "license": "MIT",
   "main": "index.js",
-  "engines": {"node": "6.9.1","npm":"4.0"},
+  "engines": {"node": "7.0.0","npm":"4.0"},
   "keywords": ["react","redux","router","antdesign","webpack","eslint","babel","es6","hot-updte","webpack-optimize"],
   "repository": {
     "type": "git",
