@@ -8,6 +8,7 @@ export const FETCH_MAP_PENDING = "FETCH_MAP_PENDING";
 export const RETRIEVE_MAP_ERROR = "RETRIEVE_MAP_ERROR";
 export const RETRIEVE_MAP_PENDING = "RETRIEVE_MAP_PENDING";
 export const RETRIEVE_MAP_SUCCESS = "RETRIEVE_MAP_SUCCESS";
+export const INIT_MAP = "INIT_MAP";
 
 export function retrieveMap(data) {
   "use strict";
@@ -23,4 +24,11 @@ export function retrieveMap(data) {
       })
     }
   };
+}
+
+export function initMap() {
+  "use strict";
+  return {
+    type: 'INIT_MAP'
+  }
 }

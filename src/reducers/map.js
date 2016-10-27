@@ -8,6 +8,7 @@ import {
   RETRIEVE_MAP_ERROR,
   RETRIEVE_MAP_PENDING,
   RETRIEVE_MAP_SUCCESS,
+  INIT_MAP,
 } from '../actions/map';
 
 import {
@@ -74,6 +75,8 @@ export default function map(state = initialState, action = {}) {
       return Object.assign({}, state, {message: "pending"});
     case RETRIEVE_MAP_ERROR:
       return Object.assign({}, state, {message: "error"});
+    case INIT_MAP:
+      return Object.assign({},initialState);
     default:
       return state;
   }
