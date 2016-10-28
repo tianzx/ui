@@ -1,6 +1,7 @@
 const map = require('./controller/map');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const isProduction = process.env.NODE_ENV === 'production';
 const isDeveloping = !isProduction;
 const express = require('express');
@@ -35,8 +36,9 @@ if (isDeveloping) {
  * RESTful API
  */
 const publicPath = path.resolve(__dirname);
-app.use(bodyParser.json({type: 'application/json'}))
+app.use(bodyParser.json({type: 'application/json'}));
 app.use(express.static(publicPath));
+app.use(cookieParser());
 
 const port = isProduction ? (process.env.PORT || 8080) : 7777;
 let i = 0;

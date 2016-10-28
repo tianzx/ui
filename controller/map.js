@@ -5,6 +5,7 @@ const data = require('../fake/map');
 const map = function (app) {
   app.post('/api/map', function (req, res) {
     // console.log(data);
+    //console.log(req.cookies.env);
     res.json(
       {maps: data}
     );

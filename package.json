@@ -40,7 +40,8 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.1.0",
     "superagent": "^1.8.1",
-    "react-google-maps":"^6.0.1"
+    "react-google-maps":"^6.0.1",
+    "cookie-parser":"^1.4.3"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",

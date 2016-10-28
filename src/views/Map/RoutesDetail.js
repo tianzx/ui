@@ -5,21 +5,22 @@ import React from 'react';
 import {
   withGoogleMap, GoogleMap, Polyline,
 } from "react-google-maps";
-import {bindActionCreators} from 'redux';
+// import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 class RoutesDetail extends React.Component {
 
   render() {
-    const {maps} = this.props;
+    const {maps:{map}} = this.props;
     const GettingStartedGoogleMap =
       withGoogleMap(props => (
         <GoogleMap
-          ref={props.onMapLoad}
+          defaultZoom={map.defaultZoom}
+          center={{lat: 40.0365532, lng: 116.3078697}}
         >
           <Polyline
-            path={maps.routes}
-            defaultZoom={maps.defaultZoom}
+            path={ map.routes}
+            defaultZoom={map.defaultZoom}
           >
           </Polyline>
         </GoogleMap>)
@@ -48,14 +49,14 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators({}, dispatch)};
-}
+// function mapDispatchToProps(dispatch) {
+//   return {actions: bindActionCreators({}, dispatch)};
+// }
 
 RoutesDetail.propTypes = {
   actions: React.PropTypes.object,
 };
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(RoutesDetail);
