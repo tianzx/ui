@@ -6,3 +6,4 @@ npm-debug.log
 .happypack/
 .vscode/
 *.zip
+./index.html

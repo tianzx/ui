@@ -32,9 +32,17 @@ $ npm run test
 ```shell
 $ npm run build
 ```
+```in your local machine
+$ scp -r localPath/ui/dist/  remotePath:ui
+```
+```in your remote machine
+$ mv dist/* ./
+$ cnpm install pm2 -g 
+$ pm2 start server.js
+```
 notation: before execute the command ,you must ensure you have executed the command
 ```shell
-$ npm install rimraf -g
+$ cnpm install rimraf -g
 ```
 
 ## NOTICE
