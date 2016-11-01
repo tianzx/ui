@@ -32,9 +32,11 @@ $ npm run test
 ```shell
 $ npm run build
 ```
+
 ```in your local machine
 $ scp -r localPath/ui/dist/  remotePath:ui
 ```
+
 ```in your remote machine
 $ mv dist/* ./
 $ cnpm install pm2 -g 
