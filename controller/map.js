@@ -21,34 +21,41 @@ const mapData = {
 const map = function (app) {
   app.post('/api/map', function (req, res) {
     const map = req.body;
+    const stringTime = map.time[0];
+    const stringTime2 = map.time[1];
+    let timestamp2 = Date.parse(new Date(stringTime));
+    // timestamp2 = timestamp2 / 1000;
+    console.log(timestamp2);
+    console.log(stringTime + "的时间戳为：" + timestamp2);
+    let timestamp3 = Date.parse(new Date(stringTime2));
+    // timestamp3 = timestamp3 / 1000;
+    console.log(timestamp3);
+    console.log(stringTime2 + "的时间戳为：" + timestamp3);
     const queryString = {
       serialNumber: map.sn,
-      beginTime: '1469352724000',
-      endTime: '1477301524000'
+      beginTime: timestamp2,
+      endTime: timestamp3
     };
     const mapUrl = config.api.local+"/webGPS/getGPSRoutes?"+qs.stringify(queryString);
-    request(
-      {
+    request({
         method: 'GET',
         url: mapUrl,
-        // url:'http://192.168.199.105:8083/webGPS/getGPSRoutes?serialNumber=11111111&beginTime=1469352724000&endTime=1469352724000'
-      }
-      , function (error, response, body) {
+      }, function (error, response, body) {
         // body is the decompressed response body
-        console.log('server encoded the data as: ' + (response.headers['content-encoding'] || 'identity'))
-        console.log('the decoded data is: ' + body)
+        // console.log('server encoded the data as: ' + (response.headers['content-encoding'] || 'identity'))
+        console.log('the decoded data is: ' + body);
       }
-    ).on('data', function (data) {
-      // decompressed data as it is received
-      console.log('decoded chunk: ' + data)
-    })
-      .on('response', function (response) {
-        // unmodified http.IncomingMessage object
-        response.on('data', function (data) {
-          // compressed data as it is received
-          console.log('received ' + data.length + ' bytes of compressed data')
-        })
-      })
+    )
+    //   .on('data', function (data) {
+    //     // decompressed data as it is received
+    //     console.log('decoded chunk: ' + data)
+    //   }).on('response', function (response) {
+    //   // unmodified http.IncomingMessage object
+    //   response.on('data', function (data) {
+    //     // compressed data as it is received
+    //     console.log('received ' + data.length + ' bytes of compressed data')
+    //   })
+    // })
     res.json(
       {maps: data}
     );
