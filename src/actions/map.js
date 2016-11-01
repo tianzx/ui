@@ -18,8 +18,7 @@ export function retrieveMap(data) {
       promise: api.post('/map', {
         data: {
           sn: data.sn,
-          startTime: data.startTime,
-          endTime: data.endTime
+          time: data.time,
         }
       })
     }
