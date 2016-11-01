@@ -171,7 +171,7 @@ app.delete('/api/fence/:id', function (req, res) {
  */
 app.put('/api/login', function (req, res) {
     const credentials = req.body;
-    if (credentials.user === 'admin' && credentials.password === '123456') {
+    if (credentials.user === 'admin' && credentials.password === 'zixuan12') {
         res.cookie('uid', '1', {domain: '127.0.0.1'});
         res.cookie('smartauto-token', "12345678");
         // res.cookie('user',"tianzx")
