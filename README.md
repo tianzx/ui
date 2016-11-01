@@ -33,11 +33,13 @@ $ npm run test
 $ npm run build
 ```
 
-```in your local machine
+in your local machine
+```shell
 $ scp -r localPath/ui/dist/  remotePath:ui
 ```
 
-```in your remote machine
+in your remote machine
+```shell
 $ mv dist/* ./
 $ cnpm install pm2 -g 
 $ pm2 start server.js
