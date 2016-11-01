@@ -40,6 +40,7 @@ $ mv dist/* ./
 $ cnpm install pm2 -g 
 $ pm2 start server.js
 ```
+
 notation: before execute the command ,you must ensure you have executed the command
 
 ```shell
