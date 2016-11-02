@@ -16,7 +16,7 @@ class RoutesDetail extends React.Component {
       withGoogleMap(props => (
         <GoogleMap
           defaultZoom={map.defaultZoom}
-          center={{lat: 40.0365532, lng: 116.3078697}}
+          center={map.defaultCenter}
         >
           <Polyline
             path={ map.routes}

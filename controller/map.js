@@ -12,52 +12,58 @@ const mapData = {
 /**
  *
  * console.log(map.sn);
-   console.log(map.time[0]);
-   console.log(map.time[1]);
-   console.log(req.cookies.env);
+ console.log(map.time[0]);
+ console.log(map.time[1]);
+ console.log(req.cookies.env);
  * @param app
  */
 
 const map = function (app) {
+
+  function convertData(data) {
+    let routes = [];
+    for (const map of data) {
+      let m = {lat: 0, lng: 0};
+      m.lat = map.latitude;
+      m.lng = map.longitude;
+      routes.push(m);
+    }
+    let mapData = {
+      data: {
+        defaultZoom: 18,
+        defaultCenter: routes[0],
+        routes: routes
+      }
+    }
+    return mapData
+  };
+
   app.post('/api/map', function (req, res) {
     const map = req.body;
-    const stringTime = map.time[0];
-    const stringTime2 = map.time[1];
-    let timestamp2 = Date.parse(new Date(stringTime));
-    // timestamp2 = timestamp2 / 1000;
-    console.log(timestamp2);
-    console.log(stringTime + "的时间戳为：" + timestamp2);
-    let timestamp3 = Date.parse(new Date(stringTime2));
-    // timestamp3 = timestamp3 / 1000;
-    console.log(timestamp3);
-    console.log(stringTime2 + "的时间戳为：" + timestamp3);
+    const beginTime = map.time[0];
+    const endTime = map.time[1];
+    let beginTimestamp = Date.parse(new Date(beginTime));
+    let endTimestamp = Date.parse(new Date(endTime));
+    let mapData = {};
     const queryString = {
       serialNumber: map.sn,
-      beginTime: timestamp2,
-      endTime: timestamp3
+      beginTime: beginTimestamp,
+      endTime: endTimestamp
     };
-    const mapUrl = config.api.local+"/webGPS/getGPSRoutes?"+qs.stringify(queryString);
+    const mapUrl = config.api.local + "/webGPS/getGPSRoutes?" + qs.stringify(queryString);
     request({
         method: 'GET',
         url: mapUrl,
       }, function (error, response, body) {
-        // body is the decompressed response body
-        // console.log('server encoded the data as: ' + (response.headers['content-encoding'] || 'identity'))
-        console.log('the decoded data is: ' + body);
+        // let data = JSON.stringify(body);
+        const array = JSON.parse(body);
+        // console.log(JSON.stringify(body));
+        mapData = convertData(array);
+        // console.log(mapData);
+        res.json(
+          {maps: mapData}
+        );
       }
-    )
-    //   .on('data', function (data) {
-    //     // decompressed data as it is received
-    //     console.log('decoded chunk: ' + data)
-    //   }).on('response', function (response) {
-    //   // unmodified http.IncomingMessage object
-    //   response.on('data', function (data) {
-    //     // compressed data as it is received
-    //     console.log('received ' + data.length + ' bytes of compressed data')
-    //   })
-    // })
-    res.json(
-      {maps: data}
     );
   });
 }

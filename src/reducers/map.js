@@ -65,6 +65,7 @@ export default function map(state = initialState, action = {}) {
         message: action.payload.message
       };
     case RETRIEVE_MAP_SUCCESS:
+      console.log(action.payload.maps);
       return Object.assign({}, state, {
         map: action.payload.maps.data,
         status: DETAIL,
