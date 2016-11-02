@@ -53,7 +53,10 @@ $ cnpm install rimraf -g
 
 ## NOTICE
 
-### replace npm with cnpm
+### replace npm with cnpm(in China)
 &emsp;&emsp;&emsp;&emsp;https://npm.taobao.org/
 ### add n to admin nodejs version
 &emsp;&emsp;&emsp;&emsp;https://github.com/tj/n
+
+### update npm 
+&emsp;&emsp;&emsp;&emsp;cnpm update -g npm
