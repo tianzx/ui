@@ -55,7 +55,6 @@ export default function menu(state = initialState, action = {}) {
                 navpath: getNavPath(state,action)
             });
         case FETCH_NAVPATH_SUCCESS:
-
             return Object.assign({}, state, {
                 navpath: getNavPath(state,action)
             });

@@ -40,8 +40,10 @@ class Header extends React.Component {
             <Menu.Item key={LOGOUT}>注销</Menu.Item>
           </SubMenu>
           <SubMenu title={<span><Icon type="setting"/>环境切换</span>}>
+            <Menu.Item key="setting:local" onClick={this.changeEnvironment("local")}>本地版</Menu.Item>
             <Menu.Item key="setting:test" onClick={this.changeEnvironment("test")}>测试版</Menu.Item>
-            <Menu.Item key="setting:release" onClick={this.changeEnvironment("release")}>正式版</Menu.Item>
+            <Menu.Item key="setting:production-cn" onClick={this.changeEnvironment("production-cn")}>正式版</Menu.Item>
+            <Menu.Item key="setting:production-ge" onClick={this.changeEnvironment("production-ge")}>国际版</Menu.Item>
           </SubMenu>
           <Menu.Item key="mail">
             <Icon type="question"/>帮助

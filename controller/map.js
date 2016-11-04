@@ -50,19 +50,23 @@ const map = function (app) {
       beginTime: beginTimestamp,
       endTime: endTimestamp
     };
+    console.log(req.cookies.env);
     const mapUrl = config.api.local + "/webGPS/getGPSRoutes?" + qs.stringify(queryString);
     request({
         method: 'GET',
         url: mapUrl,
       }, function (error, response, body) {
-        // let data = JSON.stringify(body);
-        const array = JSON.parse(body);
-        // console.log(JSON.stringify(body));
-        mapData = convertData(array);
-        // console.log(mapData);
-        res.json(
-          {maps: mapData}
-        );
+        console.log(error);
+        console.log('-----');
+      try {
+          const array = JSON.parse(body);
+          mapData = convertData(array);
+          res.json(
+            {maps: mapData}
+          );
+        } catch (error) {
+          console.log(error);
+        }
       }
     );
   });
