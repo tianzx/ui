@@ -31,7 +31,7 @@ class FenceSearch extends React.Component {
     }
 
     render() {
-        const {getFieldProps} = this.props.form;
+        const {getFieldDecorator} = this.props.form;
         const {actions} = this.props;
 
         const keywordRules = [
@@ -45,19 +45,20 @@ class FenceSearch extends React.Component {
                 <Col span={20} className={'col'}>
                     <Form inline onSubmit={this.handleSubmit}>
                         <Form.Item className={'normal'}>
-                            <Select {...getFieldProps('field', {initialValue: 'name'})}>
-                                <Select.Option value="name">名字</Select.Option>
-                            </Select>
+                            {/*<Select {...getFieldProps('field', {initialValue: 'name'})}>*/}
+                                {/*<Select.Option value="name">名字</Select.Option>*/}
+                            {/*</Select>*/}
+
                         </Form.Item>
                         <Form.Item
                             hasFeedback
                         >
-                            <Input
-                                {...getFieldProps('keyword', {
-                                    initialValue: '',
-                                    rules: keywordRules,
-                                })}
-                            />
+                          {getFieldDecorator('keyword', {
+                            initialValue: '',
+                            rules: keywordRules,
+                          })(
+                            <Input />
+                          )}
                         </Form.Item>
                         <Button style={{marginRight: '10px'}} type="primary" htmlType="submit">搜索</Button>
                     </Form>
