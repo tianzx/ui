@@ -44,7 +44,7 @@
     "redux": "^3.5.2",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.1.0",
-    "lodash": "^4.17.0",
+    "lodash": "^4.16.0",
     "superagent": "^1.8.1",
     "react-google-maps":"^6.0.1",
     "babel-core": "^6.5.2",
