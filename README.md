@@ -30,6 +30,7 @@ $ npm run test
 ## Run production build
 
 ```shell
+$ vi /etc/environment and export NODE_ENV='production'
 $ npm run build
 ```
 
