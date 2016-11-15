@@ -32,7 +32,8 @@
     "cookie-parser":"^1.4.3",
     "request":"^2.76.0",
     "qs":"^6.3.0",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "html-webpack-plugin": "^2.16.0"
   },
   "devDependencies": {
     "antd": "^2.1.0",
@@ -75,7 +76,6 @@
     "file-loader": "^0.8.5",
     "happypack": "*",
     "html-loader": "^0.4.3",
-    "html-webpack-plugin": "^2.16.0",
     "jsdom": "^8.0.4",
     "less": "^2.6.0",
     "less-loader": "^2.2.2",
