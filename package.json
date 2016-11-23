@@ -19,7 +19,6 @@
     "build": "npm run clean && export NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors ",
     "build-dashboard": "npm run clean && webpack-dashboard --config ./webpack.production.config.js ",
     "start": "node server",
-    "start2": "node server2",
     "develop": "npm run start",
     "production": "export NODE_ENV=production&&node server",
     "production-cn": "node server production-cn",
@@ -28,14 +27,9 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
-    "js-cookie": "^2.1.2",
     "cookie-parser":"^1.4.3",
     "request":"^2.76.0",
-    "qs":"^6.3.0",
-    "history": "^2.0.0",
-    "lodash": "^4.16.0",
-    "superagent": "^1.8.1",
-    "jsdom": "^8.0.4"
+    "qs":"^6.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",
@@ -91,7 +85,12 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.1.0",
     "nock": "^9.0.0",
-    "node-fetch":"^1.6.3"
+    "node-fetch":"^1.6.3",
+    "jsdom": "^8.0.4",
+    "superagent": "^3.0.0",
+    "lodash": "^4.16.0",
+    "history": "^4.0.0",
+    "js-cookie": "^2.1.2"
   }
 
 }
