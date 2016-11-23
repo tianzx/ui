@@ -4,7 +4,7 @@
 const data = require('../fake/map');
 const http = require('http');
 const request = require('request');
-const config = require('../config.json');
+// const config = require('../config.json');
 const qs = require('qs');
 const mapData = {
   path: '/webGPS/getGPSRoutes'
@@ -51,7 +51,7 @@ const map = function (app) {
       endTime: endTimestamp
     };
     console.log(req.cookies.env);
-    const mapUrl = config.api.local + "/webGPS/getGPSRoutes?" + qs.stringify(queryString);
+    const mapUrl = req.cookies.env + "/webGPS/getGPSRoutes?" + qs.stringify(queryString);
     request({
         method: 'GET',
         url: mapUrl,

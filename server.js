@@ -6,9 +6,10 @@ const isProduction = process.env.NODE_ENV === 'production';
 const isDeveloping = !isProduction;
 const express = require('express');
 const app = express();
-const projectConfig = require('./config.json');
+// const projectConfig = require('./config.json');
 const env = process.argv[2];
-const apiUrlPrefix = projectConfig.api[env];
+// const apiUrlPrefix = projectConfig.api[env];
+
 
 /**
  * diff environment
@@ -105,6 +106,7 @@ let fenceData = {
  */
 app.get('/api/nav/:url', function (req, res) {
   // if(req.params.url=='fence'){
+
   res.json({
     data: ["menu101", "sub1"]
   })
@@ -123,6 +125,7 @@ app.get('/api/fence', function (req, res) {
  * create
  */
 app.post('/api/fence', function (req, res) {
+  console.log(123);
   let i = 10;
   const fence = req.body;
   const name = fence.fenceName;
@@ -244,6 +247,7 @@ app.post('/api/menu', function (req, res) {
  */
 app.post('/api/my', function (req, res) {
   res.json({'user': 'admin', 'role': 'ADMIN', 'uid': 1});
+
 });
 /**
  * 退出当前账户
