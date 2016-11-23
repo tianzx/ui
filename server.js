@@ -1,4 +1,4 @@
-const map = require('./controller/map');
+const map = require('./server/controller/map');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
