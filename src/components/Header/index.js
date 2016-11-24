@@ -13,13 +13,16 @@ class Header extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.changeEnvironment = this.changeEnvironment.bind(this);
   }
 
   handleSubmit(e) {
     const {actions} = this.props;
+    console.log(e);
+    // e.get
     if (e.key == LOGOUT) {
       actions.logout();
+    }else{
+      this.changeEnvironment(e.key);
     }
   }
 
@@ -39,11 +42,11 @@ class Header extends React.Component {
             <Menu.Divider />
             <Menu.Item key={LOGOUT}>注销</Menu.Item>
           </SubMenu>
-          <SubMenu title={<span><Icon type="setting"/>环境切换</span>}>
-            <Menu.Item key="setting:local" onClick={this.changeEnvironment("local")}>本地版</Menu.Item>
-            <Menu.Item key="setting:test" onClick={this.changeEnvironment("test")}>测试版</Menu.Item>
-            <Menu.Item key="setting:production-cn" onClick={this.changeEnvironment("production-cn")}>正式版</Menu.Item>
-            <Menu.Item key="setting:production-ge" onClick={this.changeEnvironment("production-ge")}>国际版</Menu.Item>
+          <SubMenu title={<span><Icon type="setting"/>环境切换</span>} onClick={this.test}>
+            <Menu.Item key="local" >本地版</Menu.Item>
+            <Menu.Item key="test" >测试版</Menu.Item>
+            <Menu.Item key="production-cn" >正式版</Menu.Item>
+            <Menu.Item key="production-ge">国际版</Menu.Item>
           </SubMenu>
           <Menu.Item key="mail">
             <Icon type="question"/>帮助
