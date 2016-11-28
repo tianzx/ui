@@ -1,27 +1,40 @@
 /**
  * Created by tianzx on 2016/11/1.
  */
-
-const config = require('../config.json');
+const config = require('../../config.json');
 const Buffer = require('Buffer');
-// do a POST request
+// do a get request
 // prepare the header
 // 'Content-Length' : Buffer.byteLength(reqJosnData, 'utf8')
 const postHeaders = {
   'Content-Type': 'application/json; charset=UTF-8',
 };
 
-// the post options
+// the get options
 const initOptions = {
-  host: config.api.local,
+  host: '',
   port: '',
   path: '',
   method: 'GET',
   headers: postHeaders
 };
 
-function initPostOptions(options = {}) {
+exports.initPostOptions=(options = {}) =>{
   return Object.assign({}, initOptions, options);
 }
 
-modules.exports = initPostOptions;
+exports.getEnvironment=(env)=>{
+  const api = config.api;
+  if(env==="local"){
+    env = api.local;
+  }else if(env ==="test"){
+    env = api.test;
+  }else if(env ==="production_cn"){
+    env = api.production_cn;
+  }else if (env ==="production_ge"){
+    env = api.production_ge;
+  }
+  // console.log(env);
+  return env;
+}
+// getEnvironment("local");

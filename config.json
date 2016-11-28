@@ -10,7 +10,7 @@
   "api": {
     "local": "http://192.168.199.105:8083",
     "test": "http://test.smartaututotech.com",
-    "production-cn": "http://cloud.smartaututotech.com",
-    "production-ge": "http://gcloud.smartaututotech.com/"
+    "production_cn": "http://cloud.smartaututotech.com",
+    "production_ge": "http://gcloud.smartaututotech.com/"
   }
 }

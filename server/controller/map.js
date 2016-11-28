@@ -6,6 +6,7 @@ const http = require('http');
 const request = require('request');
 const config = require('../../config.json');
 const qs = require('qs');
+const common = require('./common');
 const mapData = {
   path: '/webGPS/getGPSRoutes'
 }
@@ -50,9 +51,8 @@ const map = function (app) {
       beginTime: beginTimestamp,
       endTime: endTimestamp
     };
-    console.log(req.cookies.env);
-    const environment =  req.cookie.env;
-    const mapUrl = config.api.environment + "/webGPS/getGPSRoutes?" + qs.stringify(queryString);
+    const environment =  req.cookies.env;
+    const mapUrl = common.getEnvironment(environment) + "/webGPS/getGPSRoutes?" + qs.stringify(queryString);
     request({
         method: 'GET',
         url: mapUrl,
