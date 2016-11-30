@@ -3,6 +3,7 @@
  */
 const config = require('../../config.json');
 const Buffer = require('Buffer');
+const qs = require('qs');
 const request = require('request');
 
 // do a get request
@@ -25,7 +26,7 @@ exports.initPostOptions=(options = {}) =>{
   return Object.assign({}, initOptions, options);
 };
 
-exports.getEnvironment=(env)=>{
+function getEnvironment(env){
   const api = config.api;
   if(env==="local"){
     env = api.local;
@@ -39,8 +40,10 @@ exports.getEnvironment=(env)=>{
   // console.log(env);
   return env;
 };
+
 // getEnvironment("local");
-exports.get=(url,convertData)=>{
+exports.get=(url,queryString,convertData)=>{
+  const url = getEnvironment(environment) + url+"?" + qs.stringify(queryString);
   request({
       method: 'GET',
       url: url,
@@ -66,6 +69,7 @@ let promisify = (fn, receiver) => {
     });
   };
 };
+
 /**
  * es5 promise implement
  */
