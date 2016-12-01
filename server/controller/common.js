@@ -43,10 +43,10 @@ function getEnvironment(env){
 
 // getEnvironment("local");
 exports.get=(url,queryString,convertData)=>{
-  const url = getEnvironment(environment) + url+"?" + qs.stringify(queryString);
+  const urls = getEnvironment(environment) + url+"?" + qs.stringify(queryString);
   request({
       method: 'GET',
-      url: url,
+      url: urls,
     }, function (error, response, body) {
       console.log(error);
       try {
@@ -58,16 +58,6 @@ exports.get=(url,queryString,convertData)=>{
       }
     }
   );
-};
-
-let promisify = (fn, receiver) => {
-  return (...args) => {
-    return new Promise((resolve, reject) => {
-      fn.apply(receiver, [...args, (err, res) => {
-        return err ? reject(err) : resolve(res);
-      }]);
-    });
-  };
 };
 
 /**
@@ -87,13 +77,26 @@ var promisifyEs5 = function promisify(fn, receiver) {
   };
 };
 
+let promisify = (fn, receiver) => {
+  return (...args) => {
+    return new Promise((resolve, reject) => {
+      fn.apply(receiver, [...args, (err, res) => {
+        return err ? reject(err) : resolve(res);
+      }]);
+    });
+  };
+};
+
 const getPromise = promisify(request,request.get);
 
-getPromise('http://google.com/img.png')
+getPromise('https://google.com/img1.png')
   .then(function (response) {
     console.log(response.statusCode) // 200
     console.log(response.headers['content-type']) // 'image/png'
     return getPromise('http://google.com/img.png')
+  },function (error) {
+    console.log("false");
+    console.log(error) // 400
   })
   .then(function (response) {
     console.log("success");
