@@ -34,14 +34,24 @@ const police = function (app) {
     return mapData
   };
 
-  app.post('/api/zhongan/policy', function (req, res) {
+  app.get('/api/zhongan/policy', function (req, res) {
     const policy = req.body;
-    const queryString = {
-      serialNumber: policy.sn,
+    const policyParam = {
+      route:utils.ZHONGAN_POLICE,
+      queryString:{
+        serialNumber: policy.sn,
+      },
+      convertData: convertData,
     };
-    const environment =  req.cookies.env;
-    const url = common.getEnvironment(environment) + utils.ZHONGAN_POLICE+"?" + qs.stringify(queryString);
-    common.get(url,convertData);
+    // const queryString = {
+    //   serialNumber: policy.sn,
+    // };
+    // const url = common.getEnvironment(environment) + utils.ZHONGAN_POLICE+"?" + qs.stringify(queryString);
+    // const policyData = common.get(utils.ZHONGAN_POLICE,req,queryString,convertData);
+    const policyData = common.get(policyParam);
+    res.json(
+      {policy: policyData}
+    );
   });
 
 }

@@ -42,16 +42,16 @@ function getEnvironment(env){
 };
 
 // getEnvironment("local");
-exports.get=(url,queryString,convertData)=>{
-  const urls = getEnvironment(environment) + url+"?" + qs.stringify(queryString);
+exports.get=(policyParam)=>{
+  const url = getEnvironment(req.environment) + policyParam.route+"?" + qs.stringify(policyParam.queryString);
   request({
       method: 'GET',
-      url: urls,
+      url: url,
     }, function (error, response, body) {
       console.log(error);
       try {
         const array = JSON.parse(body);
-        data = convertData(array);
+        data = policyParam.convertData(array);
         return data;
       } catch (error) {
         console.log(error);
@@ -89,19 +89,19 @@ let promisify = (fn, receiver) => {
 
 const getPromise = promisify(request,request.get);
 
-getPromise('https://google.com/img1.png')
-  .then(function (response) {
-    console.log(response.statusCode) // 200
-    console.log(response.headers['content-type']) // 'image/png'
-    return getPromise('http://google.com/img.png')
-  },function (error) {
-    console.log("false");
-    console.log(error) // 400
-  })
-  .then(function (response) {
-    console.log("success");
-    console.log(response.statusCode) // 200
-  })
+// getPromise('https://google.com/img1.png')
+//   .then(function (response) {
+//     console.log(response.statusCode) // 200
+//     console.log(response.headers['content-type']) // 'image/png'
+//     return getPromise('http://google.com/img.png')
+//   },function (error) {
+//     console.log("false");
+//     console.log(error);//eg: such as url's false
+//   })
+//   .then(function (response) {
+//     console.log("success");
+//     console.log(response.statusCode) // 200
+//   })
   // .on('response', function(response) {
   //   console.log(response.statusCode) // 200
   //   console.log(response.headers['content-type']) // 'image/png'

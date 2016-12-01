@@ -9,7 +9,6 @@ const app = express();
 const projectConfig = require('./config.json');
 const env = process.argv[2];
 const apiUrlPrefix = projectConfig.api[env];
-
 /**
  * diff environment
  */
@@ -100,6 +99,25 @@ let fenceData = {
     }
   ]
 }
+app.all('/*', function(request, res, next){
+  // var jsPattern=/\.js$/;
+  // var url=request.orignalUrl;
+  // if(jsPattern.test(url)){
+  //   // 公共部分，放行
+  //   next();
+  //   return;
+  // }
+  // if(url=='index.html'||url=='error.html'){
+  //   next();
+  //   return;
+  // }
+  // var cookie=JSON.stringify(req.cookies);
+  // if(access){
+  //   next();
+  // }
+  console.log("all ");
+  next();
+});
 /**
  * 获取不同的nav
  */
@@ -113,7 +131,7 @@ app.get('/api/nav/:url', function (req, res) {
  * 获取fence列表
  */
 app.get('/api/fence', function (req, res) {
-
+  console.log("fence")
   res.json({
     fences: fenceData
   });
@@ -259,6 +277,10 @@ map(app);
 app.get('*', function (req, res) {
   res.sendFile(path.resolve(__dirname, '', 'index.html'))
 });
+// 所有用户可以访问index.html, error.html
+// admin可以访问admin.html, /getData
+// 登陆用户可以访问home.html
+
 app.listen(port, function (err, result) {
   if (err) {
     console.log(err);
