@@ -43,11 +43,6 @@ const police = function (app) {
       },
       convertData: convertData,
     };
-    // const queryString = {
-    //   serialNumber: policy.sn,
-    // };
-    // const url = common.getEnvironment(environment) + utils.ZHONGAN_POLICE+"?" + qs.stringify(queryString);
-    // const policyData = common.get(utils.ZHONGAN_POLICE,req,queryString,convertData);
     const policyData = common.get(policyParam);
     res.json(
       {policy: policyData}

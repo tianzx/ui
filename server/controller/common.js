@@ -42,8 +42,10 @@ function getEnvironment(env){
 };
 
 // getEnvironment("local");
-exports.get=(policyParam)=>{
-  const url = getEnvironment(req.environment) + policyParam.route+"?" + qs.stringify(policyParam.queryString);
+exports.get=(param={
+  environment:"local"
+})=>{
+  const url = getEnvironment(param.environment) + param.route+"?" + qs.stringify(param.queryString);
   request({
       method: 'GET',
       url: url,
