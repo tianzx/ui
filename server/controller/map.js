@@ -27,6 +27,7 @@ const map = function (app) {
       let m = {lat: 0, lng: 0};
       m.lat = map.latitude;
       m.lng = map.longitude;
+      console.log(m);
       routes.push(m);
     }
     let mapData = {
@@ -51,17 +52,22 @@ const map = function (app) {
       beginTime: beginTimestamp,
       endTime: endTimestamp
     };
-    const environment =  req.cookies.env;
-    const mapUrl = common.getEnvironment(environment) + "/webGPS/getGPSRoutes?" + qs.stringify(queryString);
+    const environment = req.cookies.env;
+    const mapUrl = "http://139.162.179.15:8003" + "/webGPS/getGPSRoutes?" + qs.stringify(queryString);
     request({
         method: 'GET',
         url: mapUrl,
       }, function (error, response, body) {
-        console.log(error);
-        console.log('-----');
-      try {
+        // console.log(error);
+        // console.log('-----');
+        try {
+          console.log(body);
           const array = JSON.parse(body);
-          mapData = convertData(array);
+          console.log(body)
+          console.log("---------")
+          console.log(array.gpsData);
+          mapData = convertData(array.gpsData);
+          // console.log(mapData)
           res.json(
             {maps: mapData}
           );

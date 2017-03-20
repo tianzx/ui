@@ -26,7 +26,7 @@ exports.initPostOptions=(options = {}) =>{
   return Object.assign({}, initOptions, options);
 };
 
-function getEnvironment(env){
+exports.getEnvironment=(env)=>{
   const api = config.api;
   if(env==="local"){
     env = api.local;
@@ -36,6 +36,8 @@ function getEnvironment(env){
     env = api.production_cn;
   }else if (env ==="production_ge"){
     env = api.production_ge;
+  }else {
+    env = api.production_cn;
   }
   // console.log(env);
   return env;
