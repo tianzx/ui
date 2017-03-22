@@ -3,6 +3,13 @@
  */
 import * as React from "react";
 import {connect} from 'react-redux';
+import {bindActionCreators} from "redux";
+import {fetchNavPath} from '../../../actions/menu';
+import * as base from '../../../actions/base';
+import {Table, Icon, Popconfirm, Pagination} from 'antd';
+
+import {fetchFiles, editFile, retrieveFile, deleteFile} from '../../../actions/business/file';
+
 
 class FileList extends React.Component {
   constructor(props) {
@@ -20,14 +27,13 @@ class FileList extends React.Component {
   }
 
   handleChange() {
-    // console.log(page);
+    console.log("file");
   }
 
   renderList(actions, columns, data, meta) {
 
     return (
       <div>
-        <FenceSearch />
         <Table columns={columns} dataSource={data} pagination={false}
         />
         <Pagination
@@ -49,15 +55,15 @@ class FileList extends React.Component {
 
 
   render() {
-    const {actions, fences: {data, meta, status}} = this.props;
+    const {actions, files: {data, meta, status}} = this.props;
 
-    function retrieveFence(id) {
-      actions.retrieveFence(id);
+    function retrieveFile(id) {
+      actions.retrieveFile(id);
     }
 
     function confirm(id) {
-      actions.deleteFence(id);
-      actions.fetchFences();
+      actions.deleteFile(id);
+      actions.fetchFiles();
     }
 
     const columns = [{
@@ -85,9 +91,9 @@ class FileList extends React.Component {
 
     let page;
     // switch
-    if (status == LIST) {
+    if (status == base.LIST) {
       page = this.renderList(actions, columns, data, meta);
-    } else if (status == ADD || status == EDIT) {
+    } else if (status == base.ADD || status == base.EDIT) {
       page = this.renderAdd();
     }
     return (

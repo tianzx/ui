@@ -227,8 +227,9 @@ app.post('/api/menu', function (req, res) {
             url: 'map'
           },
           {
-            name: '选项4',
-            key: 104
+            name: 'file',
+            key: 104,
+            url: 'file'
           }
         ]
       },
