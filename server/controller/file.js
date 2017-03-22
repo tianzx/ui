@@ -19,7 +19,7 @@ const fileData = {
  * @param app
  */
 
-const file  = function (app) {
+const file = function (app) {
 
   function convertData(data) {
     let routes = [];
@@ -52,9 +52,7 @@ const file  = function (app) {
     //   beginTime: beginTimestamp,
     //   endTime: endTimestamp
     // };
-    const queryString = {
-
-    }
+    const queryString = {}
     const environment = req.cookies.env;
     const fotaUrl = "http://localhost:6002" + "/fota/version?" + qs.stringify(queryString);
     request({
@@ -66,10 +64,15 @@ const file  = function (app) {
         try {
           console.log(body);
           const data = JSON.parse(body);
-          const fotaData =
+          const fotaData = data;
           console.log("---------")
           res.json(
-            {fotas: fotaData}
+            {
+              files: {
+                data: fotaData,
+                meta: ""
+              }
+            }
           );
         } catch (error) {
           console.log(error);
