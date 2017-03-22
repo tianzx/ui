@@ -65,11 +65,9 @@ const file  = function (app) {
         // console.log('-----');
         try {
           console.log(body);
-          const array = JSON.parse(body);
-          console.log(body)
+          const data = JSON.parse(body);
+          const fotaData =
           console.log("---------")
-          fotaData = convertData(array.gpsData);
-          // console.log(mapData)
           res.json(
             {fotas: fotaData}
           );
@@ -81,4 +79,4 @@ const file  = function (app) {
   });
 }
 
-module.exports = map;
+module.exports = file;

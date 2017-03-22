@@ -55,7 +55,7 @@ exports.get=(param={
       console.log(error);
       try {
         const array = JSON.parse(body);
-        data = policyParam.convertData(array);
+        const data = policyParam.convertData(array);
         return data;
       } catch (error) {
         console.log(error);

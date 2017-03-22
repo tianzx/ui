@@ -1,4 +1,5 @@
 const map = require('./server/controller/map');
+const file = require('./server/controller/file');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -99,7 +100,7 @@ let fenceData = {
     }
   ]
 }
-app.all('/*', function(request, res, next){
+app.all('/*', function (request, res, next) {
   // var jsPattern=/\.js$/;
   // var url=request.orignalUrl;
   // if(jsPattern.test(url)){
@@ -271,6 +272,7 @@ app.post('/api/logout', function (req, res) {
   res.json({'user': 'admin', 'role': 'ADMIN'});
 });
 map(app);
+file(app);
 /**
  *this is necessary to handle URL correctly since client uses Browser History
  */
