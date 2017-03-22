@@ -10,6 +10,7 @@ import Fence from './views/Fence';
 import User from './views/User';
 import Map from './views/Map';
 import NotFound from './views/NotFound';
+import File from './views/business/File';
 
 export default (
     <Route path="/" component={App}>
@@ -19,6 +20,7 @@ export default (
         <Route path="fence" component={Fence}/>
         <Route path="user" component={User}/>
         <Route path="map" component={Map}/>
+        <Route path="file" component={File}/>
         <Route path="*" component={NotFound}/>
     </Route>
 );
