@@ -56,7 +56,7 @@ const file = function (app) {
     const queryString = {}
     const environment = req.cookies.env;
     const j = request.jar();
-    const cookie = request.cookie('chleon-token=162d1ffdf58265aa6ac620d206a7cfff');
+    const cookie = request.cookie('chleon-token=15c715d694469d95984039fe293822ea');
     const fotaUrl = "http://test.smartautotech.com" + "/fota/data?" + qs.stringify(queryString);
     j.setCookie(cookie, fotaUrl);
     request({
@@ -76,7 +76,7 @@ const file = function (app) {
           res.json(
             {
               files: {
-                data: fotaData,
+                data: fotaData.results,
                 meta: ""
               }
             }

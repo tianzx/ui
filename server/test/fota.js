@@ -8,7 +8,7 @@ const qs = require('qs');
 const request = require('request');
 const queryString = {};
 const j = request.jar();
-const cookie = request.cookie('chleon-token=229bfa2e89e0c778b956bbcf9cab9a64');
+const cookie = request.cookie('chleon-token=15c715d694469d95984039fe293822ea');
 const fotaUrl = "http://192.168.199.151:6002" + "/fota/data?" + qs.stringify(queryString);
 j.setCookie(cookie, fotaUrl);
 request({
