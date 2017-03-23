@@ -40,7 +40,7 @@ const file = function (app) {
     return mapData
   };
 
-  app.post('/api/file/fota', function (req, res) {
+  app.get('/api/file/fota', function (req, res) {
     const map = req.body;
     // const beginTime = map.time[0];
     // const endTime = map.time[1];
@@ -52,20 +52,27 @@ const file = function (app) {
     //   beginTime: beginTimestamp,
     //   endTime: endTimestamp
     // };
+    console.log("to fetch fota data");
     const queryString = {}
     const environment = req.cookies.env;
-    const fotaUrl = "http://localhost:6002" + "/fota/version?" + qs.stringify(queryString);
+    const j = request.jar();
+    const cookie = request.cookie('chleon-token=162d1ffdf58265aa6ac620d206a7cfff');
+    const fotaUrl = "http://test.smartautotech.com" + "/fota/data?" + qs.stringify(queryString);
+    j.setCookie(cookie, fotaUrl);
     request({
         method: 'GET',
         url: fotaUrl,
+        jar: j
       }, function (error, response, body) {
         // console.log(error);
         // console.log('-----');
         try {
+          console.log("---------");
           console.log(body);
           const data = JSON.parse(body);
           const fotaData = data;
-          console.log("---------")
+          console.log(fotaData.results);
+          console.log("---------");
           res.json(
             {
               files: {

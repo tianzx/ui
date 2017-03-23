@@ -54,7 +54,7 @@ const initialState = {
    */
   searchData: {},
 };
-export default function fence(state = initialState, action = {}) {
+export default function file(state = initialState, action = {}) {
   switch (action.type) {
     case FETCH_FILE_PENDING:
       return Object.assign({}, initialState, {message: "pending"});

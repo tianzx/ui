@@ -41,7 +41,7 @@ export function fetchFiles(data = {field: "", keyword: "", current: 1}) {
   return {
     type: FETCH_FILE,
     payload: {
-      promise: api.get('/api/file/fota' + '?' + 'field=' + field + '&' + 'keyword=' + keyword)
+      promise: api.get('/file/fota' + '?' + 'field=' + field + '&' + 'keyword=' + keyword)
     }
   };
 }
