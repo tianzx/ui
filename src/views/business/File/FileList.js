@@ -67,9 +67,17 @@ class FileList extends React.Component {
     }
 
     const columns = [{
-      title: '名字',
-      dataIndex: 'name',
-      key: 'name',
+      title: '源版本',
+      dataIndex: 'sourceVersion',
+      key: 'sourceVersion',
+    },{
+      title: '目标版本',
+      dataIndex: 'destVersion',
+      key: 'destVersion',
+    },{
+      title: '文件路径',
+      dataIndex: 'filePath',
+      key: 'filePath',
     }, {
       title: '时间',
       dataIndex: 'creatTime',

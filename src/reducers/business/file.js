@@ -59,8 +59,8 @@ export default function file(state = initialState, action = {}) {
     case FETCH_FILE_PENDING:
       return Object.assign({}, initialState, {message: "pending"});
     case FETCH_FILE_SUCCESS:
-      console.log(action.payload);
-      console.log(action.payload.files);
+      // console.log(action.payload);
+      // console.log(action.payload.files);
       return Object.assign({}, state, {
         data: action.payload.files.data,
         meta: action.payload.files.meta,
