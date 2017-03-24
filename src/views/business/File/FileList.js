@@ -34,7 +34,7 @@ class FileList extends React.Component {
 
     return (
       <div>
-        <Table columns={columns} dataSource={data} pagination={false}
+        <Table columns={columns} dataSource={data} pagination={false}  rowKey={data => data.key}
         />
         <Pagination
           className="ant-table-pagination"

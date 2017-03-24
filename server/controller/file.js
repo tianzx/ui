@@ -22,25 +22,6 @@ const fileData = {
 
 const file = function (app) {
 
-  function convertData(data) {
-    let routes = [];
-    for (const map of data) {
-      let m = {lat: 0, lng: 0};
-      m.lat = map.latitude;
-      m.lng = map.longitude;
-      console.log(m);
-      routes.push(m);
-    }
-    let mapData = {
-      data: {
-        defaultZoom: 18,
-        defaultCenter: routes[0],
-        routes: routes
-      }
-    }
-    return mapData
-  };
-
   app.get('/api/file/fota', function (req, res) {
     const map = req.body;
     // const beginTime = map.time[0];
