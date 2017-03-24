@@ -80,8 +80,8 @@ class FileList extends React.Component {
       key: 'filePath',
     }, {
       title: '时间',
-      dataIndex: 'creatTime',
-      key: 'creatTime'
+      dataIndex: 'createTime',
+      key: 'createTime'
     },
       {
         title: '操作',
