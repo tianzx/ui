@@ -7,9 +7,10 @@ import {bindActionCreators} from "redux";
 import {fetchNavPath} from '../../../actions/menu';
 import * as base from '../../../actions/base';
 import {Table, Icon, Popconfirm, Pagination} from 'antd';
-
 import {fetchFiles, editFile, retrieveFile, deleteFile} from '../../../actions/business/file';
 
+import {EditFile} from './EditFile';
+import {EditModel} from './EditModel';
 
 class FileList extends React.Component {
   constructor(props) {
@@ -47,12 +48,16 @@ class FileList extends React.Component {
     );
   }
 
-  renderAdd() {
-    return (
-      <EditList />
-    );
-  }
+  // renderAdd() {
+  //   return (
+  //     <EditFile />
+  //   );
+  // }
+  renderModel() {
+    <div>
 
+    </div>
+  }
 
   render() {
     const {actions, files: {data, meta, status}} = this.props;
@@ -104,12 +109,13 @@ class FileList extends React.Component {
       page = this.renderList(actions, columns, data, meta);
     } else if (status == base.ADD || status == base.EDIT) {
       page = this.renderAdd();
-    }
+    } else if(status == base.MODEL)
     return (
-      page
+      page = this.renderModel()
     );
   }
 }
+
 function mapStateToProps(state) {
   const {files} = state;
   return {

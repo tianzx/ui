@@ -109,3 +109,13 @@ export function deleteFile(id) {
   };
 }
 
+export function editCommitlog(id) {
+  "use strict";
+  return {
+    type: 'EDIT_COMMIT_LOG',
+    payload: {
+      promise: api.editCommitlog('/file/commitlog/' + id)
+    }
+  }
+
+}

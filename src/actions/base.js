@@ -10,3 +10,4 @@ export const LIST = "LIST_PAGE";
 export const ADD = "ADD_PAGE";
 export const EDIT = "EDIT_PAGE";
 export const DETAIL = "DETAIL_PAGE";
+export const MODEL = "MODEL_PAGE";
