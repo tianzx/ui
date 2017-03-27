@@ -36,13 +36,13 @@ class FileList extends React.Component {
       <div>
         <Table columns={columns} dataSource={data} pagination={false}  rowKey={data => data.key}
         />
-        <Pagination
-          className="ant-table-pagination"
-          total={meta.total}
-          current={meta.current}
-          pageSize={meta.pageSize}
-          onChange={this.handleChange}
-        />
+        {/*<Pagination*/}
+          {/*className="ant-table-pagination"*/}
+          {/*total={meta.total}*/}
+          {/*current={meta.current}*/}
+          {/*pageSize={meta.pageSize}*/}
+          {/*onChange={this.handleChange}*/}
+        {/*/>*/}
       </div>
     );
   }
@@ -78,6 +78,7 @@ class FileList extends React.Component {
       title: '文件路径',
       dataIndex: 'filePath',
       key: 'filePath',
+      width: 300
     }, {
       title: '时间',
       dataIndex: 'createTime',
