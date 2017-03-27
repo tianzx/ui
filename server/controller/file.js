@@ -7,7 +7,9 @@ const request = require('request');
 const config = require('../../config.json');
 const qs = require('qs');
 const common = require('./common');
-const fota = require('../../fake/file')
+const fota = require('../../fake/file');
+const datetime = require('../util/datetime/datetime');
+
 const fileData = {
   path: '/fota/version'
 }
@@ -58,7 +60,7 @@ const file = function (app) {
           res.json(
             {
               files: {
-                data: fota,
+                data: datetime(fota),
                 meta: ""
               }
             }
