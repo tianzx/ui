@@ -5,7 +5,7 @@ const http = require('http');
 const request = require('request');
 const qs = require('qs');
 
-exports.get = function (queryStringData = {}, serviceName = "/fota/commitLog?", url= "http://test.smartautotech.com") {
+exports.get = function (queryStringData = {id:288}, serviceName = "/fota/commitLog?", url= "http://test.smartautotech.com") {
 
   const queryString = queryStringData;
   const j = request.jar();
@@ -21,6 +21,7 @@ exports.get = function (queryStringData = {}, serviceName = "/fota/commitLog?", 
         console.log("--------- begin request-------");
         console.log(body);
         const data = JSON.parse(body);
+        console.log(data);
         console.log("--------- finish request------");
         return {
           data: data
