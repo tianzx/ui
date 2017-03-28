@@ -55,7 +55,7 @@ class FileList extends React.Component {
   // }
   renderModel() {
     <div>
-
+      <EditModel/>
     </div>
   }
 
@@ -109,9 +109,11 @@ class FileList extends React.Component {
       page = this.renderList(actions, columns, data, meta);
     } else if (status == base.ADD || status == base.EDIT) {
       page = this.renderAdd();
-    } else if(status == base.MODEL)
+    } else if(status == base.MODEL) {
+      page = this.renderModel();
+    }
     return (
-      page = this.renderModel()
+      page
     );
   }
 }
