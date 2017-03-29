@@ -8,6 +8,10 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 class EditModel extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   handleOk = (e) => {
     console.log(e);
   }
@@ -17,7 +21,9 @@ class EditModel extends React.Component {
 
   render() {
     const {actions, files: {commit_log, model_status}} = this.props;
-
+    console.log("___________________");
+    console.log( commit_log);
+    console.log("___________________")
     return (
       <div>
         {/*<Button type="primary" onClick={this.showModal}>Edit Commit Log</Button>*/}

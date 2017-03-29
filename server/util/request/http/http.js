@@ -24,11 +24,12 @@ exports.get = function (queryStringData = {id:289}, serviceName = "/fota/commitL
         // console.log(data);
         console.log("--------- finish request------");
         return {
-          data: data
+          data: 123
         }
       } catch (error) {
         console.log(error);
       }
     }
   );
+  console.log("--------- finish ------");
 }

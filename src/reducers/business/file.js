@@ -16,9 +16,10 @@ import {
   DELETE_FILE_SUCCESS,
   DELETE_FILE_PENDING,
   DELETE_FILE_ERROR,
-  EDIT_COMMITLOG_PENDING,
-  EDIT_COMMITLOG_SUCCESS,
-  EDIT_COMMITLOG_ERROR,
+  EDIT_COMMIT_LOG,
+  EDIT_COMMIT_LOG_PENDING,
+  EDIT_COMMIT_LOG_SUCCESS,
+  EDIT_COMMIT_LOG_ERROR,
   EDIT_COMMIT_LOG_FILE
 }from '../../actions/business/file'
 import {
@@ -65,7 +66,7 @@ const initialState = {
   /**
    * 模态窗口是否显示
    */
-  model_status: false,
+  model_status: false
 };
 export default function file(state = initialState, action = {}) {
   switch (action.type) {
@@ -118,15 +119,14 @@ export default function file(state = initialState, action = {}) {
       return Object.assign({}, initialState, {message: "pending"});
     case DELETE_FILE_ERROR:
       return Object.assign({}, state, {message: "error"});
-    case EDIT_COMMITLOG_PENDING:
+    case EDIT_COMMIT_LOG_PENDING:
       return Object.assign({}, state, {message: "pending"});
-    case EDIT_COMMITLOG_SUCCESS:
+    case EDIT_COMMIT_LOG_SUCCESS:
       return Object.assign({}, state, {
-        model_status:true,
-        commit_log: "123",
-        message: action.payload.success
+        commit_log: "123123123123",
+        message: "success"
       });
-    case EDIT_COMMITLOG_ERROR:
+    case EDIT_COMMIT_LOG_ERROR:
       return Object.assign({}, state, {message: "error"});
     default:
       return state;

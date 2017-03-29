@@ -82,13 +82,10 @@ const file = function (app) {
     }
     console.log("commitLog id is "+req.params.id);
     const data = myHttp.get(queryString);
+    console.log(data);
     res.json({
-      // files: {
-      //   data: ,
-      //   meta: ""
-      // }
-      files:{
-        data:data
+      files: {
+        data: 123,
       }
     });
   })
