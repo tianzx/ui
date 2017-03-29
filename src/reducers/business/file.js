@@ -91,6 +91,7 @@ export default function file(state = initialState, action = {}) {
       });
     case EDIT_COMMIT_LOG_FILE:
       return Object.assign({},state,{
+        model_status:action.payload.model_status,
         status: action.payload.status
       })
     // case CREATE_FENCE_SUCCESS:
@@ -122,7 +123,7 @@ export default function file(state = initialState, action = {}) {
     case EDIT_COMMITLOG_SUCCESS:
       return Object.assign({}, state, {
         model_status:true,
-        commit_log: action.payload.data,
+        commit_log: "123",
         message: action.payload.success
       });
     case EDIT_COMMITLOG_ERROR:

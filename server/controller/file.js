@@ -76,41 +76,6 @@ const file = function (app) {
     );
   });
 
-  // app.get('/api/file/commitLog', function (req, res) {
-  //   console.log("to fetch commitLog  data");
-  //   const queryString = {}
-  //   const j = request.jar();
-  //   const cookie = request.cookie('chleon-token=15c715d694469d95984039fe293822ea');
-  //   const fotaUrl = "http://test.smartautotech.com" + "/fota/data?" + qs.stringify(queryString);
-  //   j.setCookie(cookie, fotaUrl);
-  //   request({
-  //       method: 'GET',
-  //       url: fotaUrl,
-  //       jar: j
-  //     }, function (error, response, body) {
-  //       // console.log(error);
-  //       // console.log('-----');
-  //       try {
-  //         console.log("---------");
-  //         console.log(body);
-  //         const data = JSON.parse(body);
-  //         const fotaData = data;
-  //         console.log(fotaData.results);
-  //         console.log("---------");
-  //         res.json(
-  //           {
-  //             files: {
-  //               data: datetime(fota),
-  //               meta: ""
-  //             }
-  //           }
-  //         );
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     }
-  //   );
-  // })
   app.get('/api/file/commitLog/:id', function (req, res) {
     const queryString = {
       id: req.params.id
@@ -122,6 +87,9 @@ const file = function (app) {
       //   data: ,
       //   meta: ""
       // }
+      files:{
+        data:data
+      }
     });
   })
 }
