@@ -59,7 +59,7 @@ class FenceList extends React.Component {
         const {actions, fences:{data, meta, status}} = this.props;
 
         function retrieveFence(id) {
-            actions.retrieveFence(id);
+            actions.retrieveFence(w);
         }
 
         function confirm(id) {

@@ -7,7 +7,6 @@ import {
   FETCH_FILE_PENDING,
   FETCH_FILE_SUCCESS,
   EDIT_FILE,
-
   RETRIEVE_FILE_ERROR,
   RETRIEVE_FILE_PENDING,
   RETRIEVE_FILE_SUCCESS,
@@ -16,7 +15,11 @@ import {
   UPDATE_FILE_SUCCESS,
   DELETE_FILE_SUCCESS,
   DELETE_FILE_PENDING,
-  DELETE_FILE_ERROR
+  DELETE_FILE_ERROR,
+  EDIT_COMMITLOG_PENDING,
+  EDIT_COMMITLOG_SUCCESS,
+  EDIT_COMMITLOG_ERROR,
+  EDIT_COMMIT_LOG_FILE
 }from '../../actions/business/file'
 import {
   LIST,
@@ -76,6 +79,10 @@ export default function file(state = initialState, action = {}) {
       return Object.assign({}, state, {
         status: action.payload.status
       });
+    case EDIT_COMMIT_LOG_FILE:
+      return Object.assign({},state,{
+        status: action.payload.status
+      })
     // case CREATE_FENCE_SUCCESS:
     //   return Object.assign({}, initialState, {message: "success"});
     // case CREATE_FENCE_PENDING:
@@ -99,6 +106,14 @@ export default function file(state = initialState, action = {}) {
     case DELETE_FILE_PENDING:
       return Object.assign({}, initialState, {message: "pending"});
     case DELETE_FILE_ERROR:
+      return Object.assign({}, state, {message: "error"});
+    case EDIT_COMMITLOG_PENDING:
+      return Object.assign({}, state, {message: "pending"});
+    case EDIT_COMMITLOG_SUCCESS:
+      return Object.assign({}, state, {
+        message: action.payload.success
+      });
+    case EDIT_COMMITLOG_ERROR:
       return Object.assign({}, state, {message: "error"});
     default:
       return state;

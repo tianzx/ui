@@ -17,12 +17,12 @@ class EditModel extends React.Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>Edit Commit Log</Button>
-        <Modal title="Basic Modal" visible={this.state.visible}
+        {/*<Button type="primary" onClick={this.showModal}>Edit Commit Log</Button>*/}
+        <Modal title="edit commit log"
                onOk={this.handleOk} onCancel={this.handleCancel}
         >
           <textarea>
-            <p>some contents...</p><p>some contents...</p><p>some contents...</p>
+            some text
           </textarea>
         </Modal>
       </div>

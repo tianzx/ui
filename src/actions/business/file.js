@@ -13,6 +13,8 @@ export const FETCH_FILE_SUCCESS = 'FETCH_FILE_SUCCESS';
 export const FETCH_FILE_ERROR = 'FETCH_FILE_ERROR';
 export const FETCH_FILE = 'FETCH_FILE';
 export const EDIT_FILE = 'EDIT_FILE';
+export const EDIT_COMMIT_LOG = 'EDIT_COMMIT_LOG';
+export const EDIT_COMMIT_LOG_FILE = 'EDIT_COMMIT_LOG_FILE';
 /**
  * get one detail
  * @type {string}
@@ -26,6 +28,10 @@ export const UPDATE_FILE_ERROR = 'UPDATE_FILE_ERROR';
 export const DELETE_FILE_PENDING = 'DELETE_FENCE_PENDING';
 export const DELETE_FILE_SUCCESS = 'DELETE_FENCE_SUCCESS';
 export const DELETE_FILE_ERROR = 'DELETE_FENCE_ERROR';
+export const EDIT_COMMITLOG_PENDING = 'EDIT_COMMITLOG_PENDING';
+export const EDIT_COMMITLOG_SUCCESS = 'EDIT_COMMITLOG_SUCCESS';
+export const EDIT_COMMITLOG_ERROR = 'EDIT_COMMITLOG_ERROR';
+
 
 /**
  * lauch a get method to fetch json data
@@ -59,29 +65,14 @@ export function editFile() {
   };
 }
 
-// export function createFile(data) {
-//   return {
-//     type: 'CREATE_FILE',
-//     payload: {
-//       promise: api.post('/fence', {
-//         data: {
-//           fenceName: data.fenceName,
-//           agreement: data.agreement
-//         }
-//       }),
-//     }
-//   };
-// }
-
-// export function retrieveFile(id) {
-//   "use strict";
-//   return {
-//     type: 'RETRIEVE_FENCE',
-//     payload: {
-//       promise: api.get("/fence/" + id),
-//     }
-//   };
-// }
+export function editCommitLogFile() {
+  return {
+    type: EDIT_COMMIT_LOG_FILE,
+    payload : {
+      status: base.MODEL
+    }
+  }
+}
 
 export function updateFile(data) {
   "use strict";
@@ -109,7 +100,7 @@ export function deleteFile(id) {
   };
 }
 
-export function editCommitlog(id) {
+export function editCommitLog(id) {
   "use strict";
   return {
     type: 'EDIT_COMMIT_LOG',

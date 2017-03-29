@@ -7,10 +7,17 @@ import {bindActionCreators} from "redux";
 import {fetchNavPath} from '../../../actions/menu';
 import * as base from '../../../actions/base';
 import {Table, Icon, Popconfirm, Pagination} from 'antd';
-import {fetchFiles, editFile, retrieveFile, deleteFile} from '../../../actions/business/file';
+import {
+  fetchFiles,
+  editFile,
+  retrieveFile,
+  deleteFile,
+  editCommitLog,
+  editCommitLogFile
+} from '../../../actions/business/file';
 
-import {EditFile} from './EditFile';
-import {EditModel} from './EditModel';
+// import {EditFile} from './EditFile';
+import EditModel from './EditModel';
 
 class FileList extends React.Component {
   constructor(props) {
@@ -35,28 +42,26 @@ class FileList extends React.Component {
 
     return (
       <div>
-        <Table columns={columns} dataSource={data} pagination={false}  rowKey={data => data.key}
+        <Table columns={columns} dataSource={data} pagination={false} rowKey={data => data.key}
         />
         {/*<Pagination*/}
-          {/*className="ant-table-pagination"*/}
-          {/*total={meta.total}*/}
-          {/*current={meta.current}*/}
-          {/*pageSize={meta.pageSize}*/}
-          {/*onChange={this.handleChange}*/}
+        {/*className="ant-table-pagination"*/}
+        {/*total={meta.total}*/}
+        {/*current={meta.current}*/}
+        {/*pageSize={meta.pageSize}*/}
+        {/*onChange={this.handleChange}*/}
         {/*/>*/}
       </div>
     );
   }
 
-  // renderAdd() {
-  //   return (
-  //     <EditFile />
-  //   );
-  // }
   renderModel() {
-    <div>
-      <EditModel/>
-    </div>
+    return (
+      <div>
+        <EditModel/>
+        {/*<p>123</p>*/}
+      </div>
+    )
   }
 
   render() {
@@ -71,15 +76,21 @@ class FileList extends React.Component {
       actions.fetchFiles();
     }
 
+    function retrieveCommitLog(id) {
+      console.log("go into edit page");
+      actions.editCommitLogFile();
+      actions.editCommitLog(id);
+    }
+
     const columns = [{
       title: '源版本',
       dataIndex: 'sourceVersion',
       key: 'sourceVersion',
-    },{
+    }, {
       title: '目标版本',
       dataIndex: 'destVersion',
       key: 'destVersion',
-    },{
+    }, {
       title: '文件路径',
       dataIndex: 'filePath',
       key: 'filePath',
@@ -94,7 +105,7 @@ class FileList extends React.Component {
         key: 'operation',
         render: (text, record) => (
           <p>
-            <a onClick={retrieveFile.bind(this, record.id)}><Icon type="edit"/></a>
+            <a onClick={retrieveCommitLog.bind(this, record.id)}><Icon type="edit"/></a>
             &nbsp;&nbsp;
             <Popconfirm title="确定要删除吗？" onConfirm={confirm.bind(this, record.id)}>
               <a><Icon type="delete"/></a>
@@ -109,9 +120,10 @@ class FileList extends React.Component {
       page = this.renderList(actions, columns, data, meta);
     } else if (status == base.ADD || status == base.EDIT) {
       page = this.renderAdd();
-    } else if(status == base.MODEL) {
+    } else if (status == base.MODEL) {
       page = this.renderModel();
     }
+    console.log(page)
     return (
       page
     );
@@ -126,7 +138,17 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators({fetchFiles, editFile, retrieveFile, deleteFile, fetchNavPath}, dispatch)};
+  return {
+    actions: bindActionCreators({
+      fetchFiles,
+      editFile,
+      retrieveFile,
+      deleteFile,
+      fetchNavPath,
+      editCommitLog,
+      editCommitLogFile
+    }, dispatch)
+  };
 
 }
 
