@@ -56,6 +56,16 @@ const initialState = {
    * search 传入数据
    */
   searchData: {},
+
+  /**
+   * 查看commit_log 数据
+   */
+  commit_log: "",
+
+  /**
+   * 模态窗口是否显示
+   */
+  model_status: false,
 };
 export default function file(state = initialState, action = {}) {
   switch (action.type) {
@@ -111,6 +121,8 @@ export default function file(state = initialState, action = {}) {
       return Object.assign({}, state, {message: "pending"});
     case EDIT_COMMITLOG_SUCCESS:
       return Object.assign({}, state, {
+        model_status:true,
+        commit_log: action.payload.data,
         message: action.payload.success
       });
     case EDIT_COMMITLOG_ERROR:

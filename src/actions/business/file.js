@@ -105,7 +105,7 @@ export function editCommitLog(id) {
   return {
     type: 'EDIT_COMMIT_LOG',
     payload: {
-      promise: api.get('/file/commitlog/' + id)
+      promise: api.get('/file/commitLog/' + id)
     }
   }
 

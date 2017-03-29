@@ -77,7 +77,6 @@ class FileList extends React.Component {
     }
 
     function retrieveCommitLog(id) {
-      console.log("go into edit page");
       actions.editCommitLogFile();
       actions.editCommitLog(id);
     }
@@ -123,7 +122,6 @@ class FileList extends React.Component {
     } else if (status == base.MODEL) {
       page = this.renderModel();
     }
-    console.log(page)
     return (
       page
     );
