@@ -2,10 +2,13 @@
  * Created by tianzx on 2017/3/27.
  */
 import React from 'react';
-import {Modal, Button,Input} from 'antd';
+import {Modal, Button, Input, Form} from 'antd';
 import {editCommitLog} from '../../../actions/business/file';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+
+const FormItem = Form.Item;
+
 class EditModel extends React.Component {
 
   constructor(props) {
@@ -15,25 +18,40 @@ class EditModel extends React.Component {
   handleOk = (e) => {
     console.log(e);
   }
+
   handleCancel = (e) => {
     console.log(e);
   }
 
+  onChange = (e) => {
+    console.log('hehe');
+  }
+
   render() {
     const {actions, files: {commit_log, model_status}} = this.props;
-    console.log("___________________");
-    console.log( commit_log);
-    console.log( model_status);
-    console.log("___________________")
+    const {getFieldProps} = this.props.form;
+    const formItemLayout = {
+      labelCol: {span: 6},
+      wrapperCol: {span: 14},
+    };
     return (
       <div>
         {/*<Button type="primary" onClick={this.showModal}>Edit Commit Log</Button>*/}
         <Modal title="edit commit log" visible={model_status}
                onOk={this.handleOk} onCancel={this.handleCancel}
         >
+
           {/*<textarea value={commit_log}/>*/}
-          <Input type="textarea" value={commit_log} autosize />
+          <Form onSubmit={this.handleSubmit}>
+            <FormItem
+              label="commitLog"
+            >
+            </FormItem>
+          </Form>
         </Modal>
+
+        <Input type="textarea" onChange={this.onChange} value={123} autosize={{minRows: 2, maxRows: 6}}/>
+
       </div>
     );
   }
@@ -48,15 +66,15 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   // return {actions: bindActionCreators({fetchFiles, editFile, retrieveCommitLog, deleteFile, fetchNavPath}, dispatch)};
-  return {actions: bindActionCreators({editCommitLog}),dispatch};
+  return {actions: bindActionCreators({editCommitLog}), dispatch};
 }
 
 EditModel.propTypes = {
+  form: React.PropTypes.object.isRequired,
   actions: React.PropTypes.object,
   files: React.PropTypes.object
 };
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditModel);
+)(Form.create()(EditModel));
