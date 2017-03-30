@@ -50,7 +50,7 @@ class EditModel extends React.Component {
           </Form>
         </Modal>
 
-        <Input type="textarea" onChange={this.onChange} value={123} autosize={{minRows: 2, maxRows: 6}}/>
+        <Input type="textarea" onChange={this.onChange} value={commit_log} autosize={{minRows: 2, maxRows: 6}}/>
 
       </div>
     );
