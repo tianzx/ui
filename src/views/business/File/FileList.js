@@ -51,6 +51,7 @@ class FileList extends React.Component {
         {/*pageSize={meta.pageSize}*/}
         {/*onChange={this.handleChange}*/}
         {/*/>*/}
+        <EditModel/>
       </div>
     );
   }

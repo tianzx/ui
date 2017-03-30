@@ -69,8 +69,8 @@ export function editCommitLogFile() {
   return {
     type: EDIT_COMMIT_LOG_FILE,
     payload : {
-      model_status : true,
-      status: base.MODEL
+      status: base.LIST,
+      model_status : true
     }
   }
 }

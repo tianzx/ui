@@ -9,7 +9,7 @@ exports.get = function (queryStringData = {id:289}, func,serviceName = "/fota/co
 
   const queryString = queryStringData;
   const j = request.jar();
-  const cookie = request.cookie('chleon-token=bde9ba4ad5f1e9dab9ce52f56d658f19');
+  const cookie = request.cookie('chleon-token=83943b6cb2ad9c84c5503d5db3c6064e');
   const requestUrl = url + serviceName + qs.stringify(queryString);
   j.setCookie(cookie, requestUrl);
   console.log("--------- begin request-------");
