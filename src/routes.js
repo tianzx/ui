@@ -2,8 +2,8 @@
  * Created by tianzx on 16/8/17.
  */
 import React from 'react';
-import Route  from 'react-router';
-import IndexRoute  from 'react-router';
+import {Route}  from 'react-router';
+import {IndexRoute}  from 'react-router';
 import App from './views/App';
 import Home from './views/Home';
 import Login from './views/Login';
