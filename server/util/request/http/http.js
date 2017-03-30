@@ -5,11 +5,11 @@ const http = require('http');
 const request = require('request');
 const qs = require('qs');
 
-exports.get = function (queryStringData = {id:289}, serviceName = "/fota/commitLog?", url= "http://test.smartautotech.com") {
+exports.get = function (queryStringData = {id:289}, func,serviceName = "/fota/commitLog?", url= "http://test.smartautotech.com") {
 
   const queryString = queryStringData;
   const j = request.jar();
-  const cookie = request.cookie('chleon-token=4f656a385c32811f2655b53aa53206fa');
+  const cookie = request.cookie('chleon-token=bde9ba4ad5f1e9dab9ce52f56d658f19');
   const requestUrl = url + serviceName + qs.stringify(queryString);
   j.setCookie(cookie, requestUrl);
   console.log("--------- begin request-------");
@@ -23,9 +23,7 @@ exports.get = function (queryStringData = {id:289}, serviceName = "/fota/commitL
         const data = JSON.parse(body);
         // console.log(data);
         console.log("--------- finish request------");
-        return {
-          data: 123
-        }
+        func(data);
       } catch (error) {
         console.log(error);
       }

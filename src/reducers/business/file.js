@@ -61,7 +61,7 @@ const initialState = {
   /**
    * 查看commit_log 数据
    */
-  commit_log: "",
+  commit_log: '',
 
   /**
    * 模态窗口是否显示
@@ -123,7 +123,7 @@ export default function file(state = initialState, action = {}) {
       return Object.assign({}, state, {message: "pending"});
     case EDIT_COMMIT_LOG_SUCCESS:
       return Object.assign({}, state, {
-        commit_log: "123123123123",
+        commit_log: action.payload.files.data.commitLog,
         message: "success"
       });
     case EDIT_COMMIT_LOG_ERROR:

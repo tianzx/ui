@@ -23,6 +23,7 @@ class EditModel extends React.Component {
     const {actions, files: {commit_log, model_status}} = this.props;
     console.log("___________________");
     console.log( commit_log);
+    console.log( model_status);
     console.log("___________________")
     return (
       <div>

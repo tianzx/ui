@@ -52,15 +52,8 @@ const file = function (app) {
         // console.log(error);
         // console.log('-----');
         try {
-          // console.log("---------");
-          // console.log(body);
           const data = JSON.parse(body);
           const fotaData = data;
-          // console.log(fotaData.results);
-          // console.log("---------");
-          /**
-           * now it is just for simulation
-           */
           res.json(
             {
               files: {
@@ -80,14 +73,17 @@ const file = function (app) {
     const queryString = {
       id: req.params.id
     }
-    console.log("commitLog id is "+req.params.id);
-    const data = myHttp.get(queryString);
-    console.log(data);
-    res.json({
-      files: {
-        data: 123,
-      }
-    });
+
+    const func = function (data) {
+      res.json({
+        files: {
+          data: data,
+        }
+      });
+    }
+
+    myHttp.get(queryString,func);
+
   })
 }
 
