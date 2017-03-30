@@ -1,51 +1,65 @@
 const path = require('path');
 const webpack = require('webpack');
-// const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
-    devtool: 'eval-source-map',
-    entry: [
-        'webpack-hot-middleware/client',
-        './src/index'
-    ],
-    output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js',
-        publicPath: '/dist'
-    },
-    plugins: [
-        // new webpack.NoErrorsPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
-        }),
-        // new OpenBrowserPlugin({ url: 'http://localhost:7777' })
-    ],
-    resolve: {
-        extensions: ['', '.js', '.jsx']
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loaders: ['babel'],
-                exclude: /node_modules/,
-                include: __dirname
-            },
-            {
-                //    /(\.css|\.scss)$/
-                test: /(\.css|\.less)$/,
-                loaders: [
-                    'style-loader',
-                    'css-loader',
-                    'less-loader?{"sourceMap":true}'
-                ],
-            },
-            {
-                test: /\.(jpe?g|png|gif|svg)$/,
-                loader: 'url',
-                query: {limit: 10240}
-            }
+  devtool: 'eval-source-map',
+  entry: [
+    'webpack-hot-middleware/client',
+    './src/index'
+  ],
+  output: {
+    path: __dirname + '/src',
+    filename: 'bundle.js',
+    publicPath: '/dist'
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        include: __dirname,
+        use: [{
+          loader: "babel-loader",
+        },
         ]
-    }
+      },
+      {
+        test: /(\.css|\.less)$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            // options: {
+            //   query: {limit: 10240}
+            // }
+          }
+        ]
+      }
+    ]
+  }
 };
