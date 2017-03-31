@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-
+process.traceDeprecation = true;
 module.exports = {
   devtool: 'eval-source-map',
   entry: [
@@ -37,10 +37,6 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-            // options: {
-            //   modules: true
-            // }
-
           },
           {
             loader: 'less-loader',
@@ -55,9 +51,6 @@ module.exports = {
         use: [
           {
             loader: 'url-loader',
-            // options: {
-            //   query: {limit: 10240}
-            // }
           }
         ]
       }

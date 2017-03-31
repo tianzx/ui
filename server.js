@@ -17,8 +17,8 @@ if (isDeveloping) {
   require('babel-register')
   const webpack = require('webpack');
   console.log('enter develop');
-  var DashboardPlugin = require('webpack-dashboard/plugin');
-  var Dashboard = require('webpack-dashboard');
+  // var DashboardPlugin = require('webpack-dashboard/plugin');
+  // var Dashboard = require('webpack-dashboard');
   const config = require('./webpack.devleop.config.js');
   const compiler = webpack(config);
   // var dashboard = new Dashboard();
