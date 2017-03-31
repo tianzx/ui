@@ -24,33 +24,38 @@ class EditModel extends React.Component {
   }
 
   onChange = (e) => {
-    console.log('hehe');
+    // console.log(e.target.value);
+  }
+
+  handleSubmit = (e) => {
+    // const {actions, files, form} = this.props;
+    e.preventDefault();
+    console.log(this.props.form.getFieldsValue())
   }
 
   render() {
     const {actions, files: {commit_log, model_status}} = this.props;
-    const {getFieldProps} = this.props.form;
+    const {getFieldDecorator} = this.props.form;
     const formItemLayout = {
       labelCol: {span: 6},
       wrapperCol: {span: 14},
     };
+
     return (
       <div>
         {/*<Button type="primary" onClick={this.showModal}>Edit Commit Log</Button>*/}
         <Modal title="edit commit log" visible={model_status}
-               onOk={this.handleOk} onCancel={this.handleCancel}
+               onOk={this.handleSubmit} onCancel={this.handleCancel}
         >
 
-          {/*<textarea value={commit_log}/>*/}
-          <Form onSubmit={this.handleSubmit}>
-            <FormItem
-              label="commitLog"
-            >
-            </FormItem>
+          <Form >
+
+            {getFieldDecorator('commit_log', {
+              rules: [{required: true, message: 'commit_log is required!'}],
+              initialValue: commit_log
+            })(<Input  type="textarea" autosize={{minRows: 2, maxRows: 6}}/>)}
           </Form>
         </Modal>
-
-        <Input type="textarea" onChange={this.onChange} value={commit_log} autosize={{minRows: 2, maxRows: 6}}/>
 
       </div>
     );

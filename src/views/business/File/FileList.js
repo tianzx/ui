@@ -59,7 +59,7 @@ class FileList extends React.Component {
   renderModel() {
     return (
       <div>
-        <EditModel/>
+        {/*<EditModel/>*/}
         {/*<p>123</p>*/}
       </div>
     )
