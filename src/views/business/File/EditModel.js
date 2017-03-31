@@ -15,19 +15,11 @@ class EditModel extends React.Component {
     super(props);
   }
 
-  handleOk = (e) => {
-    console.log(e);
-  }
 
-  handleCancel = (e) => {
-    console.log(e);
-  }
 
-  onChange = (e) => {
-    // console.log(e.target.value);
-  }
 
-  handleSubmit = (e) => {
+
+  handleSubmit (e) {
     // const {actions, files, form} = this.props;
     e.preventDefault();
     console.log(this.props.form.getFieldsValue())

@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-process.traceDeprecation = true;
+var HappyPack = require('happypack');
+
 module.exports = {
   devtool: 'eval-source-map',
   entry: [
@@ -17,6 +18,12 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
     }),
+    new HappyPack({
+      loaders: [{
+        loader: 'babel-loader',
+      }],
+      threads: 4
+    })
   ],
   module: {
     rules: [
@@ -25,12 +32,14 @@ module.exports = {
         exclude: /node_modules/,
         include: __dirname,
         use: [{
-          loader: "babel-loader",
+          loader: "happypack/loader",
         },
         ]
       },
       {
         test: /(\.css|\.less)$/,
+        // exclude: /node_modules/,
+        include: __dirname,
         use: [
           {
             loader: 'style-loader'
@@ -40,14 +49,12 @@ module.exports = {
           },
           {
             loader: 'less-loader',
-            options: {
-              sourceMap: true
-            }
           }
         ]
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'url-loader',

@@ -7,8 +7,12 @@
   "plugins": [
     "transform-runtime",
     "transform-decorators-legacy",
-    "add-module-exports",
-    ["import",{"libraryName": "antd","style": true, "libraryDirectory": "lib"}]
+    "add-module-exports"
+//    ["import",  {
+//      "libraryName": "antd",
+//      "libraryDirectory": "lib",   // default: lib
+//      "style": true
+//    }]
   ],
   "env": {
     "development": {
