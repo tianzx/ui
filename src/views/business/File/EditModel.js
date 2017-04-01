@@ -15,10 +15,6 @@ class EditModel extends React.Component {
     super(props);
   }
 
-
-
-
-
   handleSubmit (e) {
     // const {actions, files, form} = this.props;
     e.preventDefault();
