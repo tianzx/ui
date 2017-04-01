@@ -5,6 +5,7 @@
   "license": "MIT",
   "main": "index.js",
   "engines": {"node": "7.0.0","npm":"4.0"},
+  "author": "tianzx",
   "keywords": ["react","redux","router","antdesign","webpack","eslint","babel","es6","hot-updte","webpack-optimize"],
   "repository": {
     "type": "git",
