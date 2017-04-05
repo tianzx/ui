@@ -11,8 +11,8 @@ module.exports = {
   },
   output: {
     path: __dirname + '/dist',
-    filename: "[name].[chunkhash:6].js",
-    chunkFilename: "[chunkhash].js",
+    filename: "[name]-[chunkhash:6].js",
+    // chunkFilename: "[chunkhash].js",
     publicPath: './',
   },
   plugins: [
@@ -33,23 +33,23 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: true,
-      compress: {
-        unused: true,
-        dead_code: true, // big one--strip code that will never execute
-        warnings: false, // good for prod apps so users can't peek behind curtain
-        drop_debugger: true,
-        conditionals: true,
-        evaluate: true,
-        drop_console: true, // strips console statements
-        sequences: true,
-        booleans: true,
-      }, output: {
-        comments: false,  // remove all comments
-      },
-      exclude: [/\.min\.js$/gi] // skip pre-minified libs
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   mangle: true,
+    //   compress: {
+    //     unused: true,
+    //     dead_code: true, // big one--strip code that will never execute
+    //     warnings: false, // good for prod apps so users can't peek behind curtain
+    //     drop_debugger: true,
+    //     conditionals: true,
+    //     evaluate: true,
+    //     drop_console: true, // strips console statements
+    //     sequences: true,
+    //     booleans: true,
+    //   }, output: {
+    //     comments: false,  // remove all comments
+    //   },
+    //   exclude: [/\.min\.js$/gi] // skip pre-minified libs
+    // }),
     // new webpack.optimize.UglifyJsPlugin({
     //   beautify: false,
     //   mangle: {
@@ -61,19 +61,14 @@ module.exports = {
     //   },
     //   comments: false
     // }),
-    new webpack.optimize.CommonsChunkPlugin([
-        {
-          name: 'vendor', filename: 'vendor-[chunkhash:6].js',
-          // minChunks: 3
-        },
-      ]
-    ),
-    new webpack.optimize.CommonsChunkPlugin([
-        {
-          name: 'bundle', filename: 'bundle-[chunkhash:6].js',
-        },
-      ]
-    ),
+    // new webpack.optimize.CommonsChunkPlugin([
+    //     {
+    //       name: 'vendor', filename: 'vendor-[chunkhash:6].js',
+    //       name: 'bundle', filename: 'bundle-[chunkhash:6].js',
+    //     },
+    //   ]
+    // ),
+
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),

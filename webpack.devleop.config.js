@@ -32,13 +32,13 @@ module.exports = {
         exclude: /node_modules/,
         include: __dirname,
         use: [{
-          loader: "happypack/loader",
+          loader: "babel-loader",
         },
         ]
       },
       {
         test: /(\.css|\.less)$/,
-        // exclude: /node_modules/,
+        exclude: /node_modules/,
         include: __dirname,
         use: [
           {
@@ -49,7 +49,7 @@ module.exports = {
           },
           {
             loader: 'less-loader',
-          }
+          },
         ]
       },
       {
