@@ -7,13 +7,13 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     bundle: './src/index',
-    vendor: ['react', 'lodash','antd']
+    vendor: ['antd', 'lodash', 'react']
   },
   output: {
     path: __dirname + '/dist',
     filename: "[name].[chunkhash:6].js",
     chunkFilename: "[chunkhash].js",
-    publicPath: './'
+    publicPath: './',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -30,7 +30,9 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
-
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    }),
     new webpack.optimize.UglifyJsPlugin({
       mangle: true,
       compress: {
@@ -48,11 +50,29 @@ module.exports = {
       },
       exclude: [/\.min\.js$/gi] // skip pre-minified libs
     }),
-    new webpack.optimize.CommonsChunkPlugin(
-      {
-        name: 'vendor', filename: 'vendor-[chunkhash:6].js',
-        name: 'bundle', filename: 'bundle-[chunkhash:6].js'
-      }
+    // new webpack.optimize.UglifyJsPlugin({
+    //   beautify: false,
+    //   mangle: {
+    //     screw_ie8: true,
+    //     keep_fnames: true
+    //   },
+    //   compress: {
+    //     screw_ie8: true
+    //   },
+    //   comments: false
+    // }),
+    new webpack.optimize.CommonsChunkPlugin([
+        {
+          name: 'vendor', filename: 'vendor-[chunkhash:6].js',
+          // minChunks: 3
+        },
+      ]
+    ),
+    new webpack.optimize.CommonsChunkPlugin([
+        {
+          name: 'bundle', filename: 'bundle-[chunkhash:6].js',
+        },
+      ]
     ),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
@@ -107,4 +127,5 @@ module.exports = {
       },
     ]
   }
-};
+}
+;
