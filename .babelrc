@@ -1,3 +1,4 @@
+
 {
   "presets": [
     "es2015",
@@ -8,13 +9,7 @@
     "transform-runtime",
     "transform-decorators-legacy",
     "add-module-exports",
-    [
-      "import",
-      {
-        "libraryName": "antd",
-        "style": "less"
-      }
-    ]
+    ["import",{"libraryName": "antd","style": true, "libraryDirectory": "lib"}]
   ],
   "env": {
     "development": {

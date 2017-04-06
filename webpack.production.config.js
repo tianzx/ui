@@ -6,8 +6,9 @@ const HappyPack = require('happypack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
-    bundle: './src/index',
-    vendor: ['antd', 'lodash', 'react']
+    main: './src/index',
+    vendor: [ 'antd'],
+    // vendor2: ['antd']
   },
   output: {
     path: __dirname + '/dist',
@@ -63,8 +64,7 @@ module.exports = {
     // }),
     // new webpack.optimize.CommonsChunkPlugin([
     //     {
-    //       name: 'vendor', filename: 'vendor-[chunkhash:6].js',
-    //       name: 'bundle', filename: 'bundle-[chunkhash:6].js',
+    //       name: 'vendor'
     //     },
     //   ]
     // ),
