@@ -7,7 +7,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     main: './src/index',
-    vendor: [ 'antd'],
+    vendor: [ 'react'],
     // vendor2: ['antd']
   },
   output: {
@@ -72,18 +72,19 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
-    new HappyPack({
-      loaders: [{
-        loader: 'babel-loader',
-      }],
-      threads: 4
-    }),
+    // new HappyPack({
+    //   loaders: [{
+    //     loader: 'babel-loader',
+    //   }],
+    //   threads: 4
+    // }),
     new CopyWebpackPlugin([
       {from: path.join(__dirname, 'asserts') + '/**/*', to: path.join(__dirname, 'dist') + '/'},
+      {from: path.join(__dirname, 'server/**/*'), to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'server.js'), to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'package.json'), to: path.join(__dirname, 'dist') + '/'},
-      {from: path.join(__dirname, '/server/controller/map.js'), to: path.join(__dirname, 'dist') + '/controller'},
-      {from: path.join(__dirname, 'fake/*'), to: path.join(__dirname, 'dist') + '/fake'},
+      // {from: path.join(__dirname, '/server/controller/map.js'), to: path.join(__dirname, 'dist') + '/controller'},
+      {from: path.join(__dirname, 'fake/*'), to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'config.json'), to: path.join(__dirname, 'dist') + '/'},
     ]),
 
@@ -97,8 +98,8 @@ module.exports = {
         exclude: /node_modules/,
         include: __dirname,
         use: [{
-          // loader: "babel-loader",
-          loader: "happypack/loader",
+          loader: "babel-loader",
+          // loader: "happypack/loader",
         }]
       },
       {
