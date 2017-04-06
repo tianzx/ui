@@ -11,7 +11,7 @@ export default class Footer extends React.Component {
 
     return (
       <div className="ant-layout-footer">
-      和骊安 版权所有 © 2017 cloud.smartautotech.com
+      和骊安 版权所有 © 2017 smartautotech.com
       </div>
     );
   }
