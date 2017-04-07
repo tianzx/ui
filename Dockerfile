@@ -10,7 +10,7 @@ ENV NODE_ENV=develop
 
 # 將專案根目錄的檔案加入至 container
 # 安裝 npm package
-ADD . /ui
+ADD /dist /ui
 RUN  npm install && npm run build
 
 # 開放 container 的 8080 port
