@@ -6,7 +6,7 @@ FROM node:7.8
 # 設定 container 的預設目錄位置
 WORKDIR /ui
 
-ENV NODE_ENV=production
+ENV NODE_ENV=develop
 
 # 將專案根目錄的檔案加入至 container
 # 安裝 npm package
