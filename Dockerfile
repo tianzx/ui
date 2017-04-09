@@ -15,4 +15,4 @@ RUN  npm install && npm run build
 
 # 開放 container 的 8080 port
 EXPOSE 8080
-CMD cd /ui/dist && npm start
+CMD npm start
