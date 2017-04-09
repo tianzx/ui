@@ -1,7 +1,7 @@
 # Dockerfile
 
 # 從 [Docker Hub](https://hub.docker.com/) 安裝 Node.js image。
-FROM node:6.0
+FROM node:6.10.0
 
 # 設定 container 的預設目錄位置
 WORKDIR /ui
