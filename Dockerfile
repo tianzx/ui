@@ -12,7 +12,7 @@ WORKDIR /ui/dist
 # 安裝 npm package
 # dev 处于编译状态
 ADD . /ui
-RUN  pwd && yum install nodejs && export NODE_ENV=develop && npm install && npm run build
+RUN  pwd && export NODE_ENV=develop && npm install && npm run build
 
 # 開放 container 的 8080 port
 # prod 处于正式上线态
