@@ -13,8 +13,7 @@ WORKDIR /ui/dist
 # 安裝 npm package
 # dev 处于编译状态
 ADD . /ui
-RUN  pwd && export NODE_ENV=develop && npm install rimraf -g && cd /ui && npm install && npm run build
-      && cd /ui/dist && export NODE_ENV=production && npm install
+RUN  pwd && export NODE_ENV=develop && npm install rimraf -g && cd /ui && npm install && npm run build && cd /ui/dist && export NODE_ENV=production && npm install
 
 # 開放 container 的 8080 port
 # prod 处于正式上线态
