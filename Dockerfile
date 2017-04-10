@@ -1,10 +1,10 @@
 # Dockerfile
 
 # 從 [Docker Hub](https://hub.docker.com/) 安裝 Node.js image。
-FROM node:6.10.0
+FROM dockerfile /centos:latest
 
 # 設定 container 的預設目錄位置
-WORKDIR /ui
+WORKDIR /ui/dist
 
 #ENV NODE_ENV=develop
 
@@ -12,7 +12,7 @@ WORKDIR /ui
 # 安裝 npm package
 # dev 处于编译状态
 ADD . /ui
-RUN  pwd && export NODE_ENV=develop && npm install && npm run build
+RUN  pwd && yum install nodejs && export NODE_ENV=develop && npm install && npm run build
 
 # 開放 container 的 8080 port
 # prod 处于正式上线态
