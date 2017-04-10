@@ -1,3 +1,4 @@
+
 # Dockerfile
 
 # 從 [Docker Hub](https://hub.docker.com/) 安裝 Node.js image。
@@ -12,9 +13,10 @@ WORKDIR /ui
 # 安裝 npm package
 # dev 处于编译状态
 ADD . /ui
-RUN  pwd && export NODE_ENV=develop && npm install rimraf -g && npm install && npm run build
+RUN  pwd && export NODE_ENV=develop && npm install rimraf -g && cd /ui && npm install && npm run build
 
 # 開放 container 的 8080 port
 # prod 处于正式上线态
 EXPOSE 8080
-CMD  export NODE_ENV=production && npm install && cd dist && npm start
+CMD  export NODE_ENV=production && cd /ui/dist && npm install  && npm start
+
