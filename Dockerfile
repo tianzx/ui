@@ -1,7 +1,7 @@
 # Dockerfile
 
 # 從 [Docker Hub](https://hub.docker.com/) 安裝 Node.js image。
-FROM dockerfile /centos:latest
+FROM dockerfile nodejs:latest
 
 # 設定 container 的預設目錄位置
 WORKDIR /ui/dist
