@@ -14,6 +14,7 @@ script:
   - npm run build
 after_script:
   # 将生成的静态文件，初始化为 git 仓库
+  - cd  dist
   - git init
   - git config user.name "tianzx"
   - git config user.email "tianzx@aliyun.com"
