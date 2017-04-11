@@ -4,21 +4,29 @@
 # 從 [Docker Hub](https://hub.docker.com/) 安裝 Node.js image。
 FROM node:7.8
 
-RUN mkdir -p /node_ui
-
-RUN  export NODE_ENV=develop && npm install rimraf -g && npm install && npm run build
-
 # 設定 container 的預設目錄位置
-WORKDIR /node_ui
 
 #ENV NODE_ENV=develop
 
 # 將專案根目錄的檔案加入至 container
 # 安裝 npm package
 # dev 处于编译状态
-COPY  /dist /node_ui
+COPY  . /ui
 
-RUN ls -la /node_ui/*
+WORKDIR /ui
+
+RUN  export NODE_ENV=develop && npm install rimraf -g && npm install && npm run build
+
+RUN ls -la *
+
+RUN rm -rf ./!(dist)
+
+RUN ls -la *
+
+RUN cp -r dist ../
+
+RUN ls -la *
+
 
 # cd /ui
 #&& npm install && npm run build && cd /ui/dist
