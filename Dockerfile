@@ -14,7 +14,7 @@ WORKDIR /bin
 # 安裝 npm package
 # dev 处于编译状态
 RUN   export NODE_ENV=develop && npm install rimraf -g && npm install && npm run build
-COPY  ./dist/ /bin/
+COPY  /dist/ /bin/
 RUN ls -la /bin/*
 
 # cd /ui
