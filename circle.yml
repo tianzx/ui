@@ -1,13 +1,13 @@
-machine:
-  node:
-    version: 7
-
-dependencies:
-  pre:
-    # Clean out node-modules to prevent issues with circle-ci's caching.
-    - rm -rf node_modules
-
-test:
-  post:
-    - npm run build
-    - cp -R ./dist/* $CIRCLE_ARTIFACTS
+#machine:
+#  node:
+#    version: 7
+#
+#dependencies:
+#  pre:
+#    # Clean out node-modules to prevent issues with circle-ci's caching.
+#    - rm -rf node_modules
+#
+#test:
+#  post:
+#    - npm run build
+#    - cp -R ./dist/* $CIRCLE_ARTIFACTS
