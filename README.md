@@ -9,6 +9,8 @@
 - [webpack](https://webpack.github.io/)
 - [mocha](https://mochajs.org/)
 - [enzyme](https://github.com/airbnb/enzyme)
+- [Travis](https://travis-ci.org/)
+- [Docker](https://www.docker.com/)
 
 ## Getting Started
 

@@ -51,24 +51,6 @@ module.exports = {
       },
       exclude: [/\.min\.js$/gi] // skip pre-minified libs
     }),
-    // new webpack.optimize.UglifyJsPlugin({
-    //   beautify: false,
-    //   mangle: {
-    //     screw_ie8: true,
-    //     keep_fnames: true
-    //   },
-    //   compress: {
-    //     screw_ie8: true
-    //   },
-    //   comments: false
-    // }),
-    // new webpack.optimize.CommonsChunkPlugin([
-    //     {
-    //       name: 'vendor'
-    //     },
-    //   ]
-    // ),
-
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
