@@ -6,6 +6,7 @@ cache:
     - node_modules
 install:
   - rm -rf package.json
+  - mv package.complie.json package.json
   - npm install
 before_script:
   - echo "begin"
