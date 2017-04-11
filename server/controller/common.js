@@ -2,7 +2,7 @@
  * Created by tianzx on 2016/11/1.
  */
 const config = require('../../config.json');
-const Buffer = require('Buffer');
+// const Buffer = require('Buffer');
 const qs = require('qs');
 const request = require('request');
 
