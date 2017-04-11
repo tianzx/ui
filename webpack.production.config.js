@@ -86,6 +86,7 @@ module.exports = {
       // {from: path.join(__dirname, '/server/controller/map.js'), to: path.join(__dirname, 'dist') + '/controller'},
       {from: path.join(__dirname, 'fake/*'), to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'config.json'), to: path.join(__dirname, 'dist') + '/'},
+      {from: path.join(__dirname, 'Dockerfile'), to: path.join(__dirname, 'dist') + '/'},
     ]),
 
     new ExtractTextPlugin("styles-[chunkhash:6].css"),
