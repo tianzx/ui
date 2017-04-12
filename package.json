@@ -1,12 +1,12 @@
 {
   "name": "ui",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "frontend template to separate with backend",
   "license": "MIT",
   "main": "index.js",
   "engines": {
-    "node": "7.0.0",
-    "npm": "4.0"
+    "node": "7.9.0",
+    "npm": "4.2"
   },
   "author": "tianzx",
   "keywords": [
@@ -19,7 +19,9 @@
     "babel",
     "es6",
     "hot-updte",
-    "webpack-optimize"
+    "webpack-optimize",
+    "docker",
+    "travis"
   ],
   "repository": {
     "type": "git",
