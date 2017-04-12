@@ -1,5 +1,5 @@
 
-FROM node:7.8
+FROM mhart/alpine-node:latest
 
 ENV NODE_ENV=production
 
