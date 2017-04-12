@@ -1,9 +1,9 @@
 /**
  * Created by tianzx on 2017/3/20.
  */
-import * as React from "react";
+import React,{Component} from 'react';
 import FileList from "./FileList";
-export default class File extends React.Component {
+export default class File extends Component {
 
   render() {
     return(

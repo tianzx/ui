@@ -1,14 +1,15 @@
 /**
  * Created by tianzx on 2016/10/25.
  */
-import React from 'react';
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {
   withGoogleMap, GoogleMap, Polyline,
 } from "react-google-maps";
 // import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-class RoutesDetail extends React.Component {
+class RoutesDetail extends Component {
 
   render() {
     const {maps:{map}} = this.props;
@@ -54,7 +55,7 @@ function mapStateToProps(state) {
 // }
 
 RoutesDetail.propTypes = {
-  actions: React.PropTypes.object,
+  actions: PropTypes.object,
 };
 export default connect(
   mapStateToProps,

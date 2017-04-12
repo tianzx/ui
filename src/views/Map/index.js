@@ -1,9 +1,9 @@
 /**
  * Created by tianzx on 2016/10/24.
  */
-import React from 'react';
+import React,{Component} from 'react';
 import RoutesList from './RoutesList';
-export default class Map extends React.Component {
+export default class Map extends Component {
 
   render() {
     return(

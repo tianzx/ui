@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Menu, Icon} from 'antd';
@@ -19,7 +20,7 @@ const propTypes = {
     updateNavPath: PropTypes.func
 };
 
-class Sidebar extends React.Component {
+class Sidebar extends Component {
     constructor(props) {
         super(props);
         this.menuClickHandle = this.menuClickHandle.bind(this);

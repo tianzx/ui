@@ -1,7 +1,8 @@
 /**
  * Created by tianzx on 2017/3/27.
  */
-import React from 'react';
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {Modal, Button, Input, Form} from 'antd';
 import {editCommitLog} from '../../../actions/business/file';
 import {connect} from "react-redux";
@@ -9,7 +10,7 @@ import {bindActionCreators} from "redux";
 
 const FormItem = Form.Item;
 
-class EditModel extends React.Component {
+class EditModel extends Component {
 
   constructor(props) {
     super(props);
@@ -63,9 +64,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 EditModel.propTypes = {
-  form: React.PropTypes.object.isRequired,
-  actions: React.PropTypes.object,
-  files: React.PropTypes.object
+  form: PropTypes.object.isRequired,
+  actions: PropTypes.object,
+  files: PropTypes.object
 };
 export default connect(
   mapStateToProps,

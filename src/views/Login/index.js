@@ -1,4 +1,6 @@
-import React, {PropTypes} from 'react';
+// import React, {PropTypes} from 'react';
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {Form, Input, Button, Row, Col, notification} from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -19,7 +21,7 @@ const contextTypes = {
     store: PropTypes.object.isRequired
 };
 
-class Login extends React.Component {
+class Login extends Component {
 
     constructor(props) {
         super(props);

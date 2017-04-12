@@ -1,10 +1,10 @@
 /**
  * Created by tianzx on 16/9/5.
  */
-import React from 'react';
+import React,{Component} from 'react';
 import { Button} from 'antd';
 import   './index.less';
-export default class NotFound extends React.Component {
+export default class NotFound extends Component {
 
     render() {
         return(

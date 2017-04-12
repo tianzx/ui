@@ -1,10 +1,9 @@
-import React from 'react';
-
+import React,{Component} from 'react';
 import './index.less';
 
 
 
-export default class Home extends React.Component {
+export default class Home extends Component {
     // state = {
     //     center: [39.942157, 116.415192],
     //     zoom: 19,

@@ -1,8 +1,8 @@
-import React from 'react';
-
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import './index.less';
 
-export class PanelBox extends React.Component {
+export class PanelBox extends Component {
   constructor () {
     super();
   }

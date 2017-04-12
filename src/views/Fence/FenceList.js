@@ -1,7 +1,8 @@
 /**
  * Created by tianzx on 16/8/26.
  */
-import React from 'react';
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Table, Icon, Popconfirm, Pagination} from 'antd';
@@ -11,7 +12,7 @@ import {fetchNavPath} from '../../actions/menu';
 import EditFence from './EditFence';
 import FenceSearch from './FenceSearch';
 
-class FenceList extends React.Component {
+class FenceList extends Component {
     constructor(props) {
         super(props);
     }
@@ -115,8 +116,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 FenceList.propTypes = {
-    actions: React.PropTypes.object,
-    fences: React.PropTypes.object
+    actions: PropTypes.object,
+    fences: PropTypes.object
 };
 
 export default connect(

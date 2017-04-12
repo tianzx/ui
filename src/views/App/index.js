@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import NavPath from '../../components/NavPath';
@@ -9,7 +10,7 @@ import {fetchProfile, logout} from '../../actions/login';
 import Login from '../Login/index';
 import './index.less';
 
-class App extends React.Component {
+class App extends Component {
     constructor(props) {
         super(props);
     }
@@ -61,9 +62,9 @@ function mapDispatchToProps(dispatch) {
     return { actions: bindActionCreators({ fetchProfile, logout }, dispatch) };
 }
 App.propTypes = {
-    actions: React.PropTypes.object,
-    user: React.PropTypes.string,
-    children: React.PropTypes.node.isRequired,
-    isAuthenticated: React.PropTypes.bool
+    actions: PropTypes.object,
+    user: PropTypes.string,
+    children: PropTypes.node.isRequired,
+    isAuthenticated: PropTypes.bool
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

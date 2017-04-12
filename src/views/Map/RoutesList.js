@@ -1,7 +1,8 @@
 /**
  * Created by tianzx on 2016/10/25.
  */
-import React from 'react';
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {LIST,DETAIL} from '../../actions/base';
@@ -9,7 +10,7 @@ import {retrieveMap} from '../../actions/map';
 import RoutesDetail from './RoutesDetail';
 import RoutesSearch from './RoutesSearch';
 
-class RoutesList extends React.Component {
+class RoutesList extends Component {
   constructor(props) {
     super(props);
   }
@@ -59,8 +60,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 RoutesList.propTypes = {
-  actions: React.PropTypes.object,
-  routes: React.PropTypes.object
+  actions: PropTypes.object,
+  routes: PropTypes.object
 };
 
 

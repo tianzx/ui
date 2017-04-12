@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {Icon, Menu} from 'antd';
 import './index.less';
 import {connect} from 'react-redux';
@@ -9,7 +10,7 @@ import Cookies from 'js-cookie';
 
 const SubMenu = Menu.SubMenu;
 
-class Header extends React.Component {
+class Header extends Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -60,8 +61,8 @@ function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators({logout}, dispatch)};
 }
 Header.propTypes = {
-  actions: React.PropTypes.object,
-  user: React.PropTypes.string
+  actions: PropTypes.object,
+  user: PropTypes.string
 };
 export default connect(null, mapDispatchToProps)(Header);
 

@@ -1,7 +1,8 @@
 /**
  * Created by tianzx on 16/8/29.
  */
-import React from 'react';
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Button, Form, Select, Input, Row, Col} from 'antd';
@@ -9,7 +10,7 @@ import './index.less';
 
 import {editFence,fetchFences}from '../../actions/fence';
 
-class FenceSearch extends React.Component {
+class FenceSearch extends Component {
     constructor(props) {
         super(props);
     }
@@ -83,8 +84,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 FenceSearch.propTypes = {
-    actions: React.PropTypes.object,
-    form: React.PropTypes.object
+    actions: PropTypes.object,
+    form: PropTypes.object
 };
 export default connect(
     null,

@@ -1,13 +1,14 @@
 /**
  * Created by tianzx on 16/8/30.
  */
-import React, {PropTypes} from 'react';
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {Form, Input, Button, Checkbox} from 'antd';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {createFence,fetchFences,updateFence,ADD,EDIT} from '../../actions/fence';
 const FormItem = Form.Item;
-class EditFence extends React.Component {
+class EditFence extends Component {
 
     constructor(props) {
         super(props);

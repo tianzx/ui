@@ -1,7 +1,8 @@
 /**
  * Created by tianzx on 2017/3/20.
  */
-import * as React from "react";
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import {fetchNavPath} from '../../../actions/menu';
@@ -19,7 +20,7 @@ import {
 // import {EditFile} from './EditFile';
 import EditModel from './EditModel';
 
-class FileList extends React.Component {
+class FileList extends Component {
   constructor(props) {
     super(props);
   }
@@ -152,8 +153,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 FileList.propTypes = {
-  actions: React.PropTypes.object,
-  files: React.PropTypes.object
+  actions: PropTypes.object,
+  files: PropTypes.object
 };
 
 export default connect(

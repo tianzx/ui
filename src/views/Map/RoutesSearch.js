@@ -2,14 +2,15 @@
  * Created by tianzx on 2016/10/25.
  */
 
-import React from 'react';
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Button, Form, Input, Row, Col, DatePicker} from 'antd';
 
 import {retrieveMap,initMap}from '../../actions/map';
 
-class RoutesSearch extends React.Component {
+class RoutesSearch extends Component {
   constructor(props) {
     super(props);
   }
@@ -90,8 +91,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 RoutesSearch.propTypes = {
-  actions: React.PropTypes.object,
-  form: React.PropTypes.object
+  actions: PropTypes.object,
+  form: PropTypes.object
 };
 export default connect(
   mapStateToProps,

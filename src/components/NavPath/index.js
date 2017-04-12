@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {Breadcrumb} from 'antd';
 import {connect} from 'react-redux';
 
@@ -12,7 +13,7 @@ const propTypes = {
     navpath: PropTypes.array
 };
 
-class NavPath extends React.Component {
+class NavPath extends Component {
     constructor(props) {
         super(props);
     }
