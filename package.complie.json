@@ -45,8 +45,7 @@
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "qs": "^6.3.0",
-    "request": "^2.76.0",
-    "rimraf":"^2.6.1"
+    "request": "^2.76.0"
   },
   "devDependencies": {
     "antd": "^2.9.0",
