@@ -38,7 +38,7 @@ module.exports = {
       minimize: true,
       debug: false
     }),
-    new webpack.ContextReplacementPlugin(/moment[\\\/]lang$/, /^\.\/(en|cn)$/),
+    new webpack.ContextReplacementPlugin(/moment[\\\/]lang$/, /^\.\/(en|zh-cn)$/),
     new UglifyJsParallelPlugin({
       workers: os.cpus().length,
       mangle: true,
