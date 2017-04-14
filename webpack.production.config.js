@@ -40,7 +40,7 @@ module.exports = {
     }),
     new UglifyJsParallelPlugin({
       workers: os.cpus().length,
-      mangle: false,
+      mangle: true,
       compress: {
         unused: true,
         dead_code: true, // big one--strip code that will never execute
