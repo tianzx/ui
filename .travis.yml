@@ -1,6 +1,5 @@
 os:
   - linux
-#  - osx
 # this is build on container-based ci
 # if sudo will not
 #sudo: required
