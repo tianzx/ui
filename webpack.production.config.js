@@ -7,7 +7,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     main: './src/index',
-    vendor: [ 'react','lodash'],
+    vendor: [ 'react','lodash','react-google-maps','redux'],
     // vendor2: ['antd']
   },
   output: {
