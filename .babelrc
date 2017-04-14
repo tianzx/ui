@@ -1,14 +1,13 @@
-
 {
   "presets": [
-    "es2015",
+    ["es2015", { "modules": false }],
     "react",
     "stage-0"
   ],
   "plugins": [
     "transform-runtime",
     "transform-decorators-legacy",
-    "add-module-exports",
+//    "add-module-exports",
     ["import",{"libraryName": "antd","style": true, "libraryDirectory": "lib"}]
   ],
 //  "env": {

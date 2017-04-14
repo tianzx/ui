@@ -81,7 +81,7 @@ module.exports = {
         exclude: /node_modules/,
         include: __dirname,
         use: [{
-          loader: "babel-loader",
+          loader: "babel-loader?cacheDirectory",
           // loader: "happypack/loader",
         }]
       },
@@ -89,13 +89,13 @@ module.exports = {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'less-loader']
+          use: ['css-loader?minimize', 'less-loader?minimize']
         })
       },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
-          use: ['css-loader']
+          use: ['css-loader?minimize']
         })
       },
       {

@@ -25,7 +25,7 @@ module.exports = {
         exclude: /node_modules/,
         include: __dirname,
         use: [{
-          loader: "babel-loader",
+          loader: "babel-loader?cacheDirectory",
         },
         ]
       },

@@ -14,7 +14,7 @@ const apiUrlPrefix = projectConfig.api[env];
  * diff environment
  */
 if (isDeveloping) {
-  require('babel-register')
+  // require('babel-register')
   const webpack = require('webpack');
   console.log('enter develop');
   // var DashboardPlugin = require('webpack-dashboard/plugin');
