@@ -1,6 +1,7 @@
 os:
-#  - linux
-  - osx
+  - linux
+#  - osx
+dist: trusty
 language: node_js
 node_js:
   - "7"
