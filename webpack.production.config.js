@@ -10,7 +10,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     main: './src/index',
-    vendor: [ 'react','react-google-maps','superagent'],
+    vendor: [ 'react','superagent'],
     // vendor2: ['antd']
   },
   output: {
@@ -38,6 +38,7 @@ module.exports = {
       minimize: true,
       debug: false
     }),
+    new webpack.ContextReplacementPlugin(/moment[\\\/]lang$/, /^\.\/(en|cn)$/),
     new UglifyJsParallelPlugin({
       workers: os.cpus().length,
       mangle: true,
