@@ -1,36 +1,60 @@
 {
   "presets": [
-    ["es2015", { "modules": false }],
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
     "react",
     "stage-0"
   ],
   "plugins": [
     "transform-runtime",
     "transform-decorators-legacy",
-//    "add-module-exports",
-    ["import",{"libraryName": "antd","style": true, "libraryDirectory": "lib"}]
+    //    "add-module-exports",
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": true,
+        "libraryDirectory": "lib"
+      }
+    ],
+    "lodash"
   ],
-//  "env": {
-//    "development": {
-//      "presets": [
-//        "react-hmre"
-//      ]
-//    }
-//  }
+  //  "env": {
+  //    "development": {
+  //      "presets": [
+  //        "react-hmre"
+  //      ]
+  //    }
+  //  }
   "env": {
     // only enable it when process.env.NODE_ENV is 'development' or undefined
     "development": {
-      "plugins": [["react-transform", {
-        "transforms": [{
-          "transform": "react-transform-hmr",
-          // if you use React Native, pass "react-native" instead:
-          "imports": ["react"],
-          // this is important for Webpack HMR:
-          "locals": ["module"]
-        }]
-        // note: you can put more transforms into array
-        // this is just one of them!
-      }]]
+      "plugins": [
+        [
+          "react-transform",
+          {
+            "transforms": [
+              {
+                "transform": "react-transform-hmr",
+                // if you use React Native, pass "react-native" instead:
+                "imports": [
+                  "react"
+                ],
+                // this is important for Webpack HMR:
+                "locals": [
+                  "module"
+                ]
+              }
+            ]
+            // note: you can put more transforms into array
+            // this is just one of them!
+          }
+        ]
+      ]
     }
   }
 }

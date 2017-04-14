@@ -6,10 +6,11 @@ const UglifyJsParallelPlugin = require('webpack-uglify-parallel');
 const os = require('os');
 // const HappyPack = require('happypack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 module.exports = {
   entry: {
     main: './src/index',
-    vendor: [ 'react'],
+    vendor: [ 'react','lodash'],
     // vendor2: ['antd']
   },
   output: {
@@ -34,11 +35,12 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.LoaderOptionsPlugin({
-      minimize: true
+      minimize: true,
+      debug: false
     }),
     new UglifyJsParallelPlugin({
       workers: os.cpus().length,
-      mangle: true,
+      mangle: false,
       compress: {
         unused: true,
         dead_code: true, // big one--strip code that will never execute

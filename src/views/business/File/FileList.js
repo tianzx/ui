@@ -11,7 +11,6 @@ import {Table, Icon, Popconfirm, Pagination} from 'antd';
 import {
   fetchFiles,
   editFile,
-  retrieveFile,
   deleteFile,
   editCommitLog,
   editCommitLogFile
@@ -69,9 +68,9 @@ class FileList extends Component {
   render() {
     const {actions, files: {data, meta, status}} = this.props;
 
-    function retrieveFile(id) {
-      actions.retrieveFile(id);
-    }
+    // function retrieveFile(id) {
+    //   actions.retrieveFile(id);
+    // }
 
     function confirm(id) {
       actions.deleteFile(id);
@@ -142,7 +141,6 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators({
       fetchFiles,
       editFile,
-      retrieveFile,
       deleteFile,
       fetchNavPath,
       editCommitLog,
