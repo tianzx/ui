@@ -36,7 +36,7 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
-    new webpack.UglifyJsParallelPlugin({
+    new UglifyJsParallelPlugin({
       workers: os.cpus().length,
       mangle: true,
       compress: {
