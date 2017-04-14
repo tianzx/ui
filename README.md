@@ -6,7 +6,7 @@
 - [Redux](https://github.com/reactjs/redux)
 - [Ant.Design](http://ant.design/)
 - [Babel](https://babeljs.io/)
-- [webpack](https://webpack.github.io/)
+- [webpack2](https://webpack.github.io/)
 - [mocha](https://mochajs.org/)
 - [enzyme](https://github.com/airbnb/enzyme)
 - [Travis](https://travis-ci.org/)

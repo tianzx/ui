@@ -21,7 +21,7 @@
         "libraryDirectory": "lib"
       }
     ],
-    "lodash"
+    ["lodash"]
   ],
   //  "env": {
   //    "development": {

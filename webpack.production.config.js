@@ -88,6 +88,9 @@ module.exports = {
         use: [{
           loader: "babel-loader?cacheDirectory",
           // loader: "happypack/loader",
+          // options: {
+          //   plugins: [lodash]
+          // }
         }]
       },
       {
