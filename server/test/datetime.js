@@ -3,7 +3,7 @@
  */
 const file = require('../../fake/file');
 const datetime = require('../util/datetime/datetime');
-const _ = require('lodash');
+const _ = require('lodash/fp');
 
 const data = datetime(file);
 _.each(file, function (value) {

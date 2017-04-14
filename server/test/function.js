@@ -2,7 +2,7 @@
  * Created by tianzx on 2017/3/24.
  */
 const file = require('../../fake/file');
-const _ = require('lodash');
+const _ = require('lodash/fp');
 const moment = require('moment');
 
 

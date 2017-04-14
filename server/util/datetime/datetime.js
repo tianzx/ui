@@ -1,7 +1,7 @@
 /**
  * Created by tianzx on 2017/3/24.
  */
-const _ = require('lodash');
+const _ = require('lodash/fp');
 const moment = require('moment');
 
 // const file2 = _.map(data,function(value){
