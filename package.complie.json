@@ -30,7 +30,7 @@
     "test-mocha": "mocha tests/testSetup.js tests/*-test.js",
     "lint": "esw webpack.devleop.config src ",
     "lint:watch": "npm run lint -- --watch",
-    "build": "npm run clean && export NODE_ENV=production && webpack --config ./webpack.production.config.js --colors --profile --display-modules",
+    "build": "npm run clean && webpack --config ./webpack.production.config.js --colors --profile --display-modules",
     "build-dashboard": "npm run clean && webpack-dashboard --config ./webpack.production.config.js ",
     "start": "node server",
     "develop": "npm run start",
@@ -88,6 +88,7 @@
     "style-loader": "^0.16.0",
     "superagent": "^3.5.2",
     "url-loader": "^0.5.7",
-    "webpack": "^2.3.2"
+    "webpack": "^2.3.2",
+    "webpack-dashboard": "^0.3.0"
   }
 }
