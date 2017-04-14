@@ -2,12 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const UglifyJsParallelPlugin = require('webpack-uglify-parallel');
 // const HappyPack = require('happypack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     main: './src/index',
-    vendor: [ 'react','lodash','react-google-maps','redux'],
+    vendor: [ 'react','react-google-maps','redux'],
     // vendor2: ['antd']
   },
   output: {
@@ -34,7 +35,8 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
-    new webpack.optimize.UglifyJsPlugin({
+    new webpack.optimize.UglifyJsParallelPlugin({
+      workers: os.cpus().length,
       mangle: true,
       compress: {
         unused: true,
