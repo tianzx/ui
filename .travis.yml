@@ -2,7 +2,7 @@ os:
   - linux
 # this is build on container-based ci
 # if sudo will not
-sudo: required
+#sudo: required
 dist: trusty
 language: node_js
 node_js:
