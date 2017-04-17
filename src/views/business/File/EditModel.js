@@ -19,7 +19,7 @@ class EditModel extends Component {
   handleSubmit (e) {
     // const {actions, files, form} = this.props;
     e.preventDefault();
-    console.log(this.props.form.getFieldsValue())
+    // console.log(this.props.form.getFieldsValue())
   }
 
   render() {
