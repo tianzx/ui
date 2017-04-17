@@ -36,7 +36,7 @@ class FenceList extends Component {
         return (
             <div>
                 <FenceSearch />
-                <Table columns={columns} dataSource={data} pagination={false}
+                <Table columns={columns} dataSource={data} pagination={false} rowKey={data => data.id}
                 />
                 <Pagination
                     className="ant-table-pagination"

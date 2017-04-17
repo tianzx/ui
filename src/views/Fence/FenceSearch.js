@@ -44,7 +44,7 @@ class FenceSearch extends Component {
         return (
             <Row >
                 <Col span={20} className={'col'}>
-                    <Form inline onSubmit={this.handleSubmit}>
+                    <Form layout="inline" onSubmit={this.handleSubmit}>
                         <Form.Item className={'normal'}>
                             {/*<Select {...getFieldProps('field', {initialValue: 'name'})}>*/}
                                 {/*<Select.Option value="name">名字</Select.Option>*/}

@@ -43,7 +43,7 @@ class EditFence extends Component {
             wrapperCol: {span: 14},
         };
         return (
-            <Form horizontal onSubmit={this.handleSubmit}>
+            <Form layout="horizontal" onSubmit={this.handleSubmit}>
                 {/*<Input id="id" name="id" {...getFieldProps('id',{initialValue:fence.id})} type="hidden"/>*/}
               {getFieldDecorator('fenceName', {
                 initialValue: fence.id
