@@ -1,5 +1,6 @@
 const map = require('./server/controller/map');
 const file = require('./server/controller/file');
+const sn = require('./server/controller/file');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -11,7 +12,7 @@ const projectConfig = require('./config.json');
 const env = process.argv[2];
 const apiUrlPrefix = projectConfig.api[env];
 /**
- * diff environment
+ * different environment
  */
 if (isDeveloping) {
   // require('babel-register')
@@ -239,7 +240,7 @@ app.post('/api/menu', function (req, res) {
         icon: 'laptop',
         child: [
           {
-            name: '选项5',
+            name: 'sn',
             key: 201
           },
           {
@@ -274,6 +275,7 @@ app.post('/api/logout', function (req, res) {
 });
 map(app);
 file(app);
+sn(app);
 /**
  *this is necessary to handle URL correctly since client uses Browser History
  */

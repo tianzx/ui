@@ -12,7 +12,7 @@ import User from './views/User';
 import Map from './views/Map';
 import NotFound from './views/NotFound';
 import File from './views/business/File';
-
+import SN from './views/business/SN'
 export default (
     <Route path="/" component={App}>
         {/*<IndexRedirect to="home" />*/}
@@ -22,6 +22,7 @@ export default (
         <Route path="user" component={User}/>
         <Route path="map" component={Map}/>
         <Route path="file" component={File}/>
+        <Route path="sn" component={SN}/>
         <Route path="*" component={NotFound}/>
     </Route>
 );

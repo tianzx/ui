@@ -8,4 +8,11 @@ const api = new Api({
   }
 });
 
+const api_upload = new Api({
+  baseURI: '/api',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'multipart/form-data'
+  }
+})
 export default api;
