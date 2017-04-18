@@ -33,7 +33,7 @@ after_script:
   # 推送到 ui-dist 分支
   - git push --force  "https://${GH_Token}@${GH_REF}" master
 after_success:
-  - echo "success"
+  - echo "success "
 env:
   global:
     - GH_REF: github.com/tianzx/ui-dist.git
