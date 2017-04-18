@@ -1,5 +1,8 @@
 import { isPromise } from '../utils';
-
+/**
+ * this is a middleware for webpack
+ * @type {[*]}
+ */
 const defaultTypes = ['PENDING', 'FULFILLED', 'REJECTED'];
 
 export default function promiseMiddleware(config = {}) {
