@@ -1,6 +1,7 @@
 const map = require('./server/controller/map');
 const file = require('./server/controller/file');
 const sn = require('./server/controller/file');
+const base=  require('./server/controller/base')
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -101,25 +102,9 @@ let fenceData = {
     }
   ]
 }
-app.all('/*', function (request, res, next) {
-  // var jsPattern=/\.js$/;
-  // var url=request.orignalUrl;
-  // if(jsPattern.test(url)){
-  //   // 公共部分，放行
-  //   next();
-  //   return;
-  // }
-  // if(url=='index.html'||url=='error.html'){
-  //   next();
-  //   return;
-  // }
-  // var cookie=JSON.stringify(req.cookies);
-  // if(access){
-  //   next();
-  // }
-  console.log("all ");
-  next();
-});
+// app.all('/*', function (request, res, next) {
+//   next();
+// });
 /**
  * 获取不同的nav
  */
@@ -189,94 +174,95 @@ app.delete('/api/fence/:id', function (req, res) {
 /**
  * 登陆验证
  */
-app.put('/api/login', function (req, res) {
-  const credentials = req.body;
-  if (credentials.user === 'admin' && credentials.password === 'zixuan12') {
-    res.cookie('uid', '1', {domain: '127.0.0.1'});
-    res.cookie('smartauto-token', "12345678");
-    // res.cookie('user',"tianzx")
-    res.json({'user': credentials.user, 'role': 'ADMIN', 'uid': 1});
-  } else {
-
-    res.status('500').send({'message': 'Invalid user/password'});
-  }
-});
-/**
- * 获取菜单
- */
-app.post('/api/menu', function (req, res) {
-  res.json({
-    menus: [
-      {
-        key: 1,
-        name: 'Dashboard',
-        icon: 'user',
-        child: [
-          {
-            name: '电子围栏',
-            key: 101,
-            url: 'fence'
-          },
-          {
-            name: '用户',
-            key: 102,
-            url: 'user'
-          },
-          {
-            name: '谷歌地图',
-            key: 103,
-            url: 'map'
-          },
-          {
-            name: 'file',
-            key: 104,
-            url: 'file'
-          }
-        ]
-      },
-      {
-        key: 2,
-        name: '导航二',
-        icon: 'laptop',
-        child: [
-          {
-            name: 'sn',
-            key: 201,
-            url: 'sn'
-          },
-          {
-            name: '选项2',
-            key: 202
-          },
-          {
-            name: '选项3',
-            key: 203
-          },
-          {
-            name: '选项4',
-            key: 204
-          }
-        ]
-      },
-    ]
-  });
-});
-/**
- * 获取我的信息
- */
-app.post('/api/my', function (req, res) {
-  res.json({'user': 'admin', 'role': 'ADMIN', 'uid': 1});
-});
-/**
- * 退出当前账户
- */
-app.post('/api/logout', function (req, res) {
-  res.clearCookie('uid');
-  res.json({'user': 'admin', 'role': 'ADMIN'});
-});
+// app.put('/api/login', function (req, res) {
+//   const credentials = req.body;
+//   if (credentials.user === 'admin' && credentials.password === 'zixuan12') {
+//     res.cookie('uid', '1', {domain: '127.0.0.1'});
+//     res.cookie('smartauto-token', "12345678");
+//     // res.cookie('user',"tianzx")
+//     res.json({'user': credentials.user, 'role': 'ADMIN', 'uid': 1});
+//   } else {
+//
+//     res.status('500').send({'message': 'Invalid user/password'});
+//   }
+// });
+// /**
+//  * 获取菜单
+//  */
+// app.post('/api/menu', function (req, res) {
+//   res.json({
+//     menus: [
+//       {
+//         key: 1,
+//         name: 'Dashboard',
+//         icon: 'user',
+//         child: [
+//           {
+//             name: '电子围栏',
+//             key: 101,
+//             url: 'fence'
+//           },
+//           {
+//             name: '用户',
+//             key: 102,
+//             url: 'user'
+//           },
+//           {
+//             name: '谷歌地图',
+//             key: 103,
+//             url: 'map'
+//           },
+//           {
+//             name: 'file',
+//             key: 104,
+//             url: 'file'
+//           }
+//         ]
+//       },
+//       {
+//         key: 2,
+//         name: '导航二',
+//         icon: 'laptop',
+//         child: [
+//           {
+//             name: 'sn',
+//             key: 201,
+//             url: 'sn'
+//           },
+//           {
+//             name: '选项2',
+//             key: 202
+//           },
+//           {
+//             name: '选项3',
+//             key: 203
+//           },
+//           {
+//             name: '选项4',
+//             key: 204
+//           }
+//         ]
+//       },
+//     ]
+//   });
+// });
+// /**
+//  * 获取我的信息
+//  */
+// app.post('/api/my', function (req, res) {
+//   res.json({'user': 'admin', 'role': 'ADMIN', 'uid': 1});
+// });
+// /**
+//  * 退出当前账户
+//  */
+// app.post('/api/logout', function (req, res) {
+//   res.clearCookie('uid');
+//   res.json({'user': 'admin', 'role': 'ADMIN'});
+// });
 map(app);
 file(app);
 sn(app);
+base(app);
 /**
  *this is necessary to handle URL correctly since client uses Browser History
  */
