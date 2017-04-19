@@ -81,7 +81,6 @@ const fence = function (app) {
    * 获取fence列表
    */
   app.get('/api/fence', function (req, res) {
-    console.log("fence")
     res.json({
       fences: fenceData
     });
