@@ -1,7 +1,8 @@
 const map = require('./server/controller/map');
 const file = require('./server/controller/file');
 const sn = require('./server/controller/file');
-const base=  require('./server/controller/base')
+const base=  require('./server/controller/base');
+const fence=  require('./server/controller/fence');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -176,6 +177,7 @@ map(app);
 file(app);
 sn(app);
 base(app);
+fence(app);
 /**
  *this is necessary to handle URL correctly since client uses Browser History
  */
