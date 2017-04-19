@@ -3,7 +3,7 @@
  */
 import React,{Component} from 'react';
 // import SNUploadList from "./SNUploadList";
-export default class File extends Component {
+export default class SN extends Component {
 
   render() {
     return(

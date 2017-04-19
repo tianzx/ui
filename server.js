@@ -241,7 +241,8 @@ app.post('/api/menu', function (req, res) {
         child: [
           {
             name: 'sn',
-            key: 201
+            key: 201,
+            url: 'sn'
           },
           {
             name: '选项2',
