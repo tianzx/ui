@@ -11,7 +11,7 @@ module.exports = {
   entry: {
     main: './src/index',
     // vendor: [ 'superagent'],
-    // vendor2: ['antd']
+    vendor2: ['superagent']
   },
   output: {
     path: __dirname + '/dist',
