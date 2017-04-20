@@ -8,7 +8,6 @@ const app = express();
 const projectConfig = require('./config.json');
 const env = process.argv[2];
 const path = require('path');
-const apiUrlPrefix = projectConfig.api[env];
 /**
  * different environment
  */
@@ -16,12 +15,12 @@ if (isDeveloping) {
   // require('babel-register')
   const webpack = require('webpack');
   console.log('enter develop');
-  // var DashboardPlugin = require('webpack-dashboard/plugin');
-  // var Dashboard = require('webpack-dashboard');
+  const DashboardPlugin = require('webpack-dashboard/plugin');
+  const Dashboard = require('webpack-dashboard');
   const config = require('./webpack.devleop.config.js');
   const compiler = webpack(config);
-  // var dashboard = new Dashboard();
-  // compiler.apply(new DashboardPlugin(dashboard.setData));
+  const dashboard = new Dashboard();
+  compiler.apply(new DashboardPlugin(dashboard.setData));
   app.use(require('webpack-hot-middleware')(compiler));
   app.use(require('webpack-dev-middleware')(compiler, {
     publicPath: config.output.publicPath,
@@ -41,20 +40,6 @@ app.use(cookieParser());
 
 const port = isProduction ? (process.env.PORT || 8080) : 7777;
 
-/**
- * how to recode
- * @type {map,file,sn,base,fence,path}
- */
-// const map = require('./server/controller/map');
-// const file = require('./server/controller/file');
-// const sn = require('./server/controller/file');
-// const base=  require('./server/controller/base');
-// const fence=  require('./server/controller/fence');
-// map(app);
-// file(app);
-// sn(app);
-// base(app);
-// fence(app);
 ioc(app);
 /**
  *this is necessary to handle URL correctly since client uses Browser History
