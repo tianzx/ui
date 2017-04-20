@@ -1,9 +1,4 @@
-const map = require('./server/controller/map');
-const file = require('./server/controller/file');
-const sn = require('./server/controller/file');
-const base=  require('./server/controller/base');
-const fence=  require('./server/controller/fence');
-const path = require('path');
+const ioc = require('./server/service/ioc');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const isProduction = process.env.NODE_ENV === 'production';
@@ -12,6 +7,7 @@ const express = require('express');
 const app = express();
 const projectConfig = require('./config.json');
 const env = process.argv[2];
+const path = require('path');
 const apiUrlPrefix = projectConfig.api[env];
 /**
  * different environment
@@ -45,12 +41,21 @@ app.use(cookieParser());
 
 const port = isProduction ? (process.env.PORT || 8080) : 7777;
 
-map(app);
-file(app);
-sn(app);
-base(app);
-fence(app);
-
+/**
+ * how to recode
+ * @type {map,file,sn,base,fence,path}
+ */
+// const map = require('./server/controller/map');
+// const file = require('./server/controller/file');
+// const sn = require('./server/controller/file');
+// const base=  require('./server/controller/base');
+// const fence=  require('./server/controller/fence');
+// map(app);
+// file(app);
+// sn(app);
+// base(app);
+// fence(app);
+ioc(app);
 /**
  *this is necessary to handle URL correctly since client uses Browser History
  */

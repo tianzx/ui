@@ -25,6 +25,4 @@ const Dir = {
 // exports.files = files;
 // exports.scanDir = scanDir;
 exports.Dir = Dir;
-exports.hello = function (name) {
-  console.log("Hello " + name);
-}
+

@@ -2,9 +2,11 @@
  * Created by tianzx on 2017/4/19.
  */
 const utils = require('../../service/index');
-// let files = [];
-// filess = scanDir("/Volumes/Samsung_T3/workspace/ui/server/controller",files)
-// console.log(filess);
-utils.Dir.scanDir("/Volumes/Samsung_T3/workspace/ui/server/test");
+const  path = require('path');
 
-console.log(utils.Dir.files);
+const appDir = path.dirname(require.main.filename);
+// utils.Dir.scanDir("/Volumes/Samsung_T3/workspace/ui/server/controller");
+// utils.Dir.scanDir(__dirname + "/server/controller");
+
+// console.log(utils.Dir.files);
+console.log(appDir);

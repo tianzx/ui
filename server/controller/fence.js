@@ -65,9 +65,7 @@ const fence = function (app) {
       }
     ]
   }
-// app.all('/*', function (request, res, next) {
-//   next();
-// });
+
   /**
    * 获取不同的nav
    */
@@ -133,6 +131,6 @@ const fence = function (app) {
       success: "success"
     })
   })
-
 }
+
 module.exports = fence;
