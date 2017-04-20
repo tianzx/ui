@@ -9,7 +9,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
-    // main: './src/index',
+    main: './src/index',
     // // vendor: [ 'superagent'],
     // vendor2: ['superagent']
   },
