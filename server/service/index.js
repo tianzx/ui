@@ -2,19 +2,29 @@
  * Created by tianzx on 2017/4/19.
  */
 const fs = require('fs')
-
-function ScanDir(path,files) {
-  let that = this
+let files = [];
+function scanDir(path) {
+  let that = this;
+  // console.log(path);
+  // console.log(files);
   if (fs.statSync(path).isFile()) {
     return files.push(path)
   }
+
   try {
     fs.readdirSync(path).forEach(function (file) {
-      ScanDir.call(that, path + '/' + file)
+      scanDir.call(that, path + '/' + file)
     })
   } catch (e) {
   }
 }
-
-ScanDir(process.cwd())
-console.log(files)
+const Dir = {
+  files : files,
+  scanDir: scanDir
+}
+// exports.files = files;
+// exports.scanDir = scanDir;
+exports.Dir = Dir;
+exports.hello = function (name) {
+  console.log("Hello " + name);
+}
