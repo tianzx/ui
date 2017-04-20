@@ -30,7 +30,7 @@
     "test-mocha": "mocha tests/testSetup.js tests/*-test.js",
     "lint": "esw webpack.devleop.config src ",
     "lint:watch": "npm run lint -- --watch",
-    "build": "npm run clean && webpack --config ./webpack.production.config.js --colors --profile --display-modules",
+    "build": "npm run clean && webpack --config ./webpack.production.config.js ",
     "build-dashboard": "npm run clean && webpack-dashboard --config ./webpack.production.config.js ",
     "start": "node server",
     "develop": "npm run start",
