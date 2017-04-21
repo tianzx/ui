@@ -11,7 +11,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     main: './src/index',
-    vendor: [ 'react','superagent','redux','js-cookie','moment'],
+    vendor: [ 'react','superagent','redux','js-cookie','moment','lodash'],
     // vendor2: ['superagent']
   },
   output: {
@@ -80,7 +80,8 @@ module.exports = {
 
     new ExtractTextPlugin("styles-[chunkhash:6].css"),
 
-    new webpack.optimize.CommonsChunkPlugin({names: ["vendor","runtime"]})
+    // new webpack.optimize.CommonsChunkPlugin({names: ["vendor"]})
+    new webpack.optimize.CommonsChunkPlugin('common-[chunkhash:6].js', ['main', 'vendor'])
 
   ],
 
