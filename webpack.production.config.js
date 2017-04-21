@@ -80,7 +80,7 @@ module.exports = {
 
     new ExtractTextPlugin("styles-[chunkhash:6].css"),
 
-    new LodashModuleReplacementPlugin(),
+    new LodashModuleReplacementPlugin,
   ],
 
   module: {
