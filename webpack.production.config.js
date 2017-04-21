@@ -80,7 +80,9 @@ module.exports = {
 
     new ExtractTextPlugin("styles-[chunkhash:6].css"),
 
-    new LodashModuleReplacementPlugin,
+    new LodashModuleReplacementPlugin({
+      'collections': true,
+    }),
   ],
 
   module: {
@@ -93,9 +95,9 @@ module.exports = {
           loader: "babel-loader?cacheDirectory",
           // loader: "happypack/loader",
         }],
-        // options: {
-        //   'plugins': ['lodash']
-        // }
+        options: {
+          'plugins': ['lodash']
+        }
       },
       {
         test: /\.less$/,

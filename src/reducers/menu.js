@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from 'lodash/collection';
 
 import {
     // GET_ALL_MENU,
@@ -31,11 +31,11 @@ function getNavPath(state,action) {
             }
             if (item.indexOf('menu') != -1) {
                 tmpKey = item.replace('menu', '');
-                // if (child) {
-                //     tmpOb = _.find(child, function (o) {
-                //         return o.key == tmpKey;
-                //     });
-                // }
+                if (child) {
+                    tmpOb = _.find(child, function (o) {
+                        return o.key == tmpKey;
+                    });
+                }
                 navpath.push({
                     key: tmpOb.key,
                     name: tmpOb.name
