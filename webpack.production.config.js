@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsParallelPlugin = require('webpack-uglify-parallel');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+// const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const os = require('os');
 // const HappyPack = require('happypack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -11,7 +11,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     main: './src/index',
-    vendor: [ 'react','superagent','redux','js-cookie'],
+    vendor: [ 'react','superagent','redux','js-cookie','lodash'],
     // vendor2: ['superagent']
   },
   output: {
@@ -80,9 +80,6 @@ module.exports = {
 
     new ExtractTextPlugin("styles-[chunkhash:6].css"),
 
-    new LodashModuleReplacementPlugin({
-      'collections': true,
-    }),
   ],
 
   module: {
@@ -95,9 +92,6 @@ module.exports = {
           loader: "babel-loader?cacheDirectory",
           // loader: "happypack/loader",
         }],
-        options: {
-          plugins: ['lodash']
-        }
       },
       {
         test: /\.less$/,
