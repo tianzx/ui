@@ -96,7 +96,7 @@ module.exports = {
           // loader: "happypack/loader",
         }],
         options: {
-          'plugins': ['lodash']
+          plugins: ['lodash']
         }
       },
       {
