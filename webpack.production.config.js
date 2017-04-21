@@ -80,8 +80,8 @@ module.exports = {
 
     new ExtractTextPlugin("styles-[chunkhash:6].css"),
 
-    // new webpack.optimize.CommonsChunkPlugin({names: ["vendor"]})
-    new webpack.optimize.CommonsChunkPlugin({'common-[chunkhash:6].js': ['main', 'vendor']})
+    new webpack.optimize.CommonsChunkPlugin({names: ["vendor"]})
+    // new webpack.optimize.CommonsChunkPlugin({'common-[chunkhash:6].js': ['main', 'vendor']})
 
   ],
 
