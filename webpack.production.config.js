@@ -11,7 +11,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     main: './src/index',
-    vendor: [ 'antd','react','superagent','redux'],
+    vendor: [ 'react','superagent','redux','react-dom'],
     // vendor2: ['superagent']
   },
   output: {
