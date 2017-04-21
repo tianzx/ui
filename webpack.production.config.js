@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsParallelPlugin = require('webpack-uglify-parallel');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const os = require('os');
 // const HappyPack = require('happypack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -68,10 +69,9 @@ module.exports = {
     // }),
     new CopyWebpackPlugin([
       {from: path.join(__dirname, 'asserts') + '/**/*', to: path.join(__dirname, 'dist') + '/'},
-      {from: path.join(__dirname, 'server/**/*'), to: path.join(__dirname, 'dist') + '/'},
+      {from: path.join(__dirname, 'server/**/*'), to: path.join(__dirname, 'dist') + '/',ignore: 'server/test'},
       {from: path.join(__dirname, 'server.js'), to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'package.json'), to: path.join(__dirname, 'dist') + '/'},
-      // {from: path.join(__dirname, '/server/controller/map.js'), to: path.join(__dirname, 'dist') + '/controller'},
       {from: path.join(__dirname, 'fake/*'), to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'config.json'), to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'Dockerfile'), to: path.join(__dirname, 'dist') + '/'},
@@ -79,6 +79,8 @@ module.exports = {
     ]),
 
     new ExtractTextPlugin("styles-[chunkhash:6].css"),
+
+    new LodashModuleReplacementPlugin,
   ],
 
   module: {
@@ -93,7 +95,11 @@ module.exports = {
           // options: {
           //   plugins: [lodash]
           // }
-        }]
+        }],
+        'options': {
+          'plugins': ['lodash'],
+          'presets': [['env', { 'modules': false, 'targets': { 'node': 4 } }]]
+        }
       },
       {
         test: /\.less$/,
