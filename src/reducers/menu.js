@@ -19,7 +19,7 @@ function getNavPath(state,action) {
         action.payload.data.reverse().map((item)=> {
             if (item.indexOf('sub') != -1) {
                 tmpKey = item.replace('sub', '');
-                tmpOb = collection.find(state.items, function (o) {
+                tmpOb = _.find(state.items, function (o) {
                     return o.key == tmpKey;
                 });
                 child = tmpOb.child;
