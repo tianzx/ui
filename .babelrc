@@ -12,6 +12,7 @@
   "plugins": [
     "transform-runtime",
     "transform-decorators-legacy",
+    "lodash",
     [
       "import",
       {

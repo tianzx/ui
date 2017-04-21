@@ -80,7 +80,7 @@ module.exports = {
 
     new ExtractTextPlugin("styles-[chunkhash:6].css"),
 
-    new LodashModuleReplacementPlugin,
+    new LodashModuleReplacementPlugin(),
   ],
 
   module: {
@@ -96,10 +96,9 @@ module.exports = {
           //   plugins: [lodash]
           // }
         }],
-        'options': {
-          'plugins': ['lodash'],
-          'presets': [['env', { 'modules': false, 'targets': { 'node': 4 } }]]
-        }
+        // options: {
+        //   'plugins': ['lodash']
+        // }
       },
       {
         test: /\.less$/,
