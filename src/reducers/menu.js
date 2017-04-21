@@ -1,7 +1,6 @@
 import _ from 'lodash';
 
 import {
-    // GET_ALL_MENU,
     GET_ALL_MENU_SUCCESS,
     UPDATE_NAVPATH,
     FETCH_NAVPATH_SUCCESS
