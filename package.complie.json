@@ -27,7 +27,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "webpack   --config ./webpack.production.config.js ",
-    "build-analyzer": "npm run clean && webpack   --config ./webpack.production.config.js  --json | webpack-bundle-size-analyzer" ,
+    "build-analyzer": "npm run clean && webpack  -p --config ./webpack.production.config.js  --json | webpack-bundle-size-analyzer" ,
     "start": "node server",
     "production": "export NODE_ENV=production&&node server",
     "production-cn": "node server production-cn",
