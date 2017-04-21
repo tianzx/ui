@@ -11,7 +11,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     main: './src/index',
-    vendor: [ 'react','superagent','redux','react-dom'],
+    vendor: [ 'react','superagent','redux','js-cookie'],
     // vendor2: ['superagent']
   },
   output: {
@@ -69,7 +69,7 @@ module.exports = {
     // }),
     new CopyWebpackPlugin([
       {from: path.join(__dirname, 'asserts') + '/**/*', to: path.join(__dirname, 'dist') + '/'},
-      {from: path.join(__dirname, 'server/**/*'), to: path.join(__dirname, 'dist') + '/',ignore: 'server/test/*'},
+      {from: path.join(__dirname, 'server/**/*'), to: path.join(__dirname, 'dist') + '/',ignore: 'server/test/**/*'},
       {from: path.join(__dirname, 'server.js'), to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'package.json'), to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'fake/*'), to: path.join(__dirname, 'dist') + '/'},
