@@ -11,5 +11,6 @@ just for view
 - Third step :
   - touch && cd src/server/controller/xx.js
   - [option] add post headers:{Content-Type}(edit src/actions/api/api)
-  - add server router : edit server.js
+  - ~~add server router : edit server.js~~
+  
   

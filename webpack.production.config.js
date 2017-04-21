@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsParallelPlugin = require('webpack-uglify-parallel');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const os = require('os');
 // const HappyPack = require('happypack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -79,6 +80,7 @@ module.exports = {
 
     new ExtractTextPlugin("styles-[chunkhash:6].css"),
 
+    new LodashModuleReplacementPlugin(),
   ],
 
   module: {
