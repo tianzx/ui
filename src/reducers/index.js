@@ -9,6 +9,7 @@ import menus from './menu';
 import fences from './fence';
 import maps from './map';
 import files from './business/file';
+import sns from './business/sn';
 
 const rootReducer = combineReducers({
     routing: routerReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     login,
     fences,
     maps,
-    files
+    files,
+    sns,
 });
 
 export default rootReducer;

@@ -9,8 +9,15 @@ just for view
     - < Route path="xx" component={xx} />
 
 - Third step :
-  - touch && cd src/server/controller/xx.js
+  - touch && edit src/server/controller/xx.js
   - [option] add post headers:{Content-Type}(edit src/actions/api/api)
   - ~~add server router : edit server.js~~
+
+- Fourth step :
+  - mkdir -p src/views/Business/** && touch your logic views
   
+- Fifth step: 
+  - touch && edit src/actions/business/xx.js
+  - touch && edit src/reducers/business/xx.js
+  - cd .. && edit ../index.js to add reduce status
   

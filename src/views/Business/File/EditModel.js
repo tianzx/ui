@@ -3,7 +3,7 @@
  */
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import {Modal, Button, Input, Form} from 'antd';
+import {Modal, Input, Form} from 'antd';
 import {editCommitLog} from '../../../actions/business/file';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
