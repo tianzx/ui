@@ -60,5 +60,7 @@ export default function sn(state = initialState, action = {}) {
         model_status: true
       });
     }
+    default:
+      return state;
   }
 }

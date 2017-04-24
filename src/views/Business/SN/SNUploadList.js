@@ -8,16 +8,19 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import  UploadModel from './UploadModel';
+import {uploadSNModel } from '../../../actions/business/sn'
 class SNUploadList extends Component {
 
 
   render() {
+    const {actions} = this.props;
+
     return (
       <div>
         <Button>
-          <Icon type="upload"/> Upload
+          <Icon type="upload" onClick={actions.uploadSNModel}/> Upload
         </Button>
-
+        <UploadModel/>
       </div>
     )
   }
@@ -31,7 +34,7 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   // return {actions: bindActionCreators({fetchFiles, editFile, retrieveCommitLog, deleteFile, fetchNavPath}, dispatch)};
-  return {actions: bindActionCreators({}), dispatch};
+  return {actions: bindActionCreators({uploadSNModel}), dispatch};
 }
 
 SNUploadList.propTypes = {};

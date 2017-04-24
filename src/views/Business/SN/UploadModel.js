@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Modal, Form, Row,Upload} from 'antd';
+import {Modal, Form, Row,Upload,Col,Icon} from 'antd';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 const Dragger = Upload.Dragger;
@@ -68,6 +68,12 @@ class UploadModel extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  const {sns} = state;
+  return {
+    sns
+  };
+}
 function mapDispatchToProps(dispatch) {
   // return {actions: bindActionCreators({fetchFiles, editFile, retrieveCommitLog, deleteFile, fetchNavPath}, dispatch)};
   return {actions: bindActionCreators({}), dispatch};
@@ -77,6 +83,6 @@ UploadModel.propTypes = {
 
 };
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Form.create()(UploadModel));
