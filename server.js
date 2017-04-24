@@ -15,12 +15,12 @@ if (isDeveloping) {
   // require('babel-register')
   const webpack = require('webpack');
   console.log('enter develop');
-  const DashboardPlugin = require('webpack-dashboard/plugin');
-  const Dashboard = require('webpack-dashboard');
+  // const DashboardPlugin = require('webpack-dashboard/plugin');
+  // const Dashboard = require('webpack-dashboard');
   const config = require('./webpack.devleop.config.js');
   const compiler = webpack(config);
-  const dashboard = new Dashboard();
-  compiler.apply(new DashboardPlugin(dashboard.setData));
+  // const dashboard = new Dashboard();
+  // compiler.apply(new DashboardPlugin(dashboard.setData));
   app.use(require('webpack-hot-middleware')(compiler));
   app.use(require('webpack-dev-middleware')(compiler, {
     publicPath: config.output.publicPath,

@@ -5,14 +5,7 @@
 const config = require('../../config.json');
 const common = require('../common');
 const utils = require('./utils');
-/**
- *
- * console.log(map.sn);
- console.log(map.time[0]);
- console.log(map.time[1]);
- console.log(req.cookies.env);
- * @param app
- */
+
 
 const police = function (app) {
 

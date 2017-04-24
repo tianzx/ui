@@ -14,30 +14,11 @@ const myHttp = require('../util/request/http/http');
 const fileData = {
   path: '/fota/version'
 }
-/**
- *
- console.log(map.sn);
- console.log(map.time[0]);
- console.log(map.time[1]);
- console.log(req.cookies.env);
- * @param app
- */
 
 const file = function (app) {
 
   app.get('/api/file/fota', function (req, res) {
     const map = req.body;
-    // const beginTime = map.time[0];
-    // const endTime = map.time[1];
-    // let beginTimestamp = Date.parse(new Date(beginTime));
-    // let endTimestamp = Date.parse(new Date(endTime));
-    // let mapData = {};
-    // const queryString = {
-    //   serialNumber: map.sn,
-    //   beginTime: beginTimestamp,
-    //   endTime: endTimestamp
-    // };
-    console.log("to fetch fota data");
     const queryString = {}
     const environment = req.cookies.env;
     const j = request.jar();
@@ -49,8 +30,6 @@ const file = function (app) {
         url: fotaUrl,
         jar: j
       }, function (error, response, body) {
-        // console.log(error);
-        // console.log('-----');
         try {
           const data = JSON.parse(body);
           const fotaData = data;

@@ -6,18 +6,9 @@ const http = require('http');
 const request = require('request');
 const config = require('../../config.json');
 const qs = require('qs');
-// const common = require('./common');
 const mapData = {
   path: '/webGPS/getGPSRoutes'
 }
-/**
- *
- * console.log(map.sn);
- console.log(map.time[0]);
- console.log(map.time[1]);
- console.log(req.cookies.env);
- * @param app
- */
 
 const map = function (app) {
 
@@ -27,7 +18,6 @@ const map = function (app) {
       let m = {lat: 0, lng: 0};
       m.lat = map.latitude;
       m.lng = map.longitude;
-      console.log(m);
       routes.push(m);
     }
     let mapData = {
@@ -58,16 +48,9 @@ const map = function (app) {
         method: 'GET',
         url: mapUrl,
       }, function (error, response, body) {
-        // console.log(error);
-        // console.log('-----');
         try {
-          console.log(body);
           const array = JSON.parse(body);
-          console.log(body)
-          console.log("---------")
-          console.log(array.gpsData);
           mapData = convertData(array.gpsData);
-          // console.log(mapData)
           res.json(
             {maps: mapData}
           );

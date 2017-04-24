@@ -10,7 +10,7 @@ const moment = require('moment');
  * before convert datetime
  */
 _.each(file, function (value) {
-  console.log(value.createTime);
+  // console.log(value.createTime);
 });
 
 /**
@@ -18,7 +18,7 @@ _.each(file, function (value) {
  */
 _.map(file, function (value) {
   value.createTime = moment.unix(value.createTime / 1000).format("YYYY-MM-DD HH:mm:ss");
-  console.log(value.createTime);
+  // console.log(value.createTime);
 });
 
 /**
@@ -27,7 +27,7 @@ _.map(file, function (value) {
  */
 const file2 = _.map(file,function(value){
   const temp = _.cloneDeep(value);
-  console.log(temp);
+  // console.log(temp);
   temp.createTime = moment.unix(temp.createTime / 1000).format("YYYY-MM-DD HH:mm:ss");
   return temp;
 });
@@ -40,5 +40,5 @@ _.each(file, function (value) {
 });
 
 _.each(file2, function (value) {
-  console.log(value);
+  // console.log(value);
 });

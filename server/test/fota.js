@@ -17,18 +17,8 @@ request({
     jar: j
   },
   function (error, response, body) {
-    // console.log(error);
-    // console.log('-----');
     try {
-      console.log(body);
       const array = JSON.parse(body);
-      console.log(body);
-      console.log("---------");
-      // fotaData = convertData(array.gpsData);
-      // // console.log(mapData)
-      // res.json(
-      //   {fotas: fotaData}
-      // );
     } catch (error) {
       console.log(error);
     }

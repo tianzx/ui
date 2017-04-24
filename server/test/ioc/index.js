@@ -9,4 +9,4 @@ const appDir = path.dirname(require.main.filename);
 // utils.Dir.scanDir(__dirname + "/server/controller");
 
 // console.log(utils.Dir.files);
-console.log(appDir);
+// console.log(appDir);

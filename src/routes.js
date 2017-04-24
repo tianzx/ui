@@ -11,8 +11,8 @@ import Fence from './views/Fence';
 import User from './views/User';
 import Map from './views/Map';
 import NotFound from './views/NotFound';
-import File from './views/business/File';
-import SN from './views/business/SN'
+import File from './views/Business/File';
+import SN from './views/Business/SN'
 export default (
     <Route path="/" component={App}>
         {/*<IndexRedirect to="home" />*/}

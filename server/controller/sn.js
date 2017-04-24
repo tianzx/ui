@@ -10,15 +10,6 @@ const qs = require('qs');
 const datetime = require('../util/datetime/datetime');
 const myHttp = require('../util/request/http/http');
 
-/**
- *
- console.log(map.sn);
- console.log(map.time[0]);
- console.log(map.time[1]);
- console.log(req.cookies.env);
- * @param app
- */
-
 const sn = function (app) {
 
   app.get('/api/sn/upload/', function (req, res) {
