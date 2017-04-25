@@ -20,7 +20,6 @@ class SNUploadList extends Component {
 
   uploadSNModel() {
     const {actions, sns} = this.props;
-    console.log(sns.model_status)
     actions.uploadSNModel();
   }
 

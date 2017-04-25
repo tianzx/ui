@@ -3,15 +3,30 @@
  */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Modal, Form, Row,Upload,Col,Icon} from 'antd';
+import {Modal, Form, Row, Upload, Col, Icon} from 'antd';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
+import {uploadSNModel} from '../../../actions/business/sn';
 const Dragger = Upload.Dragger;
 const FormItem = Form.Item;
+
 class UploadModel extends Component {
 
+
+  handleOk = () => {
+    const {actions} = this.props;
+    console.log('ok');
+    actions.uploadSNModel(false);
+  }
+
+  handleCancel = () => {
+    const {actions} = this.props;
+    console.log('cancel');
+    actions.uploadSNModel(false);
+  }
+
   render() {
-    const {actions, sns: { model_status}} = this.props;
+    const {actions, sns: {model_status}} = this.props;
     const {getFieldDecorator} = this.props.form;
     const props = {
       name: 'file',
@@ -30,37 +45,21 @@ class UploadModel extends Component {
         }
       },
     };
-    const formItemLayout = {
-      labelCol: {span: 6},
-      wrapperCol: {span: 14},
-    };
-
     return (
       <div>
         {/*<Button type="primary" onClick={this.showModal}>Edit Commit Log</Button>*/}
-        <Modal title="upload" visible={model_status}
-               onOk={this.handleSubmit} onCancel={this.handleCancel}
+        <Modal title="upload" visible={model_status} style={{marginTop: 16, height: 200}}
+               onOk={this.handleOk} onCancel={this.handleCancel}
         >
-
-          <Form >
-            <Row >
-              <Col span={20} className={'col'}>
-                <Form layout="inline" onSubmit={this.handleSubmit}>
-                  <Dragger {...props}>
-                    <p className="ant-upload-drag-icon">
-                      <Icon type="inbox"/>
-                    </p>
-                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                    <p className="ant-upload-hint">Support for a single or bulk upload. Strictly prohibit from uploading
-                      company data or other band files</p>
-                  </Dragger>
-                </Form>
-              </Col>
-            </Row>
-            {/*{getFieldDecorator('file', {*/}
-            {/*rules: [{required: true, message: 'commit_log is required!'}],*/}
-            {/*initialValue: commit_log*/}
-            {/*})(<Input type="textarea" autosize={{minRows: 2, maxRows: 6}}/>)}*/}
+          <Form layout="inline" onSubmit={this.handleSubmit}>
+            <Dragger {...props}>
+              <p className="ant-upload-drag-icon">
+                <Icon type="inbox"/>
+              </p>
+              <p className="ant-upload-text">Click or drag file to this area to upload</p>
+              <p className="ant-upload-hint">Support for a single or bulk upload. Strictly prohibit from uploading
+                company data or other band files</p>
+            </Dragger>
           </Form>
         </Modal>
 
@@ -76,12 +75,10 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   // return {actions: bindActionCreators({fetchFiles, editFile, retrieveCommitLog, deleteFile, fetchNavPath}, dispatch)};
-  return {actions: bindActionCreators({}), dispatch};
+  return {actions: bindActionCreators({uploadSNModel},dispatch)};
 }
 
-UploadModel.propTypes = {
-
-};
+UploadModel.propTypes = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps
