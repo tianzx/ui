@@ -55,9 +55,9 @@ const initialState = {
 export default function sn(state = initialState, action = {}) {
   switch (action.type) {
     case UPLOAD_SN_MODEL: {
-      return Object.assign({}, state, {
-        status: action.payload.status,
-        model_status: true
+      return Object.assign({},state,{
+        model_status:action.payload.model_status,
+        status: action.payload.status
       });
     }
     default:

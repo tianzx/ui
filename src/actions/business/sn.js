@@ -7,6 +7,7 @@ import * as base from '../base';
 export const UPLOAD_SN_MODEL = 'UPLOAD_SN_MODEL';
 
 export function uploadSNModel() {
+  "use strict";
   return {
     type: UPLOAD_SN_MODEL,
     payload: {
