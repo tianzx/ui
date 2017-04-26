@@ -7,7 +7,9 @@ import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
 import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
-import promiseMiddleware from '../middlewares/promiseMiddleware';
+// import promiseMiddleware from '../middlewares/promiseMiddleware';
+import promiseMiddleware from 'redux-promise-middleware';
+
 const router = routerMiddleware(browserHistory);
 
 const enhancer = compose(
