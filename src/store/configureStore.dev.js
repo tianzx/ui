@@ -7,7 +7,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 
 import rootReducer from '../reducers';
 import {createLogger} from 'redux-logger';
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 // import promiseMiddleware from '../middlewares/promiseMiddleware';
@@ -17,7 +17,7 @@ const logger = createLogger();
 const router = routerMiddleware(browserHistory);
 
 const enhancer = compose(
-  applyMiddleware(thunk, promiseMiddleware({promiseTypeSuffixes:['PENDING','SUCCESS','ERROR']}), logger, router),
+  applyMiddleware(promiseMiddleware({promiseTypeSuffixes:['PENDING','SUCCESS','ERROR']}), logger, router),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
