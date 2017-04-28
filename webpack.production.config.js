@@ -63,7 +63,7 @@ module.exports = {
     }),
     // new HappyPack({
     //   loaders: [{
-    //     loader: 'babel-loader',
+    //     loader: 'babel-loader?cacheDirectory',
     //   }],
     //   threads: 4
     // }),

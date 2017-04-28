@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const os = require('os');
+const HappyPack = require('happypack');
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -17,6 +19,12 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
     }),
+    new HappyPack({
+      loaders: [{
+        loader: 'babel-loader?cacheDirectory',
+      }],
+      threads: os.cpus().length
+    }),
   ],
   module: {
     rules: [
@@ -25,7 +33,8 @@ module.exports = {
         exclude: /node_modules/,
         include: __dirname,
         use: [{
-          loader: "babel-loader?cacheDirectory",
+          // loader: "babel-loader?cacheDirectory",
+          loader: "happypack/loader",
         },
         ]
       },
