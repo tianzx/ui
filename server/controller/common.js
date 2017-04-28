@@ -2,13 +2,22 @@
  * Created by tianzx on 2017/4/28.
  */
 const multer = require('multer');
-const upload = multer({dest: 'uploads/'})
+// const upload = multer({dest: 'uploads/'});
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now()+'.')
+  }
+})
+
+const upload = multer({ storage: storage });
+
 const http = require('http');
 const request = require('request');
 // const config = require('../../config.json');
 const qs = require('qs');
-const myHttp = require('../util/request/http/http');
-
 
 const common = function (app) {
 
