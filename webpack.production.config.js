@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsParallelPlugin = require('webpack-uglify-parallel');
 // const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const os = require('os');
-// const HappyPack = require('happypack');
+const HappyPack = require('happypack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
@@ -61,12 +61,12 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
-    // new HappyPack({
-    //   loaders: [{
-    //     loader: 'babel-loader?cacheDirectory',
-    //   }],
-    //   threads: 4
-    // }),
+    new HappyPack({
+      loaders: [{
+        loader: 'babel-loader?cacheDirectory',
+      }],
+      threads: os.cpus().length
+    }),
     new CopyWebpackPlugin([
       {from: path.join(__dirname, 'asserts') + '/**/*', to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'server/**/*'), to: path.join(__dirname, 'dist') + '/',ignore: 'server/test/**/*'},
