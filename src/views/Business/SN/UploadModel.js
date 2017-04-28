@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Modal, Form, Row, Upload, Col, Icon} from 'antd';
+import {Modal, Form, Row, Upload, Col, Icon,message} from 'antd';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import {uploadSNModel} from '../../../actions/business/sn';
@@ -32,7 +32,7 @@ class UploadModel extends Component {
       name: 'file',
       multiple: true,
       showUploadList: false,
-      action: '',
+      action: 'http://localhost:7777/api/upload',
       onChange(info) {
         const status = info.file.status;
         if (status !== 'uploading') {

@@ -5,6 +5,7 @@ const http = require('http');
 const request = require('request');
 const config = require('../../config.json');
 const qs = require('qs');
+
 // const common = require('./common');
 // const fota = require('../../fake/file');
 // const datetime = require('../util/datetime/datetime');
