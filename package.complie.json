@@ -78,7 +78,7 @@
     "eslint-plugin-react": "^6.10.3",
     "eslint-watch": "3.0.1",
     "extract-text-webpack-plugin": "^2.1.0",
-    "lodash-webpack-plugin": "^0.11.2",
+    "lodash-webpack-plugin": "^0.11.3",
     "file-loader": "^0.10.1",
     "happypack": "^3.0.3",
     "history": "^4.6.1",
