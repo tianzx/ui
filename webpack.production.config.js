@@ -92,8 +92,8 @@ module.exports = {
         exclude: /node_modules/,
         include: __dirname,
         use: [{
-          loader: "babel-loader?cacheDirectory",
-          // loader: "happypack/loader",
+          // loader: "babel-loader?cacheDirectory",
+          loader: "happypack/loader",
         }],
       },
       {
