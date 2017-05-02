@@ -32,7 +32,7 @@ class UploadModel extends Component {
       name: 'file',
       multiple: true,
       showUploadList: false,
-      action: 'http://localhost:7777/api/upload',
+      action: '/api/upload',
       onChange(info) {
         const status = info.file.status;
         if (status !== 'uploading') {
