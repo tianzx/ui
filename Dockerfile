@@ -5,7 +5,7 @@ ENV NODE_ENV=production
 
 
 # Create app directory
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app/uploads
 WORKDIR /usr/src/app
 
 # Install app dependencies
@@ -18,11 +18,12 @@ COPY . /usr/src/app
 
 #VOLUME /usr/src/app/uploads
 
+VOLUME ["/usr/src/app/uploads"]
 
 # Expose port
 EXPOSE 8080
 
-CMD [ "-v","/root/upload:/usr/src/app/uploads","npm", "start" ]
+CMD ["npm", "start" ]
 
 #WORKDIR /ui
 #
