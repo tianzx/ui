@@ -25,12 +25,3 @@ EXPOSE 8080
 
 CMD ["npm", "start" ]
 
-#WORKDIR /ui
-#
-#COPY  . /ui
-#
-#RUN npm install
-#
-#EXPOSE 8080
-##CMD  npm start
-#CMD [ "npm", "start" ]
