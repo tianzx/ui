@@ -21,3 +21,9 @@ just for view
   - touch && edit src/reducers/business/xx.js
   - cd .. && edit ../index.js to add reduce status
   
+
+
+
+- pay attention
+  - when you want to your code can run on multiple platform,you should notice 
+  on path ,please use path.join()

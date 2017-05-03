@@ -5,8 +5,6 @@ const fs = require('fs')
 let files = [];
 function scanDir(path) {
   let that = this;
-  // console.log(path);
-  // console.log(files);
   if (fs.statSync(path).isFile()) {
     return files.push(path)
   }
@@ -22,7 +20,6 @@ const Dir = {
   files : files,
   scanDir: scanDir
 }
-// exports.files = files;
-// exports.scanDir = scanDir;
+
 exports.Dir = Dir;
 

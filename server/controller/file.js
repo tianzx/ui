@@ -4,7 +4,7 @@
 // const data = require('../../fake/js');
 const http = require('http');
 const request = require('request');
-const config = require('../../config.json');
+// const config = require('../../config.json');
 const qs = require('qs');
 // const common = require('./common');
 const fota = require('../../fake/file');
