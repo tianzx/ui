@@ -15,5 +15,6 @@ exports.createFile = () => {
   if (!fs.existsSync(dirs)){
     fs.mkdirSync(dirs);
   }
-  return dirs;
+
+  return dirs.toString();
 }

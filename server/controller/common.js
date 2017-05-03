@@ -2,10 +2,11 @@
  * Created by tianzx on 2017/4/28.
  */
 const multer = require('multer');
+const util = require('../util/file/index')
 // const upload = multer({dest: 'uploads/'});
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads')
+    cb(null, util.createFile())
   },
   filename: function (req, file, cb) {
     // cb(null, file.originalname)
@@ -22,11 +23,8 @@ const upload = multer({
       && file.mimetype !== 'image/jpg'
       && file.mimetype !== 'image/jpeg'
       && file.mimetype !== 'image/gif') {
-      // console.log('Got file of type', file.mimetype);
-      // console.log('false')
       return cb(new Error('the file type cant be support'));
     }else {
-      // console.log('true')
       return cb(null, true);
     }
 
@@ -46,7 +44,6 @@ const common = function (app) {
 
   app.post('/api/upload', function (req, res) {
     upload(req, res, function (err) {
-      console.log(err)
       if (err) {
         // 发生错误
         return res.json({'error': '出錯了,文件類型不對'});
@@ -54,7 +51,6 @@ const common = function (app) {
         return res.json({'code': '200'});
       }
     })
-    // console.log(req.file);
   });
 }
 
