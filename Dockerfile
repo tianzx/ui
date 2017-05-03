@@ -22,7 +22,7 @@ COPY . /usr/src/app
 # Expose port
 EXPOSE 8080
 
-CMD [ "-v","/root/upload:/usr/src/app/uploads",npm", "start" ]
+CMD [ "-v","/root/upload:/usr/src/app/uploads","npm", "start" ]
 
 #WORKDIR /ui
 #
