@@ -11,12 +11,12 @@ cache:
 #  yarn: true
   directories:
     - node_modules
-before_install:
-    - npm install -g pnpm
+#before_install:
+#    - npm install -g pnpm
 install:
   - rm -rf package.json
   - mv package.complie.json package.json
-  - pnpm install
+  - npm install
 before_script:
   - echo "begin"
   - git config --global user.name "tianzx"
