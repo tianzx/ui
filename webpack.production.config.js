@@ -6,10 +6,22 @@ const UglifyJsParallelPlugin = require('webpack-uglify-parallel');
 // const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const os = require('os');
 const HappyPack = require('happypack');
-const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length});
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+function createHappyPlugin(id, loaders) {
+  return new HappyPack({
+    id: id,
+    loaders: loaders,
+    threadPool: happyThreadPool,
 
+    // disable happy caching with HAPPY_CACHE=0
+    cache: process.env.HAPPY_CACHE === '1',
+
+    // make happy more verbose with HAPPY_VERBOSE=1
+    verbose: process.env.HAPPY_VERBOSE === '1',
+  });
+}
 module.exports = {
   entry: {
     main: './src/index',
@@ -63,30 +75,6 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
-    new HappyPack({
-        id: 'js',
-        loaders: [{
-          loader: 'babel-loader',
-        }],
-        threadPool: happyThreadPool,
-      }
-    ),
-    new HappyPack({
-      id: 'less',
-      loaders: [{
-        loader: 'less-loader?minimize',
-        loader: 'css-loader?minimize',
-      }],
-      threadPool: happyThreadPool
-    }),
-    new HappyPack({
-      id: 'css',
-      loaders: [{
-        loader: 'css-loader?minimize',
-      }],
-      threadPool: happyThreadPool,
-    }),
-
     new CopyWebpackPlugin([
       {from: path.join(__dirname, 'asserts') + '/**/*', to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'server/**/*'), to: path.join(__dirname, 'dist') + '/', ignore: 'server/test/**/*'},
@@ -100,8 +88,36 @@ module.exports = {
 
     new ExtractTextPlugin("styles-[chunkhash:6].css"),
 
-    new webpack.optimize.CommonsChunkPlugin({names: ["vendor"], minChunks: 2})
+    new webpack.optimize.CommonsChunkPlugin({names: ["vendor"], minChunks: 2}),
     // new webpack.optimize.CommonsChunkPlugin({'common-[chunkhash:6].js': ['main', 'vendor']})
+
+    // createHappyPlugin('js', ['babel']),
+    // createHappyPlugin('less', ['css!less']),
+    // createHappyPlugin('css', ['css'])
+    new HappyPack({
+        id: 'js',
+        loaders: [{
+          loader: 'babel',
+        }],
+        threadPool: happyThreadPool,
+      }
+    ),
+    new HappyPack({
+        id: 'less',
+        loaders: [{
+          loader: 'less!css?minimize',
+        }],
+        threadPool: happyThreadPool,
+      }
+    ),
+    new HappyPack({
+        id: 'css',
+        loaders: [{
+          loader: 'css?minimize',
+        }],
+        threadPool: happyThreadPool,
+      }
+    ),
 
   ],
 
@@ -113,24 +129,24 @@ module.exports = {
         include: __dirname,
         use: [{
           // loader: "babel-loader?cacheDirectory",
-          loader: "happypack/loader?id=js",
+          loader: "happypack/loader"+"?id=js",
         }],
       },
       {
         test: /\.less$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style',
           use: [{
-            loader: "happypack/loader?id=less"
+            loader: "happypack/loader"+"?id=less"
           }]
         })
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style',
           use: [{
-            loader: "happypack/loader?id=css"
+            loader: "happypack/loader"+"?id=css"
           }]
         })
       },
@@ -144,3 +160,5 @@ module.exports = {
   }
 }
 ;
+
+
