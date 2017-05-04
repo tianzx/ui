@@ -104,17 +104,17 @@ module.exports = {
     ),
     new HappyPack({
         id: 'less',
-        loaders: [{
-          loader: 'less-loader!css-loader?minimize',
-        }],
+        loaders: [
+         'less-loader!css-loader?minimize',
+        ],
         threadPool: happyThreadPool,
       }
     ),
     new HappyPack({
         id: 'css',
-        loaders: [{
-          loader: 'css-loader?minimize',
-        }],
+        loaders: [
+          'css-loader?minimize',
+        ],
         threadPool: happyThreadPool,
       }
     ),
