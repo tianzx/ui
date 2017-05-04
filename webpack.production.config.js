@@ -72,8 +72,8 @@ module.exports = {
       }, {
         id: 'less',
         loaders: [{
-          loader: 'css-loader?minimize',
           loader: 'less-loader?minimize',
+          loader: 'css-loader?minimize',
         }],
         threadPool: happyThreadPool,
 
@@ -124,6 +124,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
           use: ["happypack/loader?id=css"]
         })
       },
