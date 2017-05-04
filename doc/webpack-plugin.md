@@ -24,8 +24,9 @@
   * just for develop environment
 ##[HappyPack](https://github.com/amireh/happypack)
   * HappyPack makes webpack builds faster by allowing you to transform multiple files in parallel.
-##[CommonsChunkPlugin]()   
-
+##[url-loader]()   
+  * The url-loader works like the file-loader, but can return a data URL if the file is smaller than a byte limit.
+    
 
 
 ##Attention
