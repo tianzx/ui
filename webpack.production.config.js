@@ -144,7 +144,6 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
           use: [{
             loader: "happypack/loader"+"?id=css"
           }]
