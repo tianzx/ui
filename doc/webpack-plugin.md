@@ -21,4 +21,13 @@
   * Loading CSS requires the css-loader and the style-loader. 
   They have two different jobs. The css-loader will go through the CSS file and find url() expressions and resolve them. 
   The style-loader will insert the raw css into a style tag on your page.
+  * just for develop environment
+##[HappyPack](https://github.com/amireh/happypack)
+  * HappyPack makes webpack builds faster by allowing you to transform multiple files in parallel.
+##[CommonsChunkPlugin]()   
+
+
+
+##Attention
+  * webpack loader parse from right to left
 

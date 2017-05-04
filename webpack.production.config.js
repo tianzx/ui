@@ -6,7 +6,7 @@ const UglifyJsParallelPlugin = require('webpack-uglify-parallel');
 // const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const os = require('os');
 const HappyPack = require('happypack');
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length});
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -14,7 +14,6 @@ module.exports = {
   entry: {
     main: './src/index',
     vendor: ['react', 'superagent', 'redux', 'js-cookie', 'moment'],
-    // vendor2: ['superagent']
   },
   output: {
     path: __dirname + '/dist',
@@ -76,7 +75,13 @@ module.exports = {
 
     new ExtractTextPlugin("styles-[chunkhash:6].css"),
 
-    new webpack.optimize.CommonsChunkPlugin({names: ["vendor"], minChunks: 2}),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ["vendor","manifest"],
+      // minChunks: 2,
+      minChunks: Infinity,
+    }),
+
+    new webpack.HashedModuleIdsPlugin(),
     // new webpack.optimize.CommonsChunkPlugin({'common-[chunkhash:6].js': ['main', 'vendor']})
     new HappyPack({
         id: 'js',
@@ -89,7 +94,7 @@ module.exports = {
     new HappyPack({
         id: 'less',
         loaders: [
-         'css-loader?minimize!less-loader?minimize',
+          'css-loader?minimize!less-loader?minimize',
         ],
         threadPool: happyThreadPool,
       }
@@ -102,7 +107,6 @@ module.exports = {
     //     threadPool: happyThreadPool,
     //   }
     // ),
-
   ],
 
   module: {
@@ -113,7 +117,7 @@ module.exports = {
         include: __dirname,
         use: [{
           // loader: "babel-loader?cacheDirectory",
-          loader: "happypack/loader"+"?id=js",
+          loader: "happypack/loader" + "?id=js",
         }],
       },
       {
@@ -121,7 +125,7 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           // fallback: 'style-loader',
           use: [{
-            loader: "happypack/loader"+"?id=less"
+            loader: "happypack/loader" + "?id=less"
           }]
         })
       },
@@ -129,7 +133,7 @@ module.exports = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           use: [{
-            loader: "happypack/loader"+"?id=css"
+            loader: "happypack/loader" + "?id=css"
           }]
         })
       },
