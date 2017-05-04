@@ -15,7 +15,7 @@ const WebpackChunkHash = require("webpack-chunk-hash");
 module.exports = {
   entry: {
     main: './src/index',
-    vendor: ['react', 'superagent', 'redux', 'js-cookie', 'moment'],
+    vendor: ['react', 'superagent', 'redux', 'js-cookie', 'moment','antd'],
   },
   output: {
     path: __dirname + '/dist',
