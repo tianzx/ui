@@ -1,5 +1,5 @@
-dist:
-  privileged: false
-  restart: always
-  volumes:
-  - /root/upload:/usr/src/app/uploads
+#dist:
+#  privileged: false
+#  restart: always
+#  volumes:
+#  - /root/upload:/usr/src/app/uploads
