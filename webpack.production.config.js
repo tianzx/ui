@@ -97,7 +97,7 @@ module.exports = {
     new HappyPack({
         id: 'js',
         loaders: [{
-          loader: 'babel',
+          loader: 'babel-loader',
         }],
         threadPool: happyThreadPool,
       }
@@ -105,7 +105,7 @@ module.exports = {
     new HappyPack({
         id: 'less',
         loaders: [{
-          loader: 'less!css?minimize',
+          loader: 'less-loader!css-loader?minimize',
         }],
         threadPool: happyThreadPool,
       }
@@ -113,7 +113,7 @@ module.exports = {
     new HappyPack({
         id: 'css',
         loaders: [{
-          loader: 'css?minimize',
+          loader: 'css-loader?minimize',
         }],
         threadPool: happyThreadPool,
       }
@@ -135,7 +135,7 @@ module.exports = {
       {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract({
-          fallback: 'style',
+          fallback: 'style-loader',
           use: [{
             loader: "happypack/loader"+"?id=less"
           }]
@@ -144,7 +144,7 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
-          fallback: 'style',
+          fallback: 'style-loader',
           use: [{
             loader: "happypack/loader"+"?id=css"
           }]
