@@ -18,7 +18,7 @@ COPY . /usr/src/app
 
 #VOLUME /usr/src/app/uploads
 
-VOLUME ["/root/upload:/usr/src/app/uploads"]
+VOLUME /root/upload:/usr/src/app/uploads
 
 # Expose port
 EXPOSE 8080
