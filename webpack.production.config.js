@@ -105,7 +105,7 @@ module.exports = {
     new HappyPack({
         id: 'less',
         loaders: [
-         'css-loader!less-loader?minimize',
+         'less-loader!css-loader?minimize',
         ],
         threadPool: happyThreadPool,
       }
