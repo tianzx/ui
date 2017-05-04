@@ -1,8 +1,5 @@
 dist:
-  image: daocloud.io/tianzx/ui
   privileged: false
   restart: always
-  ports:
-  - 8080:8080
   volumes:
   - /root/upload:/usr/src/app/uploads
