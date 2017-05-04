@@ -90,10 +90,6 @@ module.exports = {
 
     new webpack.optimize.CommonsChunkPlugin({names: ["vendor"], minChunks: 2}),
     // new webpack.optimize.CommonsChunkPlugin({'common-[chunkhash:6].js': ['main', 'vendor']})
-
-    // createHappyPlugin('js', ['babel']),
-    // createHappyPlugin('less', ['css!less']),
-    // createHappyPlugin('css', ['css'])
     new HappyPack({
         id: 'js',
         loaders: [{
@@ -105,19 +101,19 @@ module.exports = {
     new HappyPack({
         id: 'less',
         loaders: [
-         'less-loader!css-loader?minimize',
+         'css-loader!less-loader?minimize',
         ],
         threadPool: happyThreadPool,
       }
     ),
-    new HappyPack({
-        id: 'css',
-        loaders: [
-          'css-loader?minimize',
-        ],
-        threadPool: happyThreadPool,
-      }
-    ),
+    // new HappyPack({
+    //     id: 'css',
+    //     loaders: [
+    //       'css-loader?minimize',
+    //     ],
+    //     threadPool: happyThreadPool,
+    //   }
+    // ),
 
   ],
 
