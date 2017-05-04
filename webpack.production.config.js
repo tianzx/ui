@@ -6,12 +6,14 @@ const UglifyJsParallelPlugin = require('webpack-uglify-parallel');
 // const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const os = require('os');
 const HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
     main: './src/index',
-    vendor: [ 'react','superagent','redux','js-cookie','moment'],
+    vendor: ['react', 'superagent', 'redux', 'js-cookie', 'moment'],
     // vendor2: ['superagent']
   },
   output: {
@@ -62,14 +64,30 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new HappyPack({
-      loaders: [{
-        loader: 'babel-loader?cacheDirectory',
-      }],
-      threads: os.cpus().length
-    }),
+        id: 'js',
+        loaders: [{
+          loader: 'babel-loader',
+        }],
+        threadPool: happyThreadPool,
+      }, {
+        id: 'less',
+        loaders: [{
+          loader: 'css-loader?minimize',
+          loader: 'less-loader?minimize',
+        }],
+        threadPool: happyThreadPool,
+
+      }, {
+        id: 'css',
+        loaders: [{
+          loader: 'css-loader?minimize',
+        }],
+        threadPool: happyThreadPool,
+      }
+    ),
     new CopyWebpackPlugin([
       {from: path.join(__dirname, 'asserts') + '/**/*', to: path.join(__dirname, 'dist') + '/'},
-      {from: path.join(__dirname, 'server/**/*'), to: path.join(__dirname, 'dist') + '/',ignore: 'server/test/**/*'},
+      {from: path.join(__dirname, 'server/**/*'), to: path.join(__dirname, 'dist') + '/', ignore: 'server/test/**/*'},
       {from: path.join(__dirname, 'server.js'), to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'package.json'), to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'fake/*'), to: path.join(__dirname, 'dist') + '/'},
@@ -93,20 +111,20 @@ module.exports = {
         include: __dirname,
         use: [{
           // loader: "babel-loader?cacheDirectory",
-          loader: "happypack/loader",
+          loader: "happypack/loader?id=js",
         }],
       },
       {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader?minimize', 'less-loader?minimize']
+          use: ["happypack/loader?id=less"]
         })
       },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
-          use: ['css-loader?minimize']
+          use: ["happypack/loader?id=css"]
         })
       },
       {
