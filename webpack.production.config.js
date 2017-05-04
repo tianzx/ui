@@ -6,7 +6,7 @@ const UglifyJsParallelPlugin = require('webpack-uglify-parallel');
 // const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const os = require('os');
 const HappyPack = require('happypack');
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length});
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -69,22 +69,24 @@ module.exports = {
           loader: 'babel-loader',
         }],
         threadPool: happyThreadPool,
-      }, {
-        id: 'less',
-        loaders: [{
-          loader: 'less-loader?minimize',
-          loader: 'css-loader?minimize',
-        }],
-        threadPool: happyThreadPool,
-
-      }, {
-        id: 'css',
-        loaders: [{
-          loader: 'css-loader?minimize',
-        }],
-        threadPool: happyThreadPool,
       }
     ),
+    new HappyPack({
+      id: 'less',
+      loaders: [{
+        loader: 'less-loader?minimize',
+        loader: 'css-loader?minimize',
+      }],
+      threadPool: happyThreadPool
+    }),
+    new HappyPack({
+      id: 'css',
+      loaders: [{
+        loader: 'css-loader?minimize',
+      }],
+      threadPool: happyThreadPool,
+    }),
+
     new CopyWebpackPlugin([
       {from: path.join(__dirname, 'asserts') + '/**/*', to: path.join(__dirname, 'dist') + '/'},
       {from: path.join(__dirname, 'server/**/*'), to: path.join(__dirname, 'dist') + '/', ignore: 'server/test/**/*'},
