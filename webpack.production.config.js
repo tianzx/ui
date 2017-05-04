@@ -9,6 +9,8 @@ const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length});
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ChunkManifestPlugin = require("chunk-manifest-webpack-plugin");
+const WebpackChunkHash = require("webpack-chunk-hash");
 
 module.exports = {
   entry: {
@@ -19,6 +21,7 @@ module.exports = {
     path: __dirname + '/dist',
     filename: "[name]-[chunkhash:6].js",
     // chunkFilename: "[chunkhash].js",
+    chunkFilename: "[name].[chunkhash].js",
     publicPath: './',
   },
   plugins: [
@@ -82,6 +85,11 @@ module.exports = {
     }),
 
     new webpack.HashedModuleIdsPlugin(),
+    new WebpackChunkHash(),
+    new ChunkManifestPlugin({
+      filename: "chunk-manifest.json",
+      manifestVariable: "webpackManifest"
+    }),
     // new webpack.optimize.CommonsChunkPlugin({'common-[chunkhash:6].js': ['main', 'vendor']})
     new HappyPack({
         id: 'js',
