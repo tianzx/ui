@@ -16,7 +16,8 @@ cache:
 install:
   - rm -rf package.json
   - mv package.complie.json package.json
-  - npm install
+#  - npm install
+  - yarn install
 before_script:
   - echo "begin"
   - git config --global user.name "tianzx"
