@@ -9,19 +9,7 @@ const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-function createHappyPlugin(id, loaders) {
-  return new HappyPack({
-    id: id,
-    loaders: loaders,
-    threadPool: happyThreadPool,
 
-    // disable happy caching with HAPPY_CACHE=0
-    cache: process.env.HAPPY_CACHE === '1',
-
-    // make happy more verbose with HAPPY_VERBOSE=1
-    verbose: process.env.HAPPY_VERBOSE === '1',
-  });
-}
 module.exports = {
   entry: {
     main: './src/index',
@@ -101,7 +89,7 @@ module.exports = {
     new HappyPack({
         id: 'less',
         loaders: [
-         'css-loader!less-loader?minimize',
+         'css-loader?minimize!less-loader?minimize',
         ],
         threadPool: happyThreadPool,
       }
@@ -131,7 +119,7 @@ module.exports = {
       {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+          // fallback: 'style-loader',
           use: [{
             loader: "happypack/loader"+"?id=less"
           }]
