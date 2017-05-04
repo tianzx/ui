@@ -118,14 +118,18 @@ module.exports = {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ["happypack/loader?id=less"]
+          use: [{
+            loader: "happypack/loader?id=less"
+          }]
         })
       },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ["happypack/loader?id=css"]
+          use: [{
+            loader: "happypack/loader?id=css"
+          }]
         })
       },
       {
