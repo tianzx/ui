@@ -11,8 +11,8 @@ cache:
   yarn: true
   directories:
     - node_modules
-#before_install:
-#    - npm install -g pnpm
+before_install:
+    - apt-get update &&  apt-get install yarn
 install:
   - rm -rf package.json
   - mv package.complie.json package.json
