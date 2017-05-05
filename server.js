@@ -8,6 +8,8 @@ const app = express();
 const projectConfig = require('./config.json');
 const env = process.argv[2];
 const path = require('path');
+const publicPath = path.resolve(__dirname);
+
 /**
  * different environment
  */
@@ -26,16 +28,28 @@ if (isDeveloping) {
     publicPath: config.output.publicPath,
     quiet: true,
   }));
+  app.use(express.static(publicPath));
+
 } else {
+  const options = {
+    // dotfiles: 'ignore',
+    // etag: false,
+    // extensions: ['htm', 'html'],
+    // index: false,
+    maxAge: '5 days',
+    // redirect: false,
+    // setHeaders: function (res, path, stat) {
+    //   res.set('x-timestamp', Date.now());
+    // }
+  }
+  app.use(express.static(publicPath,options));
   console.log('enter production');
 }
 
 /**
  * RESTful API
  */
-const publicPath = path.resolve(__dirname);
 app.use(bodyParser.json({type: 'application/json'}));
-app.use(express.static(publicPath));
 app.use(cookieParser());
 
 const port = isProduction ? (process.env.PORT || 8080) : 7777;
