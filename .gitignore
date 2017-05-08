@@ -8,3 +8,4 @@ npm-debug.log
 *.zip
 ./index.html
 /server/rest/*
+server/test/xls/*.xlsx
