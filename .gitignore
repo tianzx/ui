@@ -9,3 +9,4 @@ npm-debug.log
 ./index.html
 /server/rest/*
 server/test/xls/*.xlsx
+/.idea
