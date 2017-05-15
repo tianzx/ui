@@ -60,9 +60,6 @@ module.exports = {
         use: [
           {
             loader: 'url-loader',
-            // options: {
-            //   query: {limit: 10240}
-            // }
           }
         ]
       }
