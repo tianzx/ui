@@ -1,9 +1,10 @@
 import Api from './api';
 
+//    'Accept': 'application/json',
 const api = new Api({
   baseURI: '/api',
   headers: {
-    'Accept': 'application/json',
+    'Accept': 'application/x-msgpack',
     'Content-Type': 'application/json'
   }
 });
