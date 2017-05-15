@@ -12,12 +12,13 @@ import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 // import promiseMiddleware from '../middlewares/promiseMiddleware';
 import promiseMiddleware from 'redux-promise-middleware';
+import messagePack from '../middlewares/messagePack';
 
 const logger = createLogger();
 const router = routerMiddleware(browserHistory);
 
 const enhancer = compose(
-  applyMiddleware(promiseMiddleware({promiseTypeSuffixes:['PENDING','SUCCESS','ERROR']}), logger, router),
+  applyMiddleware(promiseMiddleware({promiseTypeSuffixes:['PENDING','SUCCESS','ERROR']}),messagePack, logger, router),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
