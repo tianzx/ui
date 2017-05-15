@@ -9,7 +9,7 @@ const projectConfig = require('./config.json');
 const env = process.argv[2];
 const path = require('path');
 const publicPath = path.resolve(__dirname);
-const msgpackResponse = require('msgpack-response');
+// const msgpackResponse = require('msgpack-response');
 
 /**
  * different environment
@@ -51,7 +51,7 @@ if (isDeveloping) {
  * RESTful API
  */
 app.use(bodyParser.json({type: 'application/json'}));
-app.use(msgpackResponse({auto_detect: true}));
+// app.use(msgpackResponse({auto_detect: true}));
 app.use(cookieParser());
 
 const port = isProduction ? (process.env.PORT || 8080) : 7777;
