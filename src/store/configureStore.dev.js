@@ -18,7 +18,7 @@ const logger = createLogger();
 const router = routerMiddleware(browserHistory);
 
 const enhancer = compose(
-  applyMiddleware(promiseMiddleware({promiseTypeSuffixes:['PENDING','SUCCESS','ERROR']}),messagePack, logger, router),
+  applyMiddleware(promiseMiddleware({promiseTypeSuffixes:['PENDING','SUCCESS','ERROR']}), logger, router),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
