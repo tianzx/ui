@@ -45,7 +45,7 @@ if (isDeveloping) {
     // }
   }
   const config = require('./webpack.production.config.js');
-  app.use(express.static(config.output.publicPath,options));
+  app.use(express.static('./asserts',options));
   console.log('enter production');
 }
 
