@@ -9,6 +9,7 @@ const projectConfig = require('./config.json');
 const env = process.argv[2];
 const path = require('path');
 const publicPath = path.resolve(__dirname);
+// console.log(publicPath)
 // const msgpackResponse = require('msgpack-response');
 
 /**
@@ -43,7 +44,8 @@ if (isDeveloping) {
     //   res.set('x-timestamp', Date.now());
     // }
   }
-  app.use(express.static(publicPath,options));
+  const config = require('./webpack.production.config.js');
+  app.use(express.static(config.output.publicPath,options));
   console.log('enter production');
 }
 

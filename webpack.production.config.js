@@ -18,16 +18,16 @@ module.exports = {
     vendor: ['react', 'superagent', 'redux', 'js-cookie', 'moment','react-dom','react-google-maps'],
   },
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/dist/asserts',
     filename: "[name]-[chunkhash:6].js",
     // chunkFilename: "[chunkhash].js",
     chunkFilename: "[name].[chunkhash].js",
-    publicPath: './',
+    publicPath: './asserts',
   },
   plugins: [
     new HtmlWebpackPlugin({
       favicon: './asserts/favicon.ico',
-      filename: 'index.html',
+      filename: '../index.html',
       template: './src/index.html',
       inject: true,
       minify: {
