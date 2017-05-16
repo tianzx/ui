@@ -9,7 +9,6 @@ const projectConfig = require('./config.json');
 const env = process.argv[2];
 const path = require('path');
 const publicPath = path.resolve(__dirname);
-// console.log(publicPath)
 // const msgpackResponse = require('msgpack-response');
 
 /**
@@ -44,8 +43,8 @@ if (isDeveloping) {
     //   res.set('x-timestamp', Date.now());
     // }
   }
-
-  app.use(express.static(publicPath + '/asserts',options));
+  console.log(publicPath);
+  app.use(express.static(__dirname + '/asserts',options));
   console.log('enter production');
 }
 
@@ -62,8 +61,8 @@ ioc(app);
 /**
  *this is necessary to handle URL correctly since client uses Browser History
  */
-app.get('/', function (req, res) {
-  res.sendFile(path.resolve(__dirname, '', 'index.html'))
+app.get('*', function (req, res) {
+  res.sendFile(path.resolve(__dirname + '/index.html'))
 });
 // 所有用户可以访问index.html, error.html
 // admin可以访问admin.html, /getData

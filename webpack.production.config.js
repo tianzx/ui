@@ -22,7 +22,7 @@ module.exports = {
     filename: "[name]-[chunkhash:6].js",
     // chunkFilename: "[chunkhash].js",
     chunkFilename: "[name].[chunkhash].js",
-    publicPath: './asserts',
+    publicPath: './',
   },
   plugins: [
     new HtmlWebpackPlugin({
