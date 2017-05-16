@@ -62,9 +62,9 @@ ioc(app);
 /**
  *this is necessary to handle URL correctly since client uses Browser History
  */
-app.get('*', function (req, res) {
-  res.sendFile(path.resolve(__dirname, '', 'index.html'))
-});
+// app.get('*', function (req, res) {
+//   res.sendFile(path.resolve(__dirname, '', 'index.html'))
+// });
 // 所有用户可以访问index.html, error.html
 // admin可以访问admin.html, /getData
 // 登陆用户可以访问home.html
