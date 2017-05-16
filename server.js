@@ -44,7 +44,6 @@ if (isDeveloping) {
     //   res.set('x-timestamp', Date.now());
     // }
   }
-  const config = require('./webpack.production.config.js');
   app.use(express.static('./asserts',options));
   console.log('enter production');
 }
