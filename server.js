@@ -44,6 +44,7 @@ if (isDeveloping) {
     //   res.set('x-timestamp', Date.now());
     // }
   }
+
   app.use(express.static('./asserts',options));
   console.log('enter production');
 }
