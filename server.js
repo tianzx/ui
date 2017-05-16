@@ -38,7 +38,7 @@ if (isDeveloping) {
     // etag: false,
     // extensions: ['htm', 'html'],
     // index: false,
-    maxAge: '5 days',
+    // maxAge: '5 days',
     // redirect: false,
     // setHeaders: function (res, path, stat) {
     //   res.set('x-timestamp', Date.now());
