@@ -45,7 +45,7 @@ if (isDeveloping) {
     // }
   }
 
-  app.use(express.static('./asserts',options));
+  app.use(express.static(publicPath + '/asserts',options));
   console.log('enter production');
 }
 

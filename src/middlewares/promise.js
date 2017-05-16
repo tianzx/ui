@@ -1,0 +1,93 @@
+/**
+ * Created by tianzx on 2017/5/15.
+ */
+import { isPromise } from '../utils';
+
+const defaultTypes = ['PENDING', 'FULFILLED', 'REJECTED'];
+
+export default function promiseMiddleware(config = {}) {
+  /**
+   * 只写一个action 在redux dispatch 中更改
+   * @type {*}
+   */
+  const promiseTypeSuffixes = config.promiseTypeSuffixes || defaultTypes;
+
+  return (_ref) => {
+    const dispatch = _ref.dispatch;
+
+    return next => action => {
+      /**
+       * 如果不是异步的话，就丢出去
+       */
+      if (!isPromise(action.payload)) {
+        return next(action);
+      }
+      /**
+       *  获取传入的action like this
+       * export function login(user, password) {
+        return {
+          type: 'LOGIN',
+          payload: {
+            promise: api.put('/login', {
+              data: {
+                user: user,
+                password: password
+              }
+            })
+          }
+        };
+      }*/
+      const { type, payload, meta } = action;
+      const { promise, data } = payload;
+      const [ PENDING, FULFILLED, REJECTED ] = (meta || {}).promiseTypeSuffixes || promiseTypeSuffixes;
+
+      /**
+       * Dispatch the first async handler. This tells the
+       * reducer that an async action has been dispatched.
+       */
+      next({
+        type: `${type}_${PENDING}`,
+        ...data ? { payload: data } : {},
+        ...meta ? { meta } : {}
+      });
+
+      const isAction = resolved => resolved && (resolved.meta || resolved.payload);
+      const isThunk = resolved => typeof resolved === 'function';
+      const getResolveAction = isError => ({
+        type: `${type}_${isError ? REJECTED : FULFILLED}`,
+        ...meta ? { meta } : {},
+        ...isError ? { error: true } : {}
+      });
+
+      /**
+       * p.then(onFulfilled, onRejected);
+       * Re-dispatch one of:
+       *  1. a thunk, bound to a resolved/rejected object containing ?meta and type
+       *  2. the resolved/rejected object, if it looks like an action, merged into action
+       *  3. a resolve/rejected action with the resolve/rejected object as a payload
+       */
+      action.payload.promise = promise.then(
+        (resolved = {}) => {
+          const resolveAction = getResolveAction();
+          return dispatch(isThunk(resolved) ? resolved.bind(null, resolveAction) : {
+            ...resolveAction,
+            ...isAction(resolved) ? resolved : {
+              ...resolved && { payload: resolved }
+            }
+          });
+        },
+        (rejected = {}) => {
+          const resolveAction = getResolveAction(true);
+          return dispatch(isThunk(rejected) ? rejected.bind(null, resolveAction) : {
+            ...resolveAction,
+            ...isAction(rejected) ? rejected : {
+              ...rejected && { payload: rejected }
+            }
+          });
+        },
+      );
+      console.log(action);
+      return action;
+    };
+  };
+}
