@@ -16,7 +16,7 @@ module.exports = {
   entry: {
     main: './src/index',
     vendor: ['react', 'superagent', 'redux', 'js-cookie', 'moment','react-dom','react-google-maps','react-router',
-      'react-router-redux'],
+      'react-router-redux','msgpack-lite'],
   },
   output: {
     path: __dirname + '/dist/asserts',
