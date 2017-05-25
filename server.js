@@ -9,6 +9,8 @@ const projectConfig = require('./config.json');
 const env = process.argv[2];
 const path = require('path');
 const publicPath = path.resolve(__dirname);
+const  morgan = require('morgan');
+
 // const msgpackResponse = require('msgpack-response');
 
 /**
@@ -29,6 +31,7 @@ if (isDeveloping) {
     publicPath: config.output.publicPath,
     quiet: true,
   }));
+  app.use(morgan('combined'));
   app.use(express.static(publicPath));
 
 } else {
