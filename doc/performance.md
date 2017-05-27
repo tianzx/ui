@@ -1,4 +1,6 @@
 ##server config
+aliyun cloud 
+
 CPU： 2核
 
 内存： 2 GB
@@ -12,6 +14,10 @@ CPU： 2核
 
 实例规格： ecs.s2.small
 
+##wetest
+TPS:89.53 ms
+
+RESPONSE TIME :302.44 ms
 ##ab request
 ab -n 10000 -c 1000 -H "Cookie:smartauto-token=12345678" https://ui.tianzx.net:443/index
 
