@@ -12,6 +12,7 @@ const publicPath = path.resolve(__dirname);
 const morgan = require('morgan');
 const winston = require('winston');
 
+
 // const msgpackResponse = require('msgpack-response');
 
 /**
@@ -34,7 +35,12 @@ if (isDeveloping) {
   }));
   app.use(morgan('combined'));
   app.use(express.static(publicPath));
+  winston.log('info', 'Hello distributed log files!');
+  winston.info('Hello again distributed logs');
 
+  winston.level = 'debug';
+  winston.log('debug', 'Now my debug messages are written to console!');
+  console.log('enter production');
 } else {
   const options = {
     // dotfiles: 'ignore',
@@ -50,7 +56,6 @@ if (isDeveloping) {
   // console.log(publicPath);
   app.use(express.static(__dirname + '/asserts', options));
 
-  console.log('enter production');
 }
 
 /**

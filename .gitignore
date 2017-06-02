@@ -10,3 +10,5 @@ npm-debug.log
 /server/rest/leancloud
 server/test/xls/*.xlsx
 /.idea
+server/test/file/2017-03-05/
+server/test/file/uploads2017-03-05/
