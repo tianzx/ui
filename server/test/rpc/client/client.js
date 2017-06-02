@@ -6,13 +6,22 @@ const grpc = require('grpc');
 
 const PROTO_PATH = __dirname + '/../test.proto'
 
-const testProto = grpc.load(PROTO_PATH).testPackage
+const testProto = grpc.load(PROTO_PATH)
 
-console.log(testProto)
+var array = new Array()
 
-const client = new testProto.TestService('0.0.0.0:50051',
+for(var key in testProto){
+  console.log(key)
+  array['package'] = key;
+  for (var key2 in testProto[key] ){
+    // array[]
+  }
+}
+
+console.log(array);
+const client = new testProto.testPackage.TestService('0.0.0.0:50051',
   grpc.credentials.createInsecure());
-
-client.ping({name: 'beijing'}, function(err, response) {
-  console.log('ping -> :', response.message);
-});
+//
+// client.ping({name: 'beijing'}, function(err, response) {
+//   console.log('ping -> :', response.message);
+// });

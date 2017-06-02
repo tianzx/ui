@@ -7,6 +7,6 @@ npm-debug.log
 .vscode/
 *.zip
 ./index.html
-/server/rest/*
+/server/rest/leancloud
 server/test/xls/*.xlsx
 /.idea

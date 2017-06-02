@@ -9,7 +9,8 @@ const projectConfig = require('./config.json');
 const env = process.argv[2];
 const path = require('path');
 const publicPath = path.resolve(__dirname);
-const  morgan = require('morgan');
+const morgan = require('morgan');
+const winston = require('winston');
 
 // const msgpackResponse = require('msgpack-response');
 
@@ -46,8 +47,9 @@ if (isDeveloping) {
     //   res.set('x-timestamp', Date.now());
     // }
   }
-  console.log(publicPath);
-  app.use(express.static(__dirname + '/asserts',options));
+  // console.log(publicPath);
+  app.use(express.static(__dirname + '/asserts', options));
+
   console.log('enter production');
 }
 

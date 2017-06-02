@@ -56,7 +56,8 @@
     "file-type":"^4.3.0",
     "read-chunk":"^2.0.0",
     "msgpack-response":"^1.0.0",
-    "morgan":"^1.8.2"
+    "morgan":"^1.8.2",
+    "winston":"^2.3.1"
   },
   "devDependencies": {
     "antd": "^2.10.1",
