@@ -1,14 +1,18 @@
 syntax = "proto3";
 
-package testPackage;
+package helloworld;
 
-service TestService {
-  rpc ping (pingRequest) returns (pingReply) {}
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply) {
+  }
+//  rpc SayHi (HelloRequest) returns (HelloReply) {
+//  }
 }
 
-message pingRequest {
+message HelloRequest {
+  string name = 1;
 }
 
-message pingReply {
+message HelloReply {
   string message = 1;
 }

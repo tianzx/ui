@@ -35,12 +35,12 @@ if (isDeveloping) {
   }));
   app.use(morgan('combined'));
   app.use(express.static(publicPath));
-  winston.log('info', 'Hello distributed log files!');
-  winston.info('Hello again distributed logs');
+  winston.log('info', 'enter production');
+  // winston.info('Hello again distributed logs');
 
-  winston.level = 'debug';
-  winston.log('debug', 'Now my debug messages are written to console!');
-  console.log('enter production');
+  // winston.level = 'debug';
+  // winston.log('debug', 'Now my debug messages are written to console!');
+  // console.log('enter production');
 } else {
   const options = {
     // dotfiles: 'ignore',

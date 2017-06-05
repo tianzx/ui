@@ -24,7 +24,7 @@ class RpcClient {
         const filePart = path.parse(file)
         const serviceName = filePart.name
         const packageName = filePart.name
-        console.log(serviceName + " " +packageName);
+        console.log(serviceName + " " + packageName);
         const extName = filePart.ext
         const filePath = path.join(protoDir, file)
         if (extName === '.proto') {
