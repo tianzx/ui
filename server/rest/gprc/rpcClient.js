@@ -12,7 +12,7 @@ const testProto = grpc.load(PROTO_PATH).helloworld
 
 // console.log(testProto)
 
-const client = new testProto.Greeter('0.0.0.0:50051',
+const client = new testProto.Greeter('192.168.199.151:50051',
   grpc.credentials.createInsecure());
 
 client.sayHello({name: 'qqqq'}, function(err, response) {
