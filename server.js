@@ -35,7 +35,7 @@ if (isDeveloping) {
   }));
   app.use(morgan('combined'));
   app.use(express.static(publicPath));
-  winston.log('info', 'enter production');
+  winston.log('info', 'enter dev');
   // winston.info('Hello again distributed logs');
 
   // winston.level = 'debug';
