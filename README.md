@@ -63,3 +63,7 @@ $ cnpm install rimraf -g
 
 ### update npm 
 &emsp;&emsp;&emsp;&emsp;cnpm update -g npm
+
+## TODO
+
+### when in travis build , node version 8.0 and npm version 5.0 will build faile 
