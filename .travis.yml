@@ -2,15 +2,16 @@ os:
   - linux
 # this is build on container-based ci
 # if sudo will not
-#sudo: required
+sudo: required
 dist: trusty
+group: edge  # Add this
 language: node_js
 node_js:
   - "8"
-cache:
-  yarn: true
-  directories:
-    - node_modules
+#cache:
+#  yarn:
+#  directories:
+#    - node_modules
 #before_install:
 #    - apt-get update &&  apt-get install yarn
 install:
