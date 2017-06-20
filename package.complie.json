@@ -28,7 +28,6 @@
     "url": "https://github.com/tianzx/ui.git"
   },
   "scripts": {
-    "clean": "rimraf dist",
     "test": "mocha tests/testSetup.js \"src/**/*.spec.js\"",
     "test-mocha": "mocha tests/testSetup.js tests/*-test.js",
     "lint": "esw webpack.devleop.config src ",
