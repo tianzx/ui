@@ -1,5 +1,5 @@
 # React Ant.Design Admin UI
- [![Build Status](https://travis-ci.org/tianzx/ui.svg?branch=master)](https://travis-ci.org/tianzx/ui)
+ [![Build Status](https://travis-ci.org/tianzx/ui.svg?branch=master&1=1)](https://travis-ci.org/tianzx/ui)
 ## Features
 
 - [React](https://facebook.github.io/react/)
