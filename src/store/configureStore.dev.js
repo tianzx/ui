@@ -12,7 +12,7 @@ import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 // import promiseMiddleware from '../middlewares/promiseMiddleware';
 import promiseMiddleware from 'redux-promise-middleware';
-import messagePack from '../middlewares/messagePack';
+// import messagePack from '../middlewares/messagePack';
 
 const logger = createLogger();
 const router = routerMiddleware(browserHistory);
