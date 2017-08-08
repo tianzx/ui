@@ -87,10 +87,10 @@ module.exports = {
 
     new webpack.HashedModuleIdsPlugin(),
     new WebpackChunkHash(),
-    new ChunkManifestPlugin({
-      filename: "chunk-manifest.json",
-      manifestVariable: "webpackManifest"
-    }),
+    // new ChunkManifestPlugin({
+    //   filename: "chunk-manifest.json",
+    //   manifestVariable: "webpackManifest"
+    // }),
     // new webpack.optimize.CommonsChunkPlugin({'common-[chunkhash:6].js': ['main', 'vendor']})
     new HappyPack({
         id: 'js',
