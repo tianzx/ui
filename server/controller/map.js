@@ -43,7 +43,7 @@ const map = function (app) {
       endTime: endTimestamp
     };
     const environment = req.cookies.env;
-    const mapUrl = "http://139.162.179.15:8003" + "/webGPS/getGPSRoutes?" + qs.stringify(queryString);
+    const mapUrl = "http://42.121.121.128:8003" + "/webGPS/getGPSRoutes?" + qs.stringify(queryString);
     request({
         method: 'GET',
         url: mapUrl,
